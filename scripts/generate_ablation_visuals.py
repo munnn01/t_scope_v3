@@ -34,7 +34,7 @@ VARIANT_SETTINGS = {
                         "use_real_x265_ste": False, "reuse_iframe_qp": False},
 }
 MODEL_SETTINGS = {"base_ch": 48, "num_families": 4, "cond_dim": 64, "qg_size": 16,
-                  "max_obj_res": 0.09, "max_bg_res": 0.03}
+                  "max_obj_res": 0.025, "max_bg_res": 0.03}
 
 
 def validate_soup_metadata(checkpoint, expected_variant):

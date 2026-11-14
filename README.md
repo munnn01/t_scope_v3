@@ -2,6 +2,12 @@
 
 Official PyTorch implementation, mathematical formulation, and 21-account Kaggle distributed sharding framework for **T-SCOPE** (targeted at **IEEE TCSVT / IEEE TIP**).
 
+> **Cập nhật T-SCOPE v2 (Architecture, Codec Proxy & Loss Alignment):**
+> - **Motion Compensation & Occlusion/Parallax Gating (`models/temporal_scope.py`):** Dùng 6-DOF Cauchy-IRLS affine + Static Identity Snap (`max_corner_px < 0.75px`) để căn chỉnh `I_{t-1}`, `bg_prev`, `h_prev` và hiệu liên khung `diff_mc_t`, kèm cổng occlusion/parallax cho EMA nền (`6,107,226` tham số).
+> - **Bảo toàn ROI Tiền cảnh & `ctu_qp_offsets` không giảm trên P-frame:** Smoothstep STE saturation `eff_attn_t`, `max_obj_res=0.025` điều biến theo severity, và carry-forward `dQP` nền an toàn tiền cảnh trên P-frame (`qg_size=16`, `qoffset ∈ [-0.18, +0.14]`).
+> - **Codec Proxy & Loss tách biệt I/P (`video_codecs/hybrid_x265_ste.py`, `losses/vcm_temporal_loss.py`):** Proxy dự đoán liên khung H/8+H/2 + đường cong SKIP QP hiệu chuẩn cho I/P, tối ưu riêng `i_frame_bpp_proxy` / `p_frame_bpp_proxy` (gồm `log1p`), FG pixel/grad/recon/saturation + Tversky recall, `L_temp_bg` căn theo chuyển động có mặt nạ che khuất, và phạt rò rỉ/giảm `dQP`.
+> - **Lịch huấn luyện (`scripts/kaggle_shard_runner.py`):** 2-epoch warmup + `CosineAnnealingLR(T_max=18, eta_min=1e-6)` sau đó giữ phẳng `1e-6`, kích hoạt early stop `patience=10`.
+
 ---
 
 ## 1. Phân tích các Paper SOTA và Lỗ hổng Nghiên cứu (Research Gaps)
@@ -127,7 +133,7 @@ Không cần mở trình duyệt, chạy trực tiếp trên máy tính cá nhâ
 python scripts/kaggle_pool_orchestrator.py --pool_file "C:\Users\Wagur1\Downloads\pool (2).json" --action verify_pool
 
 # 2. Huấn luyện hội tụ ở 512x512 với Dual-Detector (Faster R-CNN ResNet50-FPN v2 + YOLOv8s), tự động bỏ qua acc hết quota GPU
-python -I scripts/kaggle_pool_orchestrator.py --pool_file "C:\Users\Wagur1\Downloads\pool (2).json" --action push --run_mode train --ablation_sweep --img_size 512 --batch_size 4 --epochs 40 --patience 10 --min_epochs 10 --min_gpu_hours 1.0 --skip_exhausted --use_yolov8s
+python -I scripts/kaggle_pool_orchestrator.py --pool_file "C:\Users\Wagur1\Downloads\pool (2).json" --action push --run_mode train --ablation_sweep --img_size 512 --batch_size 2 --grad_accum_steps 2 --epochs 36 --patience 10 --min_epochs 12 --lr 1.5e-4 --min_gpu_hours 8.5 --skip_exhausted --use_yolov8s
 
 # 3. Xem trạng thái chạy của cả 21 tài khoản
 python -I scripts/kaggle_pool_orchestrator.py --pool_file "C:\Users\Wagur1\Downloads\pool (2).json" --action status
@@ -147,8 +153,8 @@ SHARD_ID = 0        # Đổi từ 0 -> 20 tương ứng 21 tài khoản Kaggle
 NUM_SHARDS = 21
 VARIANT = "full_tscope"  # Hoặc: spatial_only_scope | wo_ctu_delta_qp | iwa_gop_qp_reuse | proxy_only_zhao
 
-!git clone https://github.com/wagur1/research_gap.git /kaggle/working/research_gap || (cd /kaggle/working/research_gap && git pull)
-%cd /kaggle/working/research_gap
+!git clone https://github.com/wagur1/tscope-v2.git /kaggle/working/tscope-v2 || (cd /kaggle/working/tscope-v2 && git pull)
+%cd /kaggle/working/tscope-v2
 
 !python scripts/prepare_kaggle_datasets.py --target_dir /kaggle/working/data --download_sfu_labels
 

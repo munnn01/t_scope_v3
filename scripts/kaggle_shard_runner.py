@@ -1,6 +1,7 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -284,9 +285,23 @@ def run_train_shard(args: argparse.Namespace) -> None:
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode="min", factor=0.5, patience=max(1, args.patience // 3)
-    )
+    warmup_epochs = 2
+    cosine_t_max = 18
+    eta_min = min(args.lr, 1e-6)
+    min_lr_factor = eta_min / max(args.lr, 1e-12)
+
+    def _lr_lambda(epoch_idx: int) -> float:
+        ep = epoch_idx + 1
+        if ep <= warmup_epochs:
+            return float(ep) / float(warmup_epochs)
+        if ep <= warmup_epochs + cosine_t_max:
+            progress = float(ep - warmup_epochs) / float(cosine_t_max)
+            return min_lr_factor + (1.0 - min_lr_factor) * 0.5 * (
+                1.0 + math.cos(math.pi * progress)
+            )
+        return min_lr_factor
+
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=_lr_lambda)
 
     # Validation on a sequence-disjoint split (MOT17-09) for convergence detection; test is never used here.
     val_ds = None
@@ -335,6 +350,13 @@ def run_train_shard(args: argparse.Namespace) -> None:
                     m_det=v_det,
                     teacher_fpn_feats=v_teacher,
                     student_fpn_feats=v_student,
+                    i_frame_bpp_proxy=v_codec.get("i_frame_bpp_proxy"),
+                    p_frame_bpp_proxy=v_codec.get("p_frame_bpp_proxy"),
+                    ctu_qp_offsets=v_out.get("ctu_qp_offsets"),
+                    i_orig=v_video,
+                    aligned_prev_edit=v_out.get("aligned_prev_edit"),
+                    aligned_prev_orig=v_out.get("aligned_prev_orig"),
+                    warp_valid_mask=v_out.get("warp_valid_mask"),
                 )
                 total += float(v_losses["loss_total"].item())
                 count += 1
@@ -350,8 +372,39 @@ def run_train_shard(args: argparse.Namespace) -> None:
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     training_configuration = {
-        "initialization_seed": 2026, "preset": preset_cfg, "codec": CODEC_CONFIGURATION,
+        "initialization_seed": 2026,
+        "preset": preset_cfg,
+        "codec": CODEC_CONFIGURATION,
+        "model": {
+            "base_ch": 48,
+            "num_families": 4,
+            "cond_dim": 64,
+            "qg_size": 16,
+            "max_delta_qp": preset_cfg["max_delta_qp"],
+            "max_obj_res": float(getattr(base_model, "max_obj_res", 0.025)),
+        },
+        "loss": {
+            "lambda_det": criterion.lambda_det,
+            "lambda_attn": criterion.lambda_attn,
+            "lambda_attn_sparse": criterion.lambda_attn_sparse,
+            "lambda_rate_i": criterion.lambda_rate_i,
+            "lambda_rate_p": criterion.lambda_rate_p,
+            "lambda_rate_p_log": criterion.lambda_rate_p_log,
+            "lambda_fg_pix": criterion.lambda_fg_pix,
+            "lambda_fg_grad": criterion.lambda_fg_grad,
+            "lambda_fg_recon": criterion.lambda_fg_recon,
+            "lambda_fg_sat": criterion.lambda_fg_sat,
+            "lambda_dqp_fg": criterion.lambda_dqp_fg,
+            "lambda_dqp_mono": criterion.lambda_dqp_mono,
+            "lambda_dqp_smooth": criterion.lambda_dqp_smooth,
+        },
+        "lr_schedule": {
+            "warmup_epochs": warmup_epochs,
+            "cosine_t_max": cosine_t_max,
+            "eta_min": eta_min,
+        },
         "epochs": args.epochs, "patience": args.patience, "min_epochs": args.min_epochs,
+        "min_delta": args.min_delta,
         "lr": args.lr, "batch_size": args.batch_size, "img_size": args.img_size,
         "clip_len": args.clip_len, "val_every": args.val_every, "val_subsample": args.val_subsample,
         "data_shard_id": args.data_shard_id, "data_num_shards": args.data_num_shards,
@@ -412,6 +465,13 @@ def run_train_shard(args: argparse.Namespace) -> None:
                     m_det=m_det,
                     teacher_fpn_feats=teacher_fpn,
                     student_fpn_feats=student_fpn,
+                    i_frame_bpp_proxy=codec_out.get("i_frame_bpp_proxy"),
+                    p_frame_bpp_proxy=codec_out.get("p_frame_bpp_proxy"),
+                    ctu_qp_offsets=out.get("ctu_qp_offsets"),
+                    i_orig=video,
+                    aligned_prev_edit=out.get("aligned_prev_edit"),
+                    aligned_prev_orig=out.get("aligned_prev_orig"),
+                    warp_valid_mask=out.get("warp_valid_mask"),
                 )
                 loss_scaled = losses["loss_total"] / grad_accum_steps
 
@@ -427,22 +487,23 @@ def run_train_shard(args: argparse.Namespace) -> None:
         if device.type == "cuda":
             torch.cuda.empty_cache()
 
+        epoch_lr = optimizer.param_groups[0]["lr"]
+        scheduler.step()
+
         avg_loss = epoch_loss / max(1, len(loader))
         dt = time.perf_counter() - t0
         print(
-            f"  Epoch {epoch:02d}/{args.epochs:02d} | Loss={avg_loss:.4f} | Time={dt:.1f}s"
+            f"  Epoch {epoch:02d}/{args.epochs:02d} | Loss={avg_loss:.4f} | LR={epoch_lr:.2e} | Time={dt:.1f}s"
         )
-        history.append({"epoch": epoch, "loss_total": avg_loss, "time_sec": dt})
+        history.append({"epoch": epoch, "loss_total": avg_loss, "lr": epoch_lr, "time_sec": dt})
 
         if val_ds is not None and (epoch % args.val_every == 0 or epoch == args.epochs):
             val_loss = validate()
-            scheduler.step(val_loss)
             history[-1]["val_loss"] = val_loss
-            history[-1]["lr"] = optimizer.param_groups[0]["lr"]
             improved = val_loss < best_val - args.min_delta
             print(
                 f"    [Val] epoch {epoch:03d} val_loss={val_loss:.4f} best={best_val:.4f} "
-                f"lr={optimizer.param_groups[0]['lr']:.2e} {'*' if improved else ''}"
+                f"lr={epoch_lr:.2e} {'*' if improved else ''}"
             )
             if improved:
                 best_val, best_epoch, epochs_since_best = val_loss, epoch, 0
@@ -975,7 +1036,7 @@ def main() -> None:
     parser.add_argument("--val_every", type=int, default=2)
     parser.add_argument("--val_subsample", type=int, default=2, help="Use every k-th val clip")
     parser.add_argument("--min_epochs", type=int, default=10)
-    parser.add_argument("--min_delta", type=float, default=0.005, help="Minimum val-loss decrease counted as improvement")
+    parser.add_argument("--min_delta", type=float, default=5e-4, help="Minimum val-loss decrease counted as improvement")
     args = parser.parse_args()
 
     if args.mode == "train":

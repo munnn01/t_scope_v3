@@ -25,6 +25,119 @@ def create_dct_matrix(n: int = 8, device: torch.device = torch.device("cpu"), dt
     return mat
 
 
+def estimate_motion_compensated_pred(
+    curr: torch.Tensor,
+    prev: torch.Tensor,
+    block_size: int = 16,
+) -> torch.Tensor:
+    """
+    Coarse-to-fine motion-compensated inter prediction (H/8 global +-24px + H/2 16x16 block +-8px).
+    Motion vectors are computed under no_grad while F.grid_sample preserves gradients through `prev`.
+    """
+    b, _, h, w = curr.shape
+    if h < 16 or w < 16:
+        return prev
+
+    device = curr.device
+    dtype = prev.dtype
+    with torch.no_grad():
+        c_l = curr.detach().float().mean(dim=1, keepdim=True)
+        p_l = prev.detach().float().mean(dim=1, keepdim=True)
+
+        g_dy = torch.zeros((b,), device=device, dtype=torch.float32)
+        g_dx = torch.zeros((b,), device=device, dtype=torch.float32)
+        if h >= 32 and w >= 32:
+            c8 = F.avg_pool2d(c_l, 8)
+            p8 = F.avg_pool2d(p_l, 8)
+            h8, w8 = c8.shape[-2], c8.shape[-1]
+            r8 = min(3, max(0, min(h8, w8) // 2 - 1))
+            if r8 >= 1:
+                p8_pad = F.pad(p8, (r8, r8, r8, r8), mode="replicate")
+                cand_shifts = [(0, 0)] + [
+                    (dy, dx)
+                    for dy in range(-r8, r8 + 1)
+                    for dx in range(-r8, r8 + 1)
+                    if not (dy == 0 and dx == 0)
+                ]
+                errs = []
+                for dy, dx in cand_shifts:
+                    sh = p8_pad[:, :, r8 + dy : r8 + dy + h8, r8 + dx : r8 + dx + w8]
+                    errs.append((c8 - sh).abs().mean(dim=(1, 2, 3)))
+                best_idx = torch.stack(errs, dim=1).argmin(dim=1)
+                shifts_t = torch.tensor(cand_shifts, device=device, dtype=torch.float32)
+                g_dy = shifts_t[best_idx, 0] * 8.0
+                g_dx = shifts_t[best_idx, 1] * 8.0
+
+        gy = (
+            (2.0 * (torch.arange(h, device=device, dtype=torch.float32) + 0.5) / h) - 1.0
+        ).view(1, h, 1).expand(b, h, w)
+        gx = (
+            (2.0 * (torch.arange(w, device=device, dtype=torch.float32) + 0.5) / w) - 1.0
+        ).view(1, 1, w).expand(b, h, w)
+
+        if h >= 32 and w >= 32 and h % block_size == 0 and w % block_size == 0:
+            c2 = F.avg_pool2d(c_l, 2)
+            p2 = F.avg_pool2d(p_l, 2)
+            h2, w2 = c2.shape[-2], c2.shape[-1]
+            bs2 = block_size // 2
+            bh, bw = h // block_size, w // block_size
+
+            gy2 = (
+                (2.0 * (torch.arange(h2, device=device, dtype=torch.float32) + 0.5) / h2) - 1.0
+            ).view(1, h2, 1).expand(b, h2, w2)
+            gx2 = (
+                (2.0 * (torch.arange(w2, device=device, dtype=torch.float32) + 0.5) / w2) - 1.0
+            ).view(1, 1, w2).expand(b, h2, w2)
+            g_grid2 = torch.stack(
+                [
+                    gx2 + (g_dx.view(b, 1, 1) * 0.5) * (2.0 / w2),
+                    gy2 + (g_dy.view(b, 1, 1) * 0.5) * (2.0 / h2),
+                ],
+                dim=-1,
+            )
+            p2_global = F.grid_sample(
+                p2, g_grid2, mode="bilinear", padding_mode="border", align_corners=False
+            )
+
+            r2 = min(4, max(2, min(h2, w2) // 4))
+            p2_pad = F.pad(p2_global, (r2, r2, r2, r2), mode="replicate")
+            best_sad = torch.full((b, 1, bh, bw), float("inf"), device=device, dtype=torch.float32)
+            best_dy2 = torch.zeros_like(best_sad)
+            best_dx2 = torch.zeros_like(best_sad)
+            local_offsets = [(0, 0)] + [
+                (dy2, dx2)
+                for dy2 in range(-r2, r2 + 1, 2)
+                for dx2 in range(-r2, r2 + 1, 2)
+                if not (dy2 == 0 and dx2 == 0)
+            ]
+            for dy2, dx2 in local_offsets:
+                sh2 = p2_pad[:, :, r2 + dy2 : r2 + dy2 + h2, r2 + dx2 : r2 + dx2 + w2]
+                sad = F.avg_pool2d((c2 - sh2).abs(), bs2, bs2)
+                better = sad < best_sad
+                best_sad = torch.where(better, sad, best_sad)
+                best_dy2 = torch.where(better, float(dy2), best_dy2)
+                best_dx2 = torch.where(better, float(dx2), best_dx2)
+
+            dx_full = g_dx.view(b, 1, 1) + (
+                best_dx2.repeat_interleave(block_size, dim=2).repeat_interleave(block_size, dim=3)[:, 0]
+                * 2.0
+            )
+            dy_full = g_dy.view(b, 1, 1) + (
+                best_dy2.repeat_interleave(block_size, dim=2).repeat_interleave(block_size, dim=3)[:, 0]
+                * 2.0
+            )
+        else:
+            dx_full = g_dx.view(b, 1, 1).expand(b, h, w)
+            dy_full = g_dy.view(b, 1, 1).expand(b, h, w)
+
+        mv_grid = torch.stack(
+            [gx + dx_full * (2.0 / w), gy + dy_full * (2.0 / h)],
+            dim=-1,
+        ).to(dtype=dtype)
+
+    return F.grid_sample(prev, mv_grid, mode="bilinear", padding_mode="border", align_corners=False)
+
+
 class DifferentiableVideoProxy(nn.Module):
     """
     Differentiable QP- and CTU-Delta-QP-Aware Video Codec Proxy for x265 / VVenC.
@@ -69,35 +182,62 @@ class DifferentiableVideoProxy(nn.Module):
         return blocks.reshape(b, c, h, w)
 
     def quantize_blocks(
-        self, x: torch.Tensor, q_step_map: torch.Tensor, is_inter: bool = False
+        self,
+        x: torch.Tensor,
+        q_step_map: torch.Tensor,
+        is_inter: bool = False,
+        block_qp: Optional[torch.Tensor] = None,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """
-        Differentiable DCT quantization + calibrated C-infinity deadzone entropy rate estimation.
+        Differentiable DCT quantization + calibrated C-infinity deadzone/SKIP entropy rate estimation.
         Args:
             x: Signal (Intra frame or Inter residual) [B, C, H, W].
             q_step_map: Spatial quantization step per 8x8 block [B, 1, N_blocks, 1, 1].
             is_inter: True for P-frame residual coding, False for I-frame coding.
+            block_qp: Optional effective block QP [B, 1, H/8, W/8] or broadcastable tensor.
         """
         b, c, h, w = x.shape
-        coeff = self.block_dct2d(x)  # [B, C, N_blocks, 8, 8]
-        effective_q = q_step_map * self.freq_weight.to(dtype=x.dtype)  # [B, 1, N_blocks, 8, 8]
+        calc_dtype = torch.float32 if x.dtype in (torch.float16, torch.bfloat16) else x.dtype
+        # DCT + scaled^2 easily exceeds fp16 max (65504) at low QP; compute in fp32 outside autocast.
+        with torch.amp.autocast(device_type=x.device.type, enabled=False):
+            x = x.to(dtype=calc_dtype) if x.dtype != calc_dtype else x
+            q_step_map = (
+                q_step_map.to(dtype=calc_dtype) if q_step_map.dtype != calc_dtype else q_step_map
+            )
+            if block_qp is not None and block_qp.dtype != calc_dtype:
+                block_qp = block_qp.to(dtype=calc_dtype)
 
-        scaled = coeff / (effective_q + 1e-5)
-        # Straight-Through Estimator (STE) for rounding + cubic relaxation (Reich et al., WACV 2024)
-        rounded = torch.round(scaled)
-        quantized = scaled + (rounded - scaled).detach()
+            coeff = self.block_dct2d(x)  # [B, C, N_blocks, 8, 8]
+            effective_q = q_step_map * self.freq_weight.to(dtype=calc_dtype)  # [B, 1, N_blocks, 8, 8]
 
-        recon_coeff = quantized * effective_q
-        x_recon = self.block_idct2d(recon_coeff, h, w)
+            scaled = coeff / (effective_q + 1e-5)
+            # Straight-Through Estimator (STE) for rounding + cubic relaxation (Reich et al., WACV 2024)
+            rounded = torch.round(scaled)
+            quantized = scaled + (rounded - scaled).detach()
 
-        # Calibrated C-infinity deadzone surrogate matching real libx265 I/P bpp across CRF 22..37
-        mag = torch.sqrt(scaled * scaled + 1e-6)
-        gate = torch.sigmoid((mag - 0.65) / 0.22)
-        rate_scale = 0.36 if is_inter else 1.45
-        rate_weight = 1.0 if is_inter else self.ac_intra_weight.to(dtype=x.dtype)
-        rate_bpp = rate_scale * (rate_weight * gate * torch.log2(1.0 + mag)).mean(
-            dim=(1, 2, 3, 4)
-        )
+            recon_coeff = quantized * effective_q
+            x_recon = self.block_idct2d(recon_coeff, h, w)
+
+            # Calibrated C-infinity deadzone + SKIP decay surrogate matching real libx265 I/P bpp & +dQP sensitivity across CRF 22..37
+            mag = torch.sqrt(scaled * scaled + 1e-6)
+            gate = torch.sigmoid((mag - 0.65) / 0.22)
+            if block_qp is None:
+                q_mult = 1.15 if is_inter else 1.0
+                qp_flat = (
+                    22.0
+                    + 6.0 * torch.log2((q_step_map / (0.008 * q_mult)).clamp_min(1e-6))
+                )
+            else:
+                qp_flat = block_qp.view(b, 1, -1, 1, 1).to(dtype=calc_dtype)
+            if is_inter:
+                rate_scale = 0.68 * torch.exp(-0.0947 * (qp_flat - 22.0))
+                rate_weight = 1.0
+            else:
+                rate_scale = (1.45 * 1.659) * torch.exp(-0.0300 * (qp_flat - 22.0))
+                rate_weight = self.ac_intra_weight.to(dtype=calc_dtype)
+            rate_bpp = (rate_scale * rate_weight * gate * torch.log2(1.0 + mag)).mean(
+                dim=(1, 2, 3, 4)
+            )
         return x_recon, rate_bpp
 
     def forward(
@@ -115,61 +255,84 @@ class DifferentiableVideoProxy(nn.Module):
         b, t, c, h, w = video_edit.shape
         bs = self.block_size
         num_blocks_h, num_blocks_w = h // bs, w // bs
+        calc_dtype = (
+            torch.float32
+            if video_edit.dtype in (torch.float16, torch.bfloat16)
+            else video_edit.dtype
+        )
 
-        # Base QP from severity s in [0, 1] -> QP in [22, 47]
-        base_qp = 22.0 + 25.0 * severity.view(b, 1, 1, 1)  # [B, 1, 1, 1]
+        with torch.amp.autocast(device_type=video_edit.device.type, enabled=False):
+            video_edit = video_edit.to(dtype=calc_dtype) if video_edit.dtype != calc_dtype else video_edit
+            severity = severity.to(dtype=calc_dtype) if severity.dtype != calc_dtype else severity
+            if ctu_qp_offsets is not None and ctu_qp_offsets.dtype != calc_dtype:
+                ctu_qp_offsets = ctu_qp_offsets.to(dtype=calc_dtype)
 
-        recon_frames = []
-        frame_rates = []
-        prev_recon: Optional[torch.Tensor] = None
+            # Base QP from severity s in [0, 1] -> QP in [22, 47]
+            base_qp = 22.0 + 25.0 * severity.view(b, 1, 1, 1)  # [B, 1, 1, 1]
 
-        for step in range(t):
-            if ctu_qp_offsets is not None:
-                d_qp = ctu_qp_offsets[:, step].unsqueeze(1)  # [B, 1, H_qg, W_qg]
-                # Match the 16x16 macro-CTU resolution of the real ffmpeg addroi filtergraph
-                gh, gw = min(16, h // 16), min(16, w // 16)
-                d_qp_macro = F.interpolate(
-                    d_qp, size=(gh, gw), mode="bilinear", align_corners=False
-                )
-                d_qp_8x8 = F.interpolate(
-                    d_qp_macro, size=(num_blocks_h, num_blocks_w), mode="nearest"
-                )
-            else:
-                d_qp_8x8 = torch.zeros(
-                    (b, 1, num_blocks_h, num_blocks_w),
-                    device=video_edit.device,
-                    dtype=video_edit.dtype,
-                )
+            recon_frames = []
+            frame_rates = []
+            prev_recon: Optional[torch.Tensor] = None
 
-            d_qp_8x8 = torch.clamp(d_qp_8x8, min=-0.18 * 51.0, max=0.14 * 51.0)
-            # HEVC quantization step relationship: QStep proportional to 2^((QP - 4)/6)
-            block_qp = torch.clamp(base_qp + d_qp_8x8, min=0.0, max=51.0)  # [B, 1, H/8, W/8]
-            q_step = 0.008 * torch.pow(2.0, (block_qp - 22.0) / 6.0)
-            q_step_flat = q_step.view(b, 1, -1, 1, 1)
+            for step in range(t):
+                if ctu_qp_offsets is not None:
+                    d_qp = ctu_qp_offsets[:, step].unsqueeze(1)  # [B, 1, H_qg, W_qg]
+                    # Match the 16x16 macro-CTU resolution of the real ffmpeg addroi filtergraph
+                    gh, gw = max(1, min(16, h // 16)), max(1, min(16, w // 16))
+                    d_qp_macro = F.interpolate(
+                        d_qp, size=(gh, gw), mode="bilinear", align_corners=False
+                    )
+                    d_qp_8x8 = F.interpolate(
+                        d_qp_macro, size=(num_blocks_h, num_blocks_w), mode="nearest"
+                    )
+                else:
+                    d_qp_8x8 = torch.zeros(
+                        (b, 1, num_blocks_h, num_blocks_w),
+                        device=video_edit.device,
+                        dtype=calc_dtype,
+                    )
 
-            curr = video_edit[:, step]
-            if step == 0 or prev_recon is None:
-                # Intra frame (I-frame)
-                recon_t, rate_t = self.quantize_blocks(curr, q_step_flat, is_inter=False)
-                recon_t = torch.clamp(recon_t, 0.0, 1.0)
-            else:
-                # Inter frame (P-frame): encode temporal residual against previous reconstructed frame
-                res_t = curr - prev_recon
-                recon_res_t, rate_t = self.quantize_blocks(
-                    res_t, q_step_flat * 1.15, is_inter=True
-                )
-                recon_t = torch.clamp(prev_recon + recon_res_t, 0.0, 1.0)
+                d_qp_8x8 = torch.clamp(d_qp_8x8, min=-0.18 * 51.0, max=0.14 * 51.0)
+                # HEVC quantization step relationship: QStep proportional to 2^((QP - 4)/6)
+                block_qp = torch.clamp(base_qp + d_qp_8x8, min=0.0, max=51.0)  # [B, 1, H/8, W/8]
+                q_step = 0.008 * torch.pow(2.0, (block_qp - 22.0) / 6.0)
+                q_step_flat = q_step.view(b, 1, -1, 1, 1)
 
-            recon_frames.append(recon_t)
-            frame_rates.append(rate_t)
-            prev_recon = recon_t
+                curr = video_edit[:, step]
+                if step == 0 or prev_recon is None:
+                    # Intra frame (I-frame)
+                    recon_t, rate_t = self.quantize_blocks(
+                        curr, q_step_flat, is_inter=False, block_qp=block_qp
+                    )
+                    recon_t = torch.clamp(recon_t, 0.0, 1.0)
+                else:
+                    # Inter frame (P-frame): motion-compensated prediction against previous reconstructed frame
+                    pred_t = estimate_motion_compensated_pred(curr, prev_recon, block_size=16)
+                    res_t = curr - pred_t
+                    recon_res_t, rate_t = self.quantize_blocks(
+                        res_t, q_step_flat * 1.15, is_inter=True, block_qp=block_qp
+                    )
+                    recon_t = torch.clamp(pred_t + recon_res_t, 0.0, 1.0)
 
-        video_recon = torch.stack(recon_frames, dim=1)  # [B, T, 3, H, W]
-        rate_per_frame = torch.stack(frame_rates, dim=1)  # [B, T]
+                recon_frames.append(recon_t)
+                frame_rates.append(rate_t)
+                prev_recon = recon_t
+
+            video_recon = torch.stack(recon_frames, dim=1)  # [B, T, 3, H, W]
+            rate_per_frame = torch.stack(frame_rates, dim=1)  # [B, T]
+            i_frame_bpp_proxy = rate_per_frame[:, 0]
+            p_frame_bpp_proxy = (
+                rate_per_frame[:, 1:].mean(dim=1)
+                if t > 1
+                else torch.zeros_like(i_frame_bpp_proxy)
+            )
+            rate_proxy_bpp = rate_per_frame.mean(dim=1)
         return {
             "video_recon": video_recon,
-            "rate_proxy_bpp": rate_per_frame.mean(dim=1),
+            "rate_proxy_bpp": rate_proxy_bpp,
             "rate_per_frame": rate_per_frame,
+            "i_frame_bpp_proxy": i_frame_bpp_proxy,
+            "p_frame_bpp_proxy": p_frame_bpp_proxy,
         }
 
 
@@ -532,16 +695,29 @@ class HybridX265STE(nn.Module):
         video_real = torch.stack(real_recons, dim=0)
         frame_bpps_real = torch.stack(real_frame_bpps, dim=0)
         # Straight-Through Estimator (STE) for both reconstructed pixels and per-frame rates
-        video_ste = video_proxy + (video_real - video_proxy).detach()
-        rate_real = torch.tensor(real_bpps, device=video_edit.device, dtype=video_edit.dtype)
-        rate_ste = proxy_out["rate_proxy_bpp"] + (rate_real - proxy_out["rate_proxy_bpp"]).detach()
-        rate_per_frame_ste = (
-            proxy_out["rate_per_frame"]
-            + (frame_bpps_real - proxy_out["rate_per_frame"]).detach()
-        )
+        out_dtype = proxy_out["rate_proxy_bpp"].dtype
+        with torch.amp.autocast(device_type=video_edit.device.type, enabled=False):
+            video_real = video_real.to(dtype=proxy_out["video_recon"].dtype)
+            frame_bpps_real = frame_bpps_real.to(dtype=out_dtype)
+            video_ste = video_proxy + (video_real - video_proxy).detach()
+            rate_real = torch.tensor(real_bpps, device=video_edit.device, dtype=out_dtype)
+            rate_ste = proxy_out["rate_proxy_bpp"] + (rate_real - proxy_out["rate_proxy_bpp"]).detach()
+            rate_per_frame_ste = (
+                proxy_out["rate_per_frame"]
+                + (frame_bpps_real - proxy_out["rate_per_frame"]).detach()
+            )
+            t = video_edit.shape[1]
+            i_frame_bpp_ste = rate_per_frame_ste[:, 0]
+            p_frame_bpp_ste = (
+                rate_per_frame_ste[:, 1:].mean(dim=1)
+                if t > 1
+                else torch.zeros_like(i_frame_bpp_ste)
+            )
 
         return {
             "video_recon": video_ste,
             "rate_proxy_bpp": rate_ste,
             "rate_per_frame": rate_per_frame_ste,
+            "i_frame_bpp_proxy": i_frame_bpp_ste,
+            "p_frame_bpp_proxy": p_frame_bpp_ste,
         }

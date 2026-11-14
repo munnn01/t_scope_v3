@@ -255,6 +255,7 @@ class FakeValidationCriterion:
     def __init__(self, values):
         self.values = list(values)
         self.batch_sizes = []
+        self.calls = []
 
     def to(self, device):
         return self
@@ -262,6 +263,7 @@ class FakeValidationCriterion:
     def __call__(self, **inputs):
         index = len(self.batch_sizes)
         self.batch_sizes.append(inputs["i_edit"].shape[0])
+        self.calls.append(inputs)
         return {"loss_total": torch.tensor(self.values[index])}
 
 
@@ -347,6 +349,70 @@ class FullValidatorRegressionTests(unittest.TestCase):
                     self.assertFalse(destination.exists())
                     self.assertEqual(len(mocks.criterion.batch_sizes), 1)
                     self.assertNotIn("validation", mocks.checkpoint)
+
+    def test_validate_forwards_stage2_optional_keys_when_present(self):
+        values = [1.0] * 18
+        with tempfile.TemporaryDirectory() as directory:
+            args = SimpleNamespace(
+                data_root=directory,
+                soup_dir=directory,
+                output_dir=str(Path(directory) / "out_legacy"),
+                variants=["spatial_only_scope"],
+                device="cpu",
+                feature_chunk_size=1,
+            )
+            with mocked_validation(directory, values) as mocks:
+                validate(args)
+                first_call = mocks.criterion.calls[0]
+                self.assertIn("i_orig", first_call)
+                self.assertEqual(first_call["i_orig"].shape, first_call["i_edit"].shape)
+                self.assertIsNotNone(first_call["ctu_qp_offsets"])
+                for key in (
+                    "i_frame_bpp_proxy",
+                    "p_frame_bpp_proxy",
+                    "aligned_prev_edit",
+                    "aligned_prev_orig",
+                    "warp_valid_mask",
+                ):
+                    self.assertIsNone(first_call[key])
+
+        class Stage2Model(FakeValidationModel):
+            def __call__(self, video, family, severity, reuse_iframe_qp, disable_temporal):
+                out = super().__call__(video, family, severity, reuse_iframe_qp, disable_temporal)
+                b, t, _, h, w = video.shape
+                out["aligned_prev_edit"] = video[:, :-1] + 0.1
+                out["aligned_prev_orig"] = video[:, :-1] + 0.2
+                out["warp_valid_mask"] = torch.ones((b, t - 1, 1, h, w))
+                return out
+
+        class Stage2Codec(FakeValidationCodec):
+            def __call__(self, video, severity, offsets):
+                out = super().__call__(video, severity, offsets)
+                out["i_frame_bpp_proxy"] = torch.full((video.shape[0],), 0.4)
+                out["p_frame_bpp_proxy"] = torch.full((video.shape[0],), 0.05)
+                return out
+
+        with tempfile.TemporaryDirectory() as directory:
+            args = SimpleNamespace(
+                data_root=directory,
+                soup_dir=directory,
+                output_dir=str(Path(directory) / "out_stage2"),
+                variants=["spatial_only_scope"],
+                device="cpu",
+                feature_chunk_size=1,
+            )
+            with mocked_validation(directory, values) as mocks, patch(
+                "scripts.validate_soups.TemporalSCOPE", return_value=Stage2Model()
+            ), patch(
+                "scripts.validate_soups.HybridX265STE", return_value=Stage2Codec()
+            ):
+                validate(args)
+                first_call = mocks.criterion.calls[0]
+                self.assertTrue(torch.allclose(first_call["i_frame_bpp_proxy"], torch.full((8,), 0.4)))
+                self.assertTrue(torch.allclose(first_call["p_frame_bpp_proxy"], torch.full((8,), 0.05)))
+                self.assertIsNotNone(first_call["aligned_prev_edit"])
+                self.assertIsNotNone(first_call["aligned_prev_orig"])
+                self.assertIsNotNone(first_call["warp_valid_mask"])
 
 
 class OfflineRealDetectorEquivalenceTests(unittest.TestCase):

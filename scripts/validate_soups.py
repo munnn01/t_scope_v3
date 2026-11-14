@@ -101,7 +101,25 @@ def validate(args):
                 output = model(video, torch.zeros(b, dtype=torch.long, device=device), severity, reuse_iframe_qp=preset["reuse_iframe_qp"], disable_temporal=variant == "spatial_only_scope")
                 decoded = codec(output["i_edit"], severity, output["ctu_qp_offsets"])
                 features = extract_validation_features(teacher, decoded["video_recon"].reshape(b * t, 3, h, w), chunk_size)
-                loss = criterion(i_edit=output["i_edit"], i_recon=decoded["video_recon"], attn_map=output["attn_map"], delta_obj=output["delta_obj"], delta_bg=output["delta_bg"], rate_proxy_bpp=decoded["rate_proxy_bpp"], m_attn=attn, m_det=mask, teacher_fpn_feats=teacher_features, student_fpn_feats=features)
+                loss = criterion(
+                    i_edit=output["i_edit"],
+                    i_recon=decoded["video_recon"],
+                    attn_map=output["attn_map"],
+                    delta_obj=output["delta_obj"],
+                    delta_bg=output["delta_bg"],
+                    rate_proxy_bpp=decoded["rate_proxy_bpp"],
+                    m_attn=attn,
+                    m_det=mask,
+                    teacher_fpn_feats=teacher_features,
+                    student_fpn_feats=features,
+                    i_frame_bpp_proxy=decoded.get("i_frame_bpp_proxy"),
+                    p_frame_bpp_proxy=decoded.get("p_frame_bpp_proxy"),
+                    ctu_qp_offsets=output.get("ctu_qp_offsets"),
+                    i_orig=video,
+                    aligned_prev_edit=output.get("aligned_prev_edit"),
+                    aligned_prev_orig=output.get("aligned_prev_orig"),
+                    warp_valid_mask=output.get("warp_valid_mask"),
+                )
                 value = float(loss["loss_total"].item())
                 if not math.isfinite(value):
                     raise ValueError("Soup validation loss is nonfinite")

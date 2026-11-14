@@ -64,16 +64,16 @@ def build_worker_script(
     run_mode: str,
     data_shard_id: int = -1,
     data_num_shards: int = -1,
-    patience: int = 0,
-    min_epochs: int = 10,
-    lr: float = 1e-4,
+    patience: int = 10,
+    min_epochs: int = 12,
+    lr: float = 1.5e-4,
     git_revision: str = "",
     use_yolov8s: bool = True,
     grad_accum_steps: int = 2,
 ) -> str:
     """
     Generates the standalone Python script pushed to each Kaggle account's kernel.
-    Clones the latest code from https://github.com/wagur1/research_gap.git,
+    Clones the latest code from https://github.com/wagur1/tscope-v2.git,
     installs ffmpeg if missing, and writes outputs directly to `/kaggle/working`.
     Run modes: `train`, `eval_poc` (per-shard ckpt), `both`, and `eval_soup`
     (evaluates every variant's merged soup from `release_ckpts/` on this shard's test slice).
@@ -104,11 +104,11 @@ USE_YOLOV8S = {use_yolov8s!r}
 if USE_YOLOV8S:
     subprocess.run([sys.executable, "-m", "pip", "install", "--quiet", "ultralytics"], check=False)
 
-repo_dir = Path("/tmp/research_gap")
+repo_dir = Path("/tmp/tscope-v2")
 if repo_dir.exists():
     subprocess.run(["rm", "-rf", str(repo_dir)], check=False)
 subprocess.run(
-    ["git", "clone", "https://github.com/wagur1/research_gap.git", str(repo_dir)],
+    ["git", "clone", "https://github.com/wagur1/tscope-v2.git", str(repo_dir)],
     check=True,
 )
 if GIT_REVISION:
@@ -539,16 +539,16 @@ def main() -> None:
         default="ahmedsamir1598/mot17challenge",
         help="Kaggle dataset slug automatically mounted in each kernel",
     )
-    parser.add_argument("--epochs", type=int, default=10, help="Max epochs (upper bound when --patience > 0)")
-    parser.add_argument("--patience", type=int, default=0, help="Early-stop patience on MOT17-09 val loss; 0 = fixed epochs")
-    parser.add_argument("--min_epochs", type=int, default=10)
-    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--epochs", type=int, default=36, help="Max epochs (upper bound when --patience > 0)")
+    parser.add_argument("--patience", type=int, default=10, help="Early-stop patience on MOT17-09 val loss; 0 = fixed epochs")
+    parser.add_argument("--min_epochs", type=int, default=12)
+    parser.add_argument("--lr", type=float, default=1.5e-4)
     parser.add_argument("--batch_size", type=int, default=2, help="Per-GPU batch size (2 for 512x512 with dual detectors)")
     parser.add_argument("--grad_accum_steps", type=int, default=2, help="Gradient accumulation steps (effective batch size = 4)")
     parser.add_argument("--img_size", type=int, default=512)
     parser.add_argument("--max_shards", type=int, default=0, help="0 = use all accounts")
     parser.add_argument("--skip_exhausted", action="store_true", default=True, help="Skip accounts with exhausted weekly GPU quota")
-    parser.add_argument("--min_gpu_hours", type=float, default=1.0, help="Minimum remaining GPU hours required to dispatch a kernel")
+    parser.add_argument("--min_gpu_hours", type=float, default=8.5, help="Minimum remaining GPU hours required to dispatch a kernel")
     parser.add_argument("--use_yolov8s", action="store_true", default=True, help="Enable dual-detector Faster R-CNN + YOLOv8s teacher/evaluator")
     parser.add_argument("--git_revision", default="", help="Full reviewed and published commit hash required for eval_soup")
     parser.add_argument("--only_shards", type=int, nargs="+", default=None, help="Optional subset of shard IDs to push")
