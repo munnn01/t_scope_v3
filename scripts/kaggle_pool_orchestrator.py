@@ -19,7 +19,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from scripts.merge_shards import merge_checkpoints_soup, merge_eval_jsons_and_print_table
-from scripts.experiment_protocol import sha256_file, VARIANTS, validate_soup_provenance
+from scripts.experiment_protocol import read_manifest_files, sha256_file, VARIANTS, validate_soup_provenance
 from scripts.kaggle_output_download import download_kernel_outputs
 
 
@@ -166,10 +166,22 @@ if RUN_MODE in ("eval_poc", "both"):
     subprocess.run(cmd_eval, cwd=str(repo_dir), env=env, check=True)
 
 if RUN_MODE == "eval_soup":
-    backup_map = {{4: 0, 5: 1, 6: 2, 7: 3, 10: 8, 11: 9, 13: 12, 15: 14, 16: 20}}
-    assigned_shards = [SHARD_ID]
-    if SHARD_ID in backup_map:
-        assigned_shards.append(backup_map[SHARD_ID])
+    backup_map = {{
+        1: [0, 2, 4],
+        3: [5, 6, 7],
+        12: [8, 9, 10],
+        13: [11, 16],
+        14: [17, 18],
+        15: [19, 20],
+        4: [4, 0],
+        5: [5, 1],
+        6: [6, 2],
+        7: [7, 3],
+        10: [10, 8],
+        11: [11, 9],
+        16: [16, 20],
+    }}
+    assigned_shards = backup_map.get(SHARD_ID, [SHARD_ID])
     cmd_eval = [
         sys.executable,
         str(repo_dir / "scripts" / "kaggle_shard_runner.py"),
@@ -231,8 +243,11 @@ def push_all_shards(args: argparse.Namespace, accounts: List[Tuple[str, str]]) -
     )
 
     # Filter out accounts whose weekly GPU quota is exhausted (< args.min_gpu_hours)
+    only_set = set(args.only_shards) if getattr(args, "only_shards", None) else None
     active_shards: List[Tuple[int, str, str, float]] = []
     for shard_id in range(max_Idx):
+        if only_set is not None and shard_id not in only_set:
+            continue
         user, token = accounts[shard_id]
         try:
             api = get_authenticated_api(user, token)
@@ -320,6 +335,7 @@ def push_all_shards(args: argparse.Namespace, accounts: List[Tuple[str, str]]) -
                     f"  [Shard {shard_id:02d}/{num_shards:02d}] Pushed ({rem_h:5.2f}h rem) -> {kernel_id:<36} "
                     f"| variant={variant:<18} (slice {data_shard_id+1}/{data_num_shards}) | {ref_url} {err_msg}"
                 )
+                time.sleep(3.0)
         except Exception as e:
             print(f"  [Shard {shard_id:02d}/{num_shards:02d}] ERROR on {user}: {e}")
 
@@ -379,9 +395,10 @@ def _route_backup_eval_outputs(manifest: Dict[str, Any], collection: Path, num_s
             if not target_dir_str:
                 target_dir = Path(tempfile.mkdtemp(prefix=f"shard_{target_sid:02d}_", dir=collection))
                 target_entry["directory"] = str(target_dir)
-                target_entry["downloaded"] = True
             else:
                 target_dir = Path(target_dir_str)
+            target_entry["downloaded"] = True
+            target_entry["status"] = "KernelWorkerStatus.COMPLETE"
             dest = target_dir / path.name
             if dest.exists():
                 path.unlink()
@@ -398,6 +415,49 @@ def _route_backup_eval_outputs(manifest: Dict[str, Any], collection: Path, num_s
         entry["files"] = _collect_dir_files(Path(entry["directory"]))
         if entry.get("recovered_from_shards"):
             print(f"  [Shard {sid:02d}] Routed {len(entry['files'])} files from backup shard(s) {entry['recovered_from_shards']}")
+
+
+def _seed_from_prior_manifest(
+    manifest: Dict[str, Any],
+    collection: Path,
+    seed_manifest_path: Optional[Path],
+    num_shards: int,
+) -> None:
+    """Seeds missing shard eval JSONs from a prior verified collection_manifest.json."""
+    if not seed_manifest_path:
+        return
+    resolved_seed = Path(seed_manifest_path).resolve()
+    _, prior_files = read_manifest_files(resolved_seed, ".json")
+    pattern = re.compile(rf"^eval_shard_(\d+)of{num_shards:02d}_.+\.json$")
+    entry_by_id = {entry["shard_id"]: entry for entry in manifest["shards"]}
+    seeded_shards = set()
+
+    for prior_entry, prior_path, _ in prior_files:
+        match = pattern.match(prior_path.name)
+        if not match:
+            continue
+        target_sid = int(match.group(1))
+        if target_sid != int(prior_entry["shard_id"]) or target_sid not in entry_by_id:
+            continue
+        target_entry = entry_by_id[target_sid]
+        target_dir_str = target_entry.get("directory")
+        if not target_dir_str:
+            target_dir = Path(tempfile.mkdtemp(prefix=f"shard_{target_sid:02d}_", dir=collection))
+            target_entry["directory"] = str(target_dir)
+        else:
+            target_dir = Path(target_dir_str)
+        dest = target_dir / prior_path.name
+        if not dest.exists():
+            shutil.copy2(str(prior_path), str(dest))
+            target_entry["downloaded"] = True
+            target_entry["status"] = "KernelWorkerStatus.COMPLETE"
+            target_entry["seeded_from_manifest"] = str(resolved_seed)
+            seeded_shards.add(target_sid)
+
+    for sid in sorted(seeded_shards):
+        entry = entry_by_id[sid]
+        entry["files"] = _collect_dir_files(Path(entry["directory"]))
+        print(f"  [Shard {sid:02d}] Seeded outputs from prior manifest -> {len(entry['files'])} files")
 
 
 def pull_and_merge_all(args: argparse.Namespace, accounts: List[Tuple[str, str]]) -> None:
@@ -434,6 +494,8 @@ def pull_and_merge_all(args: argparse.Namespace, accounts: List[Tuple[str, str]]
         (collection / "collection_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
         time.sleep(1.5)
     _route_backup_eval_outputs(manifest, collection, num_shards)
+    if getattr(args, "seed_manifest", ""):
+        _seed_from_prior_manifest(manifest, collection, Path(args.seed_manifest), num_shards)
     (collection / "collection_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(f"Collection manifest -> {collection / 'collection_manifest.json'}")
     print("No automatic merge performed. Use scripts/merge_shards.py with the checked manifest.")
@@ -489,6 +551,8 @@ def main() -> None:
     parser.add_argument("--min_gpu_hours", type=float, default=1.0, help="Minimum remaining GPU hours required to dispatch a kernel")
     parser.add_argument("--use_yolov8s", action="store_true", default=True, help="Enable dual-detector Faster R-CNN + YOLOv8s teacher/evaluator")
     parser.add_argument("--git_revision", default="", help="Full reviewed and published commit hash required for eval_soup")
+    parser.add_argument("--only_shards", type=int, nargs="+", default=None, help="Optional subset of shard IDs to push")
+    parser.add_argument("--seed_manifest", type=str, default="", help="Optional prior collection_manifest.json to seed already-completed shards")
     parser.add_argument("--output_dir", type=str, default="./outputs_kaggle_pool")
     args = parser.parse_args()
 
