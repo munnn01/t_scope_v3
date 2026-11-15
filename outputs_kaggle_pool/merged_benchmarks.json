@@ -59,11 +59,11 @@
     }
   },
   "checkpoint_hashes": {
-    "full_tscope": "b73380e9fd0eed89b3acde8a39206a1f7c4e18c701a7ca7f890b39688a97f80d",
-    "iwa_gop_qp_reuse": "8c6b3ee18dbcc42890236353900199431ba814b77c55553e3d1c3f54c76368c9",
-    "proxy_only_zhao": "54504ada6ffad91910738215d4ff017001e8d062e3353423133267873473a3f4",
-    "spatial_only_scope": "25b65864375d47fc62f68db3773e19b874227b1232f28a40d677751e58eb8d60",
-    "wo_ctu_delta_qp": "a3680ac3d8b8056e6f69a37839b464f40e5cb66cebbdd1f6e87ae43940c486fa"
+    "full_tscope": "7a6f87259fe83e2c4ef3800287a29445d27ccae1efd6853adf7cceb7a2cfc207",
+    "iwa_gop_qp_reuse": "63ebeebc84eb7847caaa8422237c6b2b2003d60e3737afe4f947a65aaf70a5bc",
+    "proxy_only_zhao": "b53ce22e88f8de1cbb1494d0fd147e2009aff5603fefd9aedb68bfff0b8b86f5",
+    "spatial_only_scope": "b6cd878730764fd0183eae448b16a146631ded27ea09825a39dde5aac3429c7c",
+    "wo_ctu_delta_qp": "3ad9fb5a1c34bd8130a5934dd78a381723b02254deaa777bb806827c69fcdeef"
   },
   "expected_frame_ids": [
     "MOT17-11/000001",
@@ -1857,556 +1857,556 @@
     "spatial_scope_framewise": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.5000372025573138,
-          "i_frame_bpp": 1.142914855364457,
-          "p_frame_bpp": 0.2857446516215994,
-          "roi_psnr_db": 30.756749999999993,
+          "total_bpp": 0.5734699027052204,
+          "i_frame_bpp": 1.2629710817799984,
+          "p_frame_bpp": 0.343636176346961,
+          "roi_psnr_db": 31.986830097087367,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 27002841,
+          "packet_bytes": 30968329,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 56.663,
-          "gt_ap50_95_pct": 32.909,
-          "yolo_gt_ap50_pct": 50.548,
-          "yolo_gt_ap50_95_pct": 29.256
+          "gt_ap50_pct": 56.827,
+          "gt_ap50_95_pct": 33.133,
+          "yolo_gt_ap50_pct": 50.71,
+          "yolo_gt_ap50_95_pct": 29.448
         },
         "27": {
-          "total_bpp": 0.2625831678075698,
-          "i_frame_bpp": 0.6914047685641687,
-          "p_frame_bpp": 0.11964263422203682,
-          "roi_psnr_db": 28.5008203883495,
+          "total_bpp": 0.2982231806782843,
+          "i_frame_bpp": 0.7657589217991505,
+          "p_frame_bpp": 0.14237793363799556,
+          "roi_psnr_db": 29.277424757281548,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 14179928,
+          "packet_bytes": 16104548,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 53.933,
-          "gt_ap50_95_pct": 31.31,
-          "yolo_gt_ap50_pct": 48.639,
-          "yolo_gt_ap50_95_pct": 27.935
+          "gt_ap50_pct": 54.641,
+          "gt_ap50_95_pct": 31.82,
+          "yolo_gt_ap50_pct": 48.745,
+          "yolo_gt_ap50_95_pct": 28.068
         },
         "32": {
-          "total_bpp": 0.1351432244754532,
-          "i_frame_bpp": 0.39761641419049604,
-          "p_frame_bpp": 0.047652161237105584,
-          "roi_psnr_db": 26.090645631067947,
+          "total_bpp": 0.15116917508319744,
+          "i_frame_bpp": 0.4387787754095874,
+          "p_frame_bpp": 0.05529930830773412,
+          "roi_psnr_db": 26.560604368932005,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 7297959,
+          "packet_bytes": 8163387,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 48.571,
-          "gt_ap50_95_pct": 28.111,
-          "yolo_gt_ap50_pct": 44.222,
-          "yolo_gt_ap50_95_pct": 25.023
+          "gt_ap50_pct": 49.215,
+          "gt_ap50_95_pct": 28.364,
+          "yolo_gt_ap50_pct": 44.836,
+          "yolo_gt_ap50_95_pct": 25.375
         },
         "37": {
-          "total_bpp": 0.0678390762180958,
-          "i_frame_bpp": 0.2161770422481796,
-          "p_frame_bpp": 0.018393087541401194,
-          "roi_psnr_db": 23.66395388349514,
+          "total_bpp": 0.07395794322189775,
+          "i_frame_bpp": 0.2349494267435907,
+          "p_frame_bpp": 0.020294115381333435,
+          "roi_psnr_db": 23.89635922330096,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 3663423,
+          "packet_bytes": 3993852,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 39.477,
-          "gt_ap50_95_pct": 22.101,
-          "yolo_gt_ap50_pct": 36.046,
-          "yolo_gt_ap50_95_pct": 19.735
+          "gt_ap50_pct": 39.79,
+          "gt_ap50_95_pct": 22.451,
+          "yolo_gt_ap50_pct": 36.649,
+          "yolo_gt_ap50_95_pct": 20.157
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-      "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-      "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-      "bdbr_p_gt_ap50_pct": -16.58930174623675,
-      "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-      "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-      "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+      "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+      "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+      "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+      "bdbr_p_gt_ap50_pct": -7.218376360884971,
+      "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+      "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+      "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
     },
     "tscope_temporal_ctu_qp": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.39052502159933444,
-          "i_frame_bpp": 0.8019206963696526,
-          "p_frame_bpp": 0.25339313000922836,
-          "roi_psnr_db": 28.326524271844676,
+          "total_bpp": 0.5313244606684713,
+          "i_frame_bpp": 1.1437590515729292,
+          "p_frame_bpp": 0.3271795970336519,
+          "roi_psnr_db": 31.79128155339804,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 21089001,
+          "packet_bytes": 28692405,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 54.02,
-          "gt_ap50_95_pct": 31.664,
-          "yolo_gt_ap50_pct": 48.898,
-          "yolo_gt_ap50_95_pct": 28.317
+          "gt_ap50_pct": 56.797,
+          "gt_ap50_95_pct": 33.235,
+          "yolo_gt_ap50_pct": 50.626,
+          "yolo_gt_ap50_95_pct": 29.406
         },
         "27": {
-          "total_bpp": 0.20759419561589806,
-          "i_frame_bpp": 0.4871278040617415,
-          "p_frame_bpp": 0.11441632613395024,
-          "roi_psnr_db": 26.700070388349523,
+          "total_bpp": 0.2765303121029752,
+          "i_frame_bpp": 0.6918377922576608,
+          "p_frame_bpp": 0.13809448538474667,
+          "roi_psnr_db": 29.074759708737897,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 11210432,
+          "packet_bytes": 14933097,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 51.246,
-          "gt_ap50_95_pct": 29.785,
-          "yolo_gt_ap50_pct": 46.693,
-          "yolo_gt_ap50_95_pct": 26.605
+          "gt_ap50_pct": 54.702,
+          "gt_ap50_95_pct": 31.759,
+          "yolo_gt_ap50_pct": 48.693,
+          "yolo_gt_ap50_95_pct": 28.131
         },
         "32": {
-          "total_bpp": 0.1078643613648646,
-          "i_frame_bpp": 0.28222241447967233,
-          "p_frame_bpp": 0.04974501032659537,
-          "roi_psnr_db": 24.80066019417481,
+          "total_bpp": 0.13975273058252427,
+          "i_frame_bpp": 0.39436207002806434,
+          "p_frame_bpp": 0.05488295076734426,
+          "roi_psnr_db": 26.36338349514564,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 5824855,
+          "packet_bytes": 7546880,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 46.66,
-          "gt_ap50_95_pct": 26.302,
-          "yolo_gt_ap50_pct": 42.144,
-          "yolo_gt_ap50_95_pct": 23.423
+          "gt_ap50_pct": 49.926,
+          "gt_ap50_95_pct": 28.586,
+          "yolo_gt_ap50_pct": 44.76,
+          "yolo_gt_ap50_95_pct": 25.311
         },
         "37": {
-          "total_bpp": 0.054808866630480124,
-          "i_frame_bpp": 0.1575100352463213,
-          "p_frame_bpp": 0.02057514375853307,
-          "roi_psnr_db": 22.81311650485437,
+          "total_bpp": 0.06807745776130157,
+          "i_frame_bpp": 0.21049143967119235,
+          "p_frame_bpp": 0.020606130458004652,
+          "roi_psnr_db": 23.741055825242707,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 2959770,
+          "packet_bytes": 3676296,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 37.682,
-          "gt_ap50_95_pct": 20.424,
-          "yolo_gt_ap50_pct": 33.677,
-          "yolo_gt_ap50_95_pct": 17.715
+          "gt_ap50_pct": 40.221,
+          "gt_ap50_95_pct": 22.2,
+          "yolo_gt_ap50_pct": 36.412,
+          "yolo_gt_ap50_95_pct": 19.786
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -15.519412349317252,
-      "bdbr_tot_gt_ap50_95_pct": -11.5231017751248,
-      "bdbr_tot_yolo_gt_ap50_pct": -13.857744918165926,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -9.91888604705088,
-      "bdbr_p_gt_ap50_pct": 18.52928008619834,
-      "bdbr_p_gt_ap50_95_pct": 25.516077746820365,
-      "bdbr_p_yolo_gt_ap50_pct": 21.333561989157033,
-      "bdbr_p_yolo_gt_ap50_95_pct": 28.311974296259447
+      "bdbr_tot_gt_ap50_pct": -19.150867285476604,
+      "bdbr_tot_gt_ap50_95_pct": -16.32497087020023,
+      "bdbr_tot_yolo_gt_ap50_pct": -16.904292093181017,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -12.585941992414163,
+      "bdbr_p_gt_ap50_pct": -13.23914605634372,
+      "bdbr_p_gt_ap50_95_pct": -8.911957590097874,
+      "bdbr_p_yolo_gt_ap50_pct": -9.710013602713408,
+      "bdbr_p_yolo_gt_ap50_95_pct": -3.3101115036621276
     },
     "oracle_gt_mask_upper_bound": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.2994470688903216,
-          "i_frame_bpp": 0.6676063167238698,
-          "p_frame_bpp": 0.17672731961247218,
-          "roi_psnr_db": 32.41810436893205,
+          "total_bpp": 0.29960317519104596,
+          "i_frame_bpp": 0.667824680365405,
+          "p_frame_bpp": 0.1768626734662596,
+          "roi_psnr_db": 32.42115776699029,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 16170640,
+          "packet_bytes": 16179070,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 56.846,
-          "gt_ap50_95_pct": 32.974,
-          "yolo_gt_ap50_pct": 48.713,
-          "yolo_gt_ap50_95_pct": 28.646
+          "gt_ap50_pct": 56.894,
+          "gt_ap50_95_pct": 33.052,
+          "yolo_gt_ap50_pct": 49.077,
+          "yolo_gt_ap50_95_pct": 28.682
         },
         "27": {
-          "total_bpp": 0.16260997068534777,
-          "i_frame_bpp": 0.4064799188410194,
-          "p_frame_bpp": 0.08131998796679056,
-          "roi_psnr_db": 29.207116504854387,
+          "total_bpp": 0.1626524693757585,
+          "i_frame_bpp": 0.40663221044447817,
+          "p_frame_bpp": 0.08132588901951861,
+          "roi_psnr_db": 29.2104490291262,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 8781209,
+          "packet_bytes": 8783504,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 54.058,
-          "gt_ap50_95_pct": 31.212,
-          "yolo_gt_ap50_pct": 47.151,
-          "yolo_gt_ap50_95_pct": 27.415
+          "gt_ap50_pct": 54.015,
+          "gt_ap50_95_pct": 31.211,
+          "yolo_gt_ap50_pct": 47.245,
+          "yolo_gt_ap50_95_pct": 27.424
         },
         "32": {
-          "total_bpp": 0.08498239980160611,
-          "i_frame_bpp": 0.23497253714255917,
-          "p_frame_bpp": 0.034985687354621764,
-          "roi_psnr_db": 26.183213592233,
+          "total_bpp": 0.0850239170407786,
+          "i_frame_bpp": 0.23503342415522605,
+          "p_frame_bpp": 0.03502074800262945,
+          "roi_psnr_db": 26.184310679611666,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 4589191,
+          "packet_bytes": 4591433,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 47.728,
-          "gt_ap50_95_pct": 27.656,
-          "yolo_gt_ap50_pct": 43.224,
-          "yolo_gt_ap50_95_pct": 24.877
+          "gt_ap50_pct": 47.76,
+          "gt_ap50_95_pct": 27.705,
+          "yolo_gt_ap50_pct": 43.264,
+          "yolo_gt_ap50_95_pct": 24.868
         },
         "37": {
-          "total_bpp": 0.043400366329452364,
-          "i_frame_bpp": 0.13063730776888652,
-          "p_frame_bpp": 0.01432138584964098,
-          "roi_psnr_db": 23.410415048543694,
+          "total_bpp": 0.043422143436172636,
+          "i_frame_bpp": 0.13067612138766688,
+          "p_frame_bpp": 0.014337484119007888,
+          "roi_psnr_db": 23.411126213592247,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 2343692,
+          "packet_bytes": 2344868,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 37.15,
+          "gt_ap50_pct": 37.17,
           "gt_ap50_95_pct": 21.619,
-          "yolo_gt_ap50_pct": 34.46,
-          "yolo_gt_ap50_95_pct": 19.643
+          "yolo_gt_ap50_pct": 34.394,
+          "yolo_gt_ap50_95_pct": 19.62
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -43.5661627157493,
-      "bdbr_tot_gt_ap50_95_pct": -44.2525192360838,
-      "bdbr_tot_yolo_gt_ap50_pct": -33.744380637906545,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -41.67783310315427,
-      "bdbr_p_gt_ap50_pct": -33.50321154680211,
-      "bdbr_p_gt_ap50_95_pct": -34.58671023028933,
-      "bdbr_p_yolo_gt_ap50_pct": -17.37452401701639,
-      "bdbr_p_yolo_gt_ap50_95_pct": -30.295469060138313
+      "bdbr_tot_gt_ap50_pct": -43.81715806164822,
+      "bdbr_tot_gt_ap50_95_pct": -44.920122719234044,
+      "bdbr_tot_yolo_gt_ap50_pct": -37.03923500128975,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -41.82168382707905,
+      "bdbr_p_gt_ap50_pct": -33.85925061643065,
+      "bdbr_p_gt_ap50_95_pct": -35.62393574164899,
+      "bdbr_p_yolo_gt_ap50_pct": -22.70266286658965,
+      "bdbr_p_yolo_gt_ap50_95_pct": -30.49416558412433
     }
   },
   "ablation_variants_summary": {
     "full_tscope": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.39052502159933444,
-          "i_frame_bpp": 0.8019206963696526,
-          "p_frame_bpp": 0.25339313000922836,
-          "roi_psnr_db": 28.326524271844676,
+          "total_bpp": 0.5313244606684713,
+          "i_frame_bpp": 1.1437590515729292,
+          "p_frame_bpp": 0.3271795970336519,
+          "roi_psnr_db": 31.79128155339804,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 21089001,
+          "packet_bytes": 28692405,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 54.02,
-          "gt_ap50_95_pct": 31.664,
-          "yolo_gt_ap50_pct": 48.898,
-          "yolo_gt_ap50_95_pct": 28.317
+          "gt_ap50_pct": 56.797,
+          "gt_ap50_95_pct": 33.235,
+          "yolo_gt_ap50_pct": 50.626,
+          "yolo_gt_ap50_95_pct": 29.406
         },
         "27": {
-          "total_bpp": 0.20759419561589806,
-          "i_frame_bpp": 0.4871278040617415,
-          "p_frame_bpp": 0.11441632613395024,
-          "roi_psnr_db": 26.700070388349523,
+          "total_bpp": 0.2765303121029752,
+          "i_frame_bpp": 0.6918377922576608,
+          "p_frame_bpp": 0.13809448538474667,
+          "roi_psnr_db": 29.074759708737897,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 11210432,
+          "packet_bytes": 14933097,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 51.246,
-          "gt_ap50_95_pct": 29.785,
-          "yolo_gt_ap50_pct": 46.693,
-          "yolo_gt_ap50_95_pct": 26.605
+          "gt_ap50_pct": 54.702,
+          "gt_ap50_95_pct": 31.759,
+          "yolo_gt_ap50_pct": 48.693,
+          "yolo_gt_ap50_95_pct": 28.131
         },
         "32": {
-          "total_bpp": 0.1078643613648646,
-          "i_frame_bpp": 0.28222241447967233,
-          "p_frame_bpp": 0.04974501032659537,
-          "roi_psnr_db": 24.80066019417481,
+          "total_bpp": 0.13975273058252427,
+          "i_frame_bpp": 0.39436207002806434,
+          "p_frame_bpp": 0.05488295076734426,
+          "roi_psnr_db": 26.36338349514564,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 5824855,
+          "packet_bytes": 7546880,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 46.66,
-          "gt_ap50_95_pct": 26.302,
-          "yolo_gt_ap50_pct": 42.144,
-          "yolo_gt_ap50_95_pct": 23.423
+          "gt_ap50_pct": 49.926,
+          "gt_ap50_95_pct": 28.586,
+          "yolo_gt_ap50_pct": 44.76,
+          "yolo_gt_ap50_95_pct": 25.311
         },
         "37": {
-          "total_bpp": 0.054808866630480124,
-          "i_frame_bpp": 0.1575100352463213,
-          "p_frame_bpp": 0.02057514375853307,
-          "roi_psnr_db": 22.81311650485437,
+          "total_bpp": 0.06807745776130157,
+          "i_frame_bpp": 0.21049143967119235,
+          "p_frame_bpp": 0.020606130458004652,
+          "roi_psnr_db": 23.741055825242707,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 2959770,
+          "packet_bytes": 3676296,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 37.682,
-          "gt_ap50_95_pct": 20.424,
-          "yolo_gt_ap50_pct": 33.677,
-          "yolo_gt_ap50_95_pct": 17.715
+          "gt_ap50_pct": 40.221,
+          "gt_ap50_95_pct": 22.2,
+          "yolo_gt_ap50_pct": 36.412,
+          "yolo_gt_ap50_95_pct": 19.786
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -15.519412349317252,
-      "bdbr_tot_gt_ap50_95_pct": -11.5231017751248,
-      "bdbr_tot_yolo_gt_ap50_pct": -13.857744918165926,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -9.91888604705088,
-      "bdbr_p_gt_ap50_pct": 18.52928008619834,
-      "bdbr_p_gt_ap50_95_pct": 25.516077746820365,
-      "bdbr_p_yolo_gt_ap50_pct": 21.333561989157033,
-      "bdbr_p_yolo_gt_ap50_95_pct": 28.311974296259447
+      "bdbr_tot_gt_ap50_pct": -19.150867285476604,
+      "bdbr_tot_gt_ap50_95_pct": -16.32497087020023,
+      "bdbr_tot_yolo_gt_ap50_pct": -16.904292093181017,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -12.585941992414163,
+      "bdbr_p_gt_ap50_pct": -13.23914605634372,
+      "bdbr_p_gt_ap50_95_pct": -8.911957590097874,
+      "bdbr_p_yolo_gt_ap50_pct": -9.710013602713408,
+      "bdbr_p_yolo_gt_ap50_95_pct": -3.3101115036621276
     },
     "spatial_only_scope": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.5000372025573138,
-          "i_frame_bpp": 1.142914855364457,
-          "p_frame_bpp": 0.2857446516215994,
-          "roi_psnr_db": 30.756749999999993,
+          "total_bpp": 0.5734699027052204,
+          "i_frame_bpp": 1.2629710817799984,
+          "p_frame_bpp": 0.343636176346961,
+          "roi_psnr_db": 31.986830097087367,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 27002841,
+          "packet_bytes": 30968329,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 56.663,
-          "gt_ap50_95_pct": 32.909,
-          "yolo_gt_ap50_pct": 50.548,
-          "yolo_gt_ap50_95_pct": 29.256
+          "gt_ap50_pct": 56.827,
+          "gt_ap50_95_pct": 33.133,
+          "yolo_gt_ap50_pct": 50.71,
+          "yolo_gt_ap50_95_pct": 29.448
         },
         "27": {
-          "total_bpp": 0.2625831678075698,
-          "i_frame_bpp": 0.6914047685641687,
-          "p_frame_bpp": 0.11964263422203682,
-          "roi_psnr_db": 28.5008203883495,
+          "total_bpp": 0.2982231806782843,
+          "i_frame_bpp": 0.7657589217991505,
+          "p_frame_bpp": 0.14237793363799556,
+          "roi_psnr_db": 29.277424757281548,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 14179928,
+          "packet_bytes": 16104548,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 53.933,
-          "gt_ap50_95_pct": 31.31,
-          "yolo_gt_ap50_pct": 48.639,
-          "yolo_gt_ap50_95_pct": 27.935
+          "gt_ap50_pct": 54.641,
+          "gt_ap50_95_pct": 31.82,
+          "yolo_gt_ap50_pct": 48.745,
+          "yolo_gt_ap50_95_pct": 28.068
         },
         "32": {
-          "total_bpp": 0.1351432244754532,
-          "i_frame_bpp": 0.39761641419049604,
-          "p_frame_bpp": 0.047652161237105584,
-          "roi_psnr_db": 26.090645631067947,
+          "total_bpp": 0.15116917508319744,
+          "i_frame_bpp": 0.4387787754095874,
+          "p_frame_bpp": 0.05529930830773412,
+          "roi_psnr_db": 26.560604368932005,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 7297959,
+          "packet_bytes": 8163387,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 48.571,
-          "gt_ap50_95_pct": 28.111,
-          "yolo_gt_ap50_pct": 44.222,
-          "yolo_gt_ap50_95_pct": 25.023
+          "gt_ap50_pct": 49.215,
+          "gt_ap50_95_pct": 28.364,
+          "yolo_gt_ap50_pct": 44.836,
+          "yolo_gt_ap50_95_pct": 25.375
         },
         "37": {
-          "total_bpp": 0.0678390762180958,
-          "i_frame_bpp": 0.2161770422481796,
-          "p_frame_bpp": 0.018393087541401194,
-          "roi_psnr_db": 23.66395388349514,
+          "total_bpp": 0.07395794322189775,
+          "i_frame_bpp": 0.2349494267435907,
+          "p_frame_bpp": 0.020294115381333435,
+          "roi_psnr_db": 23.89635922330096,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 3663423,
+          "packet_bytes": 3993852,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 39.477,
-          "gt_ap50_95_pct": 22.101,
-          "yolo_gt_ap50_pct": 36.046,
-          "yolo_gt_ap50_95_pct": 19.735
+          "gt_ap50_pct": 39.79,
+          "gt_ap50_95_pct": 22.451,
+          "yolo_gt_ap50_pct": 36.649,
+          "yolo_gt_ap50_95_pct": 20.157
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-      "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-      "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-      "bdbr_p_gt_ap50_pct": -16.58930174623675,
-      "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-      "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-      "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+      "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+      "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+      "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+      "bdbr_p_gt_ap50_pct": -7.218376360884971,
+      "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+      "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+      "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
     },
     "wo_ctu_delta_qp": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.41070419607810604,
-          "i_frame_bpp": 0.9316755128138273,
-          "p_frame_bpp": 0.23704709049953226,
-          "roi_psnr_db": 27.85465291262135,
+          "total_bpp": 0.5998342014053493,
+          "i_frame_bpp": 1.262689016397717,
+          "p_frame_bpp": 0.3788825964078934,
+          "roi_psnr_db": 32.083985436893215,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 22178710,
+          "packet_bytes": 32392045,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 53.981,
-          "gt_ap50_95_pct": 31.425,
-          "yolo_gt_ap50_pct": 49.436,
-          "yolo_gt_ap50_95_pct": 28.659
+          "gt_ap50_pct": 56.844,
+          "gt_ap50_95_pct": 33.357,
+          "yolo_gt_ap50_pct": 50.724,
+          "yolo_gt_ap50_95_pct": 29.525
         },
         "27": {
-          "total_bpp": 0.22009660665271352,
-          "i_frame_bpp": 0.5701519864276775,
-          "p_frame_bpp": 0.10341148006105885,
-          "roi_psnr_db": 26.496614077669904,
+          "total_bpp": 0.31105806295154165,
+          "i_frame_bpp": 0.7645982908971102,
+          "p_frame_bpp": 0.15987798696968547,
+          "roi_psnr_db": 29.297827669902926,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 11885583,
+          "packet_bytes": 16797653,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 51.162,
-          "gt_ap50_95_pct": 29.667,
-          "yolo_gt_ap50_pct": 47.242,
-          "yolo_gt_ap50_95_pct": 27.018
+          "gt_ap50_pct": 54.131,
+          "gt_ap50_95_pct": 31.598,
+          "yolo_gt_ap50_pct": 48.51,
+          "yolo_gt_ap50_95_pct": 28.222
         },
         "32": {
-          "total_bpp": 0.11649963230762667,
-          "i_frame_bpp": 0.33565950856625454,
-          "p_frame_bpp": 0.04344634022141738,
-          "roi_psnr_db": 24.85122330097087,
+          "total_bpp": 0.1564958998300497,
+          "i_frame_bpp": 0.43685868642862563,
+          "p_frame_bpp": 0.06304163763052437,
+          "roi_psnr_db": 26.540165048543674,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 6291174,
+          "packet_bytes": 8451039,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 46.49,
-          "gt_ap50_95_pct": 26.906,
-          "yolo_gt_ap50_pct": 43.05,
-          "yolo_gt_ap50_95_pct": 24.156
+          "gt_ap50_pct": 49.612,
+          "gt_ap50_95_pct": 28.707,
+          "yolo_gt_ap50_pct": 44.92,
+          "yolo_gt_ap50_95_pct": 25.585
         },
         "37": {
-          "total_bpp": 0.060827718197720725,
-          "i_frame_bpp": 0.18958867637856494,
-          "p_frame_bpp": 0.017907398804105988,
-          "roi_psnr_db": 22.99598300970874,
+          "total_bpp": 0.07585194041428056,
+          "i_frame_bpp": 0.2334083631200698,
+          "p_frame_bpp": 0.02333313284568416,
+          "roi_psnr_db": 23.871856796116475,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 3284798,
+          "packet_bytes": 4096131,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 38.183,
-          "gt_ap50_95_pct": 21.767,
-          "yolo_gt_ap50_pct": 34.943,
-          "yolo_gt_ap50_95_pct": 19.059
+          "gt_ap50_pct": 39.683,
+          "gt_ap50_95_pct": 22.484,
+          "yolo_gt_ap50_pct": 36.43,
+          "yolo_gt_ap50_95_pct": 20.119
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -8.033190031957716,
-      "bdbr_tot_gt_ap50_95_pct": -11.54581897322392,
-      "bdbr_tot_yolo_gt_ap50_pct": -15.959945974313595,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -13.622217577645268,
-      "bdbr_p_gt_ap50_pct": 5.883091001919105,
-      "bdbr_p_gt_ap50_95_pct": 0.510441415173335,
-      "bdbr_p_yolo_gt_ap50_pct": -6.5372894950413984,
-      "bdbr_p_yolo_gt_ap50_95_pct": -2.8820301766954937
+      "bdbr_tot_gt_ap50_pct": -11.242379611770748,
+      "bdbr_tot_gt_ap50_95_pct": -12.043983575613371,
+      "bdbr_tot_yolo_gt_ap50_pct": -11.803215223251451,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -7.631009495171826,
+      "bdbr_p_gt_ap50_pct": -3.0316272655970478,
+      "bdbr_p_gt_ap50_95_pct": -4.115919174572246,
+      "bdbr_p_yolo_gt_ap50_pct": -3.8119435598460094,
+      "bdbr_p_yolo_gt_ap50_95_pct": 2.3583299195153007
     },
     "iwa_gop_qp_reuse": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.294358410881561,
-          "i_frame_bpp": 0.656352811646693,
-          "p_frame_bpp": 0.173693610626517,
-          "roi_psnr_db": 26.969211165048566,
+          "total_bpp": 0.5358878015314491,
+          "i_frame_bpp": 1.1490702953153444,
+          "p_frame_bpp": 0.3314936369368174,
+          "roi_psnr_db": 31.582759708737893,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 15895844,
+          "packet_bytes": 28938833,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 51.755,
-          "gt_ap50_95_pct": 30.447,
-          "yolo_gt_ap50_pct": 47.678,
-          "yolo_gt_ap50_95_pct": 27.485
+          "gt_ap50_pct": 56.844,
+          "gt_ap50_95_pct": 33.109,
+          "yolo_gt_ap50_pct": 50.657,
+          "yolo_gt_ap50_95_pct": 29.373
         },
         "27": {
-          "total_bpp": 0.1578782090862978,
-          "i_frame_bpp": 0.3989940013700319,
-          "p_frame_bpp": 0.0775062783250531,
-          "roi_psnr_db": 25.588223300970895,
+          "total_bpp": 0.27791058438495525,
+          "i_frame_bpp": 0.6949383633808025,
+          "p_frame_bpp": 0.13890132471967284,
+          "roi_psnr_db": 28.905842233009718,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 8525686,
+          "packet_bytes": 15007634,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 48.712,
-          "gt_ap50_95_pct": 28.255,
-          "yolo_gt_ap50_pct": 44.538,
-          "yolo_gt_ap50_95_pct": 25.343
+          "gt_ap50_pct": 54.234,
+          "gt_ap50_95_pct": 31.588,
+          "yolo_gt_ap50_pct": 48.673,
+          "yolo_gt_ap50_95_pct": 27.924
         },
         "32": {
-          "total_bpp": 0.08309955041385392,
-          "i_frame_bpp": 0.23198455514259708,
-          "p_frame_bpp": 0.03347121550427286,
-          "roi_psnr_db": 23.922516990291275,
+          "total_bpp": 0.1397520083825565,
+          "i_frame_bpp": 0.3959187627996056,
+          "p_frame_bpp": 0.05436309024354015,
+          "roi_psnr_db": 26.222817961165067,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 4487514,
+          "packet_bytes": 7546841,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 43.375,
-          "gt_ap50_95_pct": 24.493,
-          "yolo_gt_ap50_pct": 39.587,
-          "yolo_gt_ap50_95_pct": 21.586
+          "gt_ap50_pct": 49.317,
+          "gt_ap50_95_pct": 28.067,
+          "yolo_gt_ap50_pct": 44.966,
+          "yolo_gt_ap50_95_pct": 25.25
         },
         "37": {
-          "total_bpp": 0.04367335791726714,
-          "i_frame_bpp": 0.1315077994633647,
-          "p_frame_bpp": 0.014395210735234629,
-          "roi_psnr_db": 22.222347087378633,
+          "total_bpp": 0.0678934449131049,
+          "i_frame_bpp": 0.21095120328143963,
+          "p_frame_bpp": 0.020207525456993326,
+          "roi_psnr_db": 23.647837378640777,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 2358434,
+          "packet_bytes": 3666359,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 34.111,
-          "gt_ap50_95_pct": 18.123,
-          "yolo_gt_ap50_pct": 29.002,
-          "yolo_gt_ap50_95_pct": 14.794
+          "gt_ap50_pct": 39.65,
+          "gt_ap50_95_pct": 21.751,
+          "yolo_gt_ap50_pct": 36.247,
+          "yolo_gt_ap50_95_pct": 19.507
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -12.540099079511347,
-      "bdbr_tot_gt_ap50_95_pct": -13.847431336776916,
-      "bdbr_tot_yolo_gt_ap50_pct": -15.089354866072624,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -11.473520474509801,
-      "bdbr_p_gt_ap50_pct": 19.714727498857677,
-      "bdbr_p_gt_ap50_95_pct": 16.94486660557464,
-      "bdbr_p_yolo_gt_ap50_pct": 14.59145117702394,
-      "bdbr_p_yolo_gt_ap50_95_pct": 20.885949967476968
+      "bdbr_tot_gt_ap50_pct": -18.00977794297448,
+      "bdbr_tot_gt_ap50_95_pct": -10.681889569227753,
+      "bdbr_tot_yolo_gt_ap50_pct": -18.80707145353696,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -13.102029467842623,
+      "bdbr_p_gt_ap50_pct": -12.227419964460573,
+      "bdbr_p_gt_ap50_95_pct": -1.3155651910303656,
+      "bdbr_p_yolo_gt_ap50_pct": -13.554593801477266,
+      "bdbr_p_yolo_gt_ap50_95_pct": -5.022911471203495
     },
     "proxy_only_zhao": {
       "per_qp": {
         "22": {
-          "total_bpp": 0.4974640781439624,
-          "i_frame_bpp": 1.0572104592925136,
-          "p_frame_bpp": 0.3108819510944453,
-          "roi_psnr_db": 30.254247572815505,
+          "total_bpp": 0.6012182328307513,
+          "i_frame_bpp": 1.2739178555683024,
+          "p_frame_bpp": 0.3769850252515676,
+          "roi_psnr_db": 32.256594660194175,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 26863888,
+          "packet_bytes": 32466785,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 55.737,
-          "gt_ap50_95_pct": 32.655,
-          "yolo_gt_ap50_pct": 49.812,
-          "yolo_gt_ap50_95_pct": 28.928
+          "gt_ap50_pct": 56.631,
+          "gt_ap50_95_pct": 33.239,
+          "yolo_gt_ap50_pct": 50.617,
+          "yolo_gt_ap50_95_pct": 29.457
         },
         "27": {
-          "total_bpp": 0.260403086838213,
-          "i_frame_bpp": 0.6422486536711165,
-          "p_frame_bpp": 0.13312123122724515,
-          "roi_psnr_db": 28.141587378640757,
+          "total_bpp": 0.31117813332566935,
+          "i_frame_bpp": 0.7712246052269797,
+          "p_frame_bpp": 0.15782930935856593,
+          "roi_psnr_db": 29.423750000000005,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 14062200,
+          "packet_bytes": 16804137,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 53.064,
-          "gt_ap50_95_pct": 30.822,
-          "yolo_gt_ap50_pct": 47.798,
-          "yolo_gt_ap50_95_pct": 27.413
+          "gt_ap50_pct": 54.266,
+          "gt_ap50_95_pct": 31.711,
+          "yolo_gt_ap50_pct": 48.701,
+          "yolo_gt_ap50_95_pct": 28.151
         },
         "32": {
-          "total_bpp": 0.13344620269479104,
-          "i_frame_bpp": 0.3721636429573726,
-          "p_frame_bpp": 0.053873722607263856,
-          "roi_psnr_db": 25.85208252427184,
+          "total_bpp": 0.1563926622705552,
+          "i_frame_bpp": 0.4407974539451229,
+          "p_frame_bpp": 0.061591065045699334,
+          "roi_psnr_db": 26.617648058252403,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 7206317,
+          "packet_bytes": 8445464,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 47.732,
-          "gt_ap50_95_pct": 27.416,
-          "yolo_gt_ap50_pct": 43.423,
-          "yolo_gt_ap50_95_pct": 24.583
+          "gt_ap50_pct": 49.443,
+          "gt_ap50_95_pct": 28.45,
+          "yolo_gt_ap50_pct": 44.826,
+          "yolo_gt_ap50_95_pct": 25.486
         },
         "37": {
-          "total_bpp": 0.06657985576148172,
-          "i_frame_bpp": 0.20474843145574181,
-          "p_frame_bpp": 0.020523663863395023,
-          "roi_psnr_db": 23.533791262135914,
+          "total_bpp": 0.07572203700982251,
+          "i_frame_bpp": 0.23559103660213138,
+          "p_frame_bpp": 0.02243237047905289,
+          "roi_psnr_db": 23.91974514563108,
           "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-          "packet_bytes": 3595423,
+          "packet_bytes": 4089116,
           "pixel_count": 432013312,
           "frame_count": 1648,
-          "gt_ap50_pct": 38.781,
-          "gt_ap50_95_pct": 21.968,
-          "yolo_gt_ap50_pct": 35.257,
-          "yolo_gt_ap50_95_pct": 19.347
+          "gt_ap50_pct": 39.859,
+          "gt_ap50_95_pct": 22.526,
+          "yolo_gt_ap50_pct": 36.341,
+          "yolo_gt_ap50_95_pct": 19.956
         }
       },
       "bdbr_unavailable_reasons": {},
-      "bdbr_tot_gt_ap50_pct": -8.344872905925282,
-      "bdbr_tot_gt_ap50_95_pct": -8.785369732095605,
-      "bdbr_tot_yolo_gt_ap50_pct": -6.969707177792605,
-      "bdbr_tot_yolo_gt_ap50_95_pct": -7.18805430905708,
-      "bdbr_p_gt_ap50_pct": 7.612400796821706,
-      "bdbr_p_gt_ap50_95_pct": 7.066884385779071,
-      "bdbr_p_yolo_gt_ap50_pct": 9.80908616118703,
-      "bdbr_p_yolo_gt_ap50_95_pct": 9.583358723193225
+      "bdbr_tot_gt_ap50_pct": -7.627077547897166,
+      "bdbr_tot_gt_ap50_95_pct": -7.0683344261922905,
+      "bdbr_tot_yolo_gt_ap50_pct": -7.100206613480964,
+      "bdbr_tot_yolo_gt_ap50_95_pct": -5.563539678576901,
+      "bdbr_p_gt_ap50_pct": -0.1262625743992274,
+      "bdbr_p_gt_ap50_95_pct": 0.9306622179627411,
+      "bdbr_p_yolo_gt_ap50_pct": 0.6076404194440999,
+      "bdbr_p_yolo_gt_ap50_95_pct": 2.991970999343563
     }
   },
   "variant_methods_summary": {
@@ -2552,209 +2552,209 @@
       "spatial_scope_framewise": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "tscope_temporal_ctu_qp": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.39052502159933444,
-            "i_frame_bpp": 0.8019206963696526,
-            "p_frame_bpp": 0.25339313000922836,
-            "roi_psnr_db": 28.326524271844676,
+            "total_bpp": 0.5313244606684713,
+            "i_frame_bpp": 1.1437590515729292,
+            "p_frame_bpp": 0.3271795970336519,
+            "roi_psnr_db": 31.79128155339804,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 21089001,
+            "packet_bytes": 28692405,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 54.02,
-            "gt_ap50_95_pct": 31.664,
-            "yolo_gt_ap50_pct": 48.898,
-            "yolo_gt_ap50_95_pct": 28.317
+            "gt_ap50_pct": 56.797,
+            "gt_ap50_95_pct": 33.235,
+            "yolo_gt_ap50_pct": 50.626,
+            "yolo_gt_ap50_95_pct": 29.406
           },
           "27": {
-            "total_bpp": 0.20759419561589806,
-            "i_frame_bpp": 0.4871278040617415,
-            "p_frame_bpp": 0.11441632613395024,
-            "roi_psnr_db": 26.700070388349523,
+            "total_bpp": 0.2765303121029752,
+            "i_frame_bpp": 0.6918377922576608,
+            "p_frame_bpp": 0.13809448538474667,
+            "roi_psnr_db": 29.074759708737897,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 11210432,
+            "packet_bytes": 14933097,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 51.246,
-            "gt_ap50_95_pct": 29.785,
-            "yolo_gt_ap50_pct": 46.693,
-            "yolo_gt_ap50_95_pct": 26.605
+            "gt_ap50_pct": 54.702,
+            "gt_ap50_95_pct": 31.759,
+            "yolo_gt_ap50_pct": 48.693,
+            "yolo_gt_ap50_95_pct": 28.131
           },
           "32": {
-            "total_bpp": 0.1078643613648646,
-            "i_frame_bpp": 0.28222241447967233,
-            "p_frame_bpp": 0.04974501032659537,
-            "roi_psnr_db": 24.80066019417481,
+            "total_bpp": 0.13975273058252427,
+            "i_frame_bpp": 0.39436207002806434,
+            "p_frame_bpp": 0.05488295076734426,
+            "roi_psnr_db": 26.36338349514564,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 5824855,
+            "packet_bytes": 7546880,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 46.66,
-            "gt_ap50_95_pct": 26.302,
-            "yolo_gt_ap50_pct": 42.144,
-            "yolo_gt_ap50_95_pct": 23.423
+            "gt_ap50_pct": 49.926,
+            "gt_ap50_95_pct": 28.586,
+            "yolo_gt_ap50_pct": 44.76,
+            "yolo_gt_ap50_95_pct": 25.311
           },
           "37": {
-            "total_bpp": 0.054808866630480124,
-            "i_frame_bpp": 0.1575100352463213,
-            "p_frame_bpp": 0.02057514375853307,
-            "roi_psnr_db": 22.81311650485437,
+            "total_bpp": 0.06807745776130157,
+            "i_frame_bpp": 0.21049143967119235,
+            "p_frame_bpp": 0.020606130458004652,
+            "roi_psnr_db": 23.741055825242707,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 2959770,
+            "packet_bytes": 3676296,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 37.682,
-            "gt_ap50_95_pct": 20.424,
-            "yolo_gt_ap50_pct": 33.677,
-            "yolo_gt_ap50_95_pct": 17.715
+            "gt_ap50_pct": 40.221,
+            "gt_ap50_95_pct": 22.2,
+            "yolo_gt_ap50_pct": 36.412,
+            "yolo_gt_ap50_95_pct": 19.786
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -15.519412349317252,
-        "bdbr_tot_gt_ap50_95_pct": -11.5231017751248,
-        "bdbr_tot_yolo_gt_ap50_pct": -13.857744918165926,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -9.91888604705088,
-        "bdbr_p_gt_ap50_pct": 18.52928008619834,
-        "bdbr_p_gt_ap50_95_pct": 25.516077746820365,
-        "bdbr_p_yolo_gt_ap50_pct": 21.333561989157033,
-        "bdbr_p_yolo_gt_ap50_95_pct": 28.311974296259447
+        "bdbr_tot_gt_ap50_pct": -19.150867285476604,
+        "bdbr_tot_gt_ap50_95_pct": -16.32497087020023,
+        "bdbr_tot_yolo_gt_ap50_pct": -16.904292093181017,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -12.585941992414163,
+        "bdbr_p_gt_ap50_pct": -13.23914605634372,
+        "bdbr_p_gt_ap50_95_pct": -8.911957590097874,
+        "bdbr_p_yolo_gt_ap50_pct": -9.710013602713408,
+        "bdbr_p_yolo_gt_ap50_95_pct": -3.3101115036621276
       },
       "oracle_gt_mask_upper_bound": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.2994470688903216,
-            "i_frame_bpp": 0.6676063167238698,
-            "p_frame_bpp": 0.17672731961247218,
-            "roi_psnr_db": 32.41810436893205,
+            "total_bpp": 0.29960317519104596,
+            "i_frame_bpp": 0.667824680365405,
+            "p_frame_bpp": 0.1768626734662596,
+            "roi_psnr_db": 32.42115776699029,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 16170640,
+            "packet_bytes": 16179070,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.846,
-            "gt_ap50_95_pct": 32.974,
-            "yolo_gt_ap50_pct": 48.713,
-            "yolo_gt_ap50_95_pct": 28.646
+            "gt_ap50_pct": 56.894,
+            "gt_ap50_95_pct": 33.052,
+            "yolo_gt_ap50_pct": 49.077,
+            "yolo_gt_ap50_95_pct": 28.682
           },
           "27": {
-            "total_bpp": 0.16260997068534777,
-            "i_frame_bpp": 0.4064799188410194,
-            "p_frame_bpp": 0.08131998796679056,
-            "roi_psnr_db": 29.207116504854387,
+            "total_bpp": 0.1626524693757585,
+            "i_frame_bpp": 0.40663221044447817,
+            "p_frame_bpp": 0.08132588901951861,
+            "roi_psnr_db": 29.2104490291262,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 8781209,
+            "packet_bytes": 8783504,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 54.058,
-            "gt_ap50_95_pct": 31.212,
-            "yolo_gt_ap50_pct": 47.151,
-            "yolo_gt_ap50_95_pct": 27.415
+            "gt_ap50_pct": 54.015,
+            "gt_ap50_95_pct": 31.211,
+            "yolo_gt_ap50_pct": 47.245,
+            "yolo_gt_ap50_95_pct": 27.424
           },
           "32": {
-            "total_bpp": 0.08498239980160611,
-            "i_frame_bpp": 0.23497253714255917,
-            "p_frame_bpp": 0.034985687354621764,
-            "roi_psnr_db": 26.183213592233,
+            "total_bpp": 0.0850239170407786,
+            "i_frame_bpp": 0.23503342415522605,
+            "p_frame_bpp": 0.03502074800262945,
+            "roi_psnr_db": 26.184310679611666,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 4589191,
+            "packet_bytes": 4591433,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 47.728,
-            "gt_ap50_95_pct": 27.656,
-            "yolo_gt_ap50_pct": 43.224,
-            "yolo_gt_ap50_95_pct": 24.877
+            "gt_ap50_pct": 47.76,
+            "gt_ap50_95_pct": 27.705,
+            "yolo_gt_ap50_pct": 43.264,
+            "yolo_gt_ap50_95_pct": 24.868
           },
           "37": {
-            "total_bpp": 0.043400366329452364,
-            "i_frame_bpp": 0.13063730776888652,
-            "p_frame_bpp": 0.01432138584964098,
-            "roi_psnr_db": 23.410415048543694,
+            "total_bpp": 0.043422143436172636,
+            "i_frame_bpp": 0.13067612138766688,
+            "p_frame_bpp": 0.014337484119007888,
+            "roi_psnr_db": 23.411126213592247,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 2343692,
+            "packet_bytes": 2344868,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 37.15,
+            "gt_ap50_pct": 37.17,
             "gt_ap50_95_pct": 21.619,
-            "yolo_gt_ap50_pct": 34.46,
-            "yolo_gt_ap50_95_pct": 19.643
+            "yolo_gt_ap50_pct": 34.394,
+            "yolo_gt_ap50_95_pct": 19.62
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -43.5661627157493,
-        "bdbr_tot_gt_ap50_95_pct": -44.2525192360838,
-        "bdbr_tot_yolo_gt_ap50_pct": -33.744380637906545,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -41.67783310315427,
-        "bdbr_p_gt_ap50_pct": -33.50321154680211,
-        "bdbr_p_gt_ap50_95_pct": -34.58671023028933,
-        "bdbr_p_yolo_gt_ap50_pct": -17.37452401701639,
-        "bdbr_p_yolo_gt_ap50_95_pct": -30.295469060138313
+        "bdbr_tot_gt_ap50_pct": -43.81715806164822,
+        "bdbr_tot_gt_ap50_95_pct": -44.920122719234044,
+        "bdbr_tot_yolo_gt_ap50_pct": -37.03923500128975,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -41.82168382707905,
+        "bdbr_p_gt_ap50_pct": -33.85925061643065,
+        "bdbr_p_gt_ap50_95_pct": -35.62393574164899,
+        "bdbr_p_yolo_gt_ap50_pct": -22.70266286658965,
+        "bdbr_p_yolo_gt_ap50_95_pct": -30.49416558412433
       }
     },
     "spatial_only_scope": {
@@ -2899,140 +2899,140 @@
       "spatial_scope_framewise": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "tscope_temporal_ctu_qp": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "oracle_gt_mask_upper_bound": {
         "per_qp": {
@@ -3246,140 +3246,140 @@
       "spatial_scope_framewise": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "tscope_temporal_ctu_qp": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.41070419607810604,
-            "i_frame_bpp": 0.9316755128138273,
-            "p_frame_bpp": 0.23704709049953226,
-            "roi_psnr_db": 27.85465291262135,
+            "total_bpp": 0.5998342014053493,
+            "i_frame_bpp": 1.262689016397717,
+            "p_frame_bpp": 0.3788825964078934,
+            "roi_psnr_db": 32.083985436893215,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 22178710,
+            "packet_bytes": 32392045,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.981,
-            "gt_ap50_95_pct": 31.425,
-            "yolo_gt_ap50_pct": 49.436,
-            "yolo_gt_ap50_95_pct": 28.659
+            "gt_ap50_pct": 56.844,
+            "gt_ap50_95_pct": 33.357,
+            "yolo_gt_ap50_pct": 50.724,
+            "yolo_gt_ap50_95_pct": 29.525
           },
           "27": {
-            "total_bpp": 0.22009660665271352,
-            "i_frame_bpp": 0.5701519864276775,
-            "p_frame_bpp": 0.10341148006105885,
-            "roi_psnr_db": 26.496614077669904,
+            "total_bpp": 0.31105806295154165,
+            "i_frame_bpp": 0.7645982908971102,
+            "p_frame_bpp": 0.15987798696968547,
+            "roi_psnr_db": 29.297827669902926,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 11885583,
+            "packet_bytes": 16797653,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 51.162,
-            "gt_ap50_95_pct": 29.667,
-            "yolo_gt_ap50_pct": 47.242,
-            "yolo_gt_ap50_95_pct": 27.018
+            "gt_ap50_pct": 54.131,
+            "gt_ap50_95_pct": 31.598,
+            "yolo_gt_ap50_pct": 48.51,
+            "yolo_gt_ap50_95_pct": 28.222
           },
           "32": {
-            "total_bpp": 0.11649963230762667,
-            "i_frame_bpp": 0.33565950856625454,
-            "p_frame_bpp": 0.04344634022141738,
-            "roi_psnr_db": 24.85122330097087,
+            "total_bpp": 0.1564958998300497,
+            "i_frame_bpp": 0.43685868642862563,
+            "p_frame_bpp": 0.06304163763052437,
+            "roi_psnr_db": 26.540165048543674,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 6291174,
+            "packet_bytes": 8451039,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 46.49,
-            "gt_ap50_95_pct": 26.906,
-            "yolo_gt_ap50_pct": 43.05,
-            "yolo_gt_ap50_95_pct": 24.156
+            "gt_ap50_pct": 49.612,
+            "gt_ap50_95_pct": 28.707,
+            "yolo_gt_ap50_pct": 44.92,
+            "yolo_gt_ap50_95_pct": 25.585
           },
           "37": {
-            "total_bpp": 0.060827718197720725,
-            "i_frame_bpp": 0.18958867637856494,
-            "p_frame_bpp": 0.017907398804105988,
-            "roi_psnr_db": 22.99598300970874,
+            "total_bpp": 0.07585194041428056,
+            "i_frame_bpp": 0.2334083631200698,
+            "p_frame_bpp": 0.02333313284568416,
+            "roi_psnr_db": 23.871856796116475,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3284798,
+            "packet_bytes": 4096131,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 38.183,
-            "gt_ap50_95_pct": 21.767,
-            "yolo_gt_ap50_pct": 34.943,
-            "yolo_gt_ap50_95_pct": 19.059
+            "gt_ap50_pct": 39.683,
+            "gt_ap50_95_pct": 22.484,
+            "yolo_gt_ap50_pct": 36.43,
+            "yolo_gt_ap50_95_pct": 20.119
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -8.033190031957716,
-        "bdbr_tot_gt_ap50_95_pct": -11.54581897322392,
-        "bdbr_tot_yolo_gt_ap50_pct": -15.959945974313595,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -13.622217577645268,
-        "bdbr_p_gt_ap50_pct": 5.883091001919105,
-        "bdbr_p_gt_ap50_95_pct": 0.510441415173335,
-        "bdbr_p_yolo_gt_ap50_pct": -6.5372894950413984,
-        "bdbr_p_yolo_gt_ap50_95_pct": -2.8820301766954937
+        "bdbr_tot_gt_ap50_pct": -11.242379611770748,
+        "bdbr_tot_gt_ap50_95_pct": -12.043983575613371,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.803215223251451,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -7.631009495171826,
+        "bdbr_p_gt_ap50_pct": -3.0316272655970478,
+        "bdbr_p_gt_ap50_95_pct": -4.115919174572246,
+        "bdbr_p_yolo_gt_ap50_pct": -3.8119435598460094,
+        "bdbr_p_yolo_gt_ap50_95_pct": 2.3583299195153007
       },
       "oracle_gt_mask_upper_bound": {
         "per_qp": {
@@ -3593,209 +3593,209 @@
       "spatial_scope_framewise": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "tscope_temporal_ctu_qp": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.294358410881561,
-            "i_frame_bpp": 0.656352811646693,
-            "p_frame_bpp": 0.173693610626517,
-            "roi_psnr_db": 26.969211165048566,
+            "total_bpp": 0.5358878015314491,
+            "i_frame_bpp": 1.1490702953153444,
+            "p_frame_bpp": 0.3314936369368174,
+            "roi_psnr_db": 31.582759708737893,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 15895844,
+            "packet_bytes": 28938833,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 51.755,
-            "gt_ap50_95_pct": 30.447,
-            "yolo_gt_ap50_pct": 47.678,
-            "yolo_gt_ap50_95_pct": 27.485
+            "gt_ap50_pct": 56.844,
+            "gt_ap50_95_pct": 33.109,
+            "yolo_gt_ap50_pct": 50.657,
+            "yolo_gt_ap50_95_pct": 29.373
           },
           "27": {
-            "total_bpp": 0.1578782090862978,
-            "i_frame_bpp": 0.3989940013700319,
-            "p_frame_bpp": 0.0775062783250531,
-            "roi_psnr_db": 25.588223300970895,
+            "total_bpp": 0.27791058438495525,
+            "i_frame_bpp": 0.6949383633808025,
+            "p_frame_bpp": 0.13890132471967284,
+            "roi_psnr_db": 28.905842233009718,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 8525686,
+            "packet_bytes": 15007634,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.712,
-            "gt_ap50_95_pct": 28.255,
-            "yolo_gt_ap50_pct": 44.538,
-            "yolo_gt_ap50_95_pct": 25.343
+            "gt_ap50_pct": 54.234,
+            "gt_ap50_95_pct": 31.588,
+            "yolo_gt_ap50_pct": 48.673,
+            "yolo_gt_ap50_95_pct": 27.924
           },
           "32": {
-            "total_bpp": 0.08309955041385392,
-            "i_frame_bpp": 0.23198455514259708,
-            "p_frame_bpp": 0.03347121550427286,
-            "roi_psnr_db": 23.922516990291275,
+            "total_bpp": 0.1397520083825565,
+            "i_frame_bpp": 0.3959187627996056,
+            "p_frame_bpp": 0.05436309024354015,
+            "roi_psnr_db": 26.222817961165067,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 4487514,
+            "packet_bytes": 7546841,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 43.375,
-            "gt_ap50_95_pct": 24.493,
-            "yolo_gt_ap50_pct": 39.587,
-            "yolo_gt_ap50_95_pct": 21.586
+            "gt_ap50_pct": 49.317,
+            "gt_ap50_95_pct": 28.067,
+            "yolo_gt_ap50_pct": 44.966,
+            "yolo_gt_ap50_95_pct": 25.25
           },
           "37": {
-            "total_bpp": 0.04367335791726714,
-            "i_frame_bpp": 0.1315077994633647,
-            "p_frame_bpp": 0.014395210735234629,
-            "roi_psnr_db": 22.222347087378633,
+            "total_bpp": 0.0678934449131049,
+            "i_frame_bpp": 0.21095120328143963,
+            "p_frame_bpp": 0.020207525456993326,
+            "roi_psnr_db": 23.647837378640777,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 2358434,
+            "packet_bytes": 3666359,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 34.111,
-            "gt_ap50_95_pct": 18.123,
-            "yolo_gt_ap50_pct": 29.002,
-            "yolo_gt_ap50_95_pct": 14.794
+            "gt_ap50_pct": 39.65,
+            "gt_ap50_95_pct": 21.751,
+            "yolo_gt_ap50_pct": 36.247,
+            "yolo_gt_ap50_95_pct": 19.507
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -12.540099079511347,
-        "bdbr_tot_gt_ap50_95_pct": -13.847431336776916,
-        "bdbr_tot_yolo_gt_ap50_pct": -15.089354866072624,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -11.473520474509801,
-        "bdbr_p_gt_ap50_pct": 19.714727498857677,
-        "bdbr_p_gt_ap50_95_pct": 16.94486660557464,
-        "bdbr_p_yolo_gt_ap50_pct": 14.59145117702394,
-        "bdbr_p_yolo_gt_ap50_95_pct": 20.885949967476968
+        "bdbr_tot_gt_ap50_pct": -18.00977794297448,
+        "bdbr_tot_gt_ap50_95_pct": -10.681889569227753,
+        "bdbr_tot_yolo_gt_ap50_pct": -18.80707145353696,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -13.102029467842623,
+        "bdbr_p_gt_ap50_pct": -12.227419964460573,
+        "bdbr_p_gt_ap50_95_pct": -1.3155651910303656,
+        "bdbr_p_yolo_gt_ap50_pct": -13.554593801477266,
+        "bdbr_p_yolo_gt_ap50_95_pct": -5.022911471203495
       },
       "oracle_gt_mask_upper_bound": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.29867864812462075,
-            "i_frame_bpp": 0.6676555003934693,
-            "p_frame_bpp": 0.17568636403500454,
-            "roi_psnr_db": 32.297220873786415,
+            "total_bpp": 0.29876292330547444,
+            "i_frame_bpp": 0.6678002366741884,
+            "p_frame_bpp": 0.1757504855159031,
+            "roi_psnr_db": 32.300194174757266,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 16129144,
+            "packet_bytes": 16133695,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.373,
-            "gt_ap50_95_pct": 32.898,
-            "yolo_gt_ap50_pct": 49.06,
-            "yolo_gt_ap50_95_pct": 28.649
+            "gt_ap50_pct": 56.411,
+            "gt_ap50_95_pct": 32.906,
+            "yolo_gt_ap50_pct": 49.041,
+            "yolo_gt_ap50_95_pct": 28.636
           },
           "27": {
-            "total_bpp": 0.1622845177511567,
-            "i_frame_bpp": 0.40654199100235133,
-            "p_frame_bpp": 0.0808653600007585,
-            "roi_psnr_db": 29.09896359223301,
+            "total_bpp": 0.16234501588691785,
+            "i_frame_bpp": 0.40664806180787316,
+            "p_frame_bpp": 0.08091066724659941,
+            "roi_psnr_db": 29.102305825242706,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 8763634,
+            "packet_bytes": 8766901,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.898,
-            "gt_ap50_95_pct": 31.267,
-            "yolo_gt_ap50_pct": 46.834,
-            "yolo_gt_ap50_95_pct": 27.446
+            "gt_ap50_pct": 53.901,
+            "gt_ap50_95_pct": 31.237,
+            "yolo_gt_ap50_pct": 47.125,
+            "yolo_gt_ap50_95_pct": 27.472
           },
           "32": {
-            "total_bpp": 0.08484975574086014,
-            "i_frame_bpp": 0.2349498711743401,
-            "p_frame_bpp": 0.03481638392970014,
-            "roi_psnr_db": 26.102456310679596,
+            "total_bpp": 0.08487982888823574,
+            "i_frame_bpp": 0.23502327631978157,
+            "p_frame_bpp": 0.03483201307772047,
+            "roi_psnr_db": 26.102888349514537,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 4582028,
+            "packet_bytes": 4583652,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 47.385,
-            "gt_ap50_95_pct": 27.566,
-            "yolo_gt_ap50_pct": 43.281,
-            "yolo_gt_ap50_95_pct": 24.935
+            "gt_ap50_pct": 47.778,
+            "gt_ap50_95_pct": 27.595,
+            "yolo_gt_ap50_pct": 43.289,
+            "yolo_gt_ap50_95_pct": 24.883
           },
           "37": {
-            "total_bpp": 0.043420421267018734,
-            "i_frame_bpp": 0.13068352856682341,
-            "p_frame_bpp": 0.014332718833750506,
-            "roi_psnr_db": 23.361446601941736,
+            "total_bpp": 0.04343127278448308,
+            "i_frame_bpp": 0.13072752721101336,
+            "p_frame_bpp": 0.014332521308972997,
+            "roi_psnr_db": 23.36456553398057,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 2344775,
+            "packet_bytes": 2345361,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 37.071,
-            "gt_ap50_95_pct": 21.487,
-            "yolo_gt_ap50_pct": 34.417,
-            "yolo_gt_ap50_95_pct": 19.603
+            "gt_ap50_pct": 37.002,
+            "gt_ap50_95_pct": 21.52,
+            "yolo_gt_ap50_pct": 34.28,
+            "yolo_gt_ap50_95_pct": 19.516
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -41.38391863216779,
-        "bdbr_tot_gt_ap50_95_pct": -43.19386206592994,
-        "bdbr_tot_yolo_gt_ap50_pct": -40.345703388078846,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -41.851700719430916,
-        "bdbr_p_gt_ap50_pct": -30.31485826849687,
-        "bdbr_p_gt_ap50_95_pct": -33.07785104647213,
-        "bdbr_p_yolo_gt_ap50_pct": -28.07370141632405,
-        "bdbr_p_yolo_gt_ap50_95_pct": -30.755715879189395
+        "bdbr_tot_gt_ap50_pct": -42.214133189078396,
+        "bdbr_tot_gt_ap50_95_pct": -43.44950049127105,
+        "bdbr_tot_yolo_gt_ap50_pct": -37.894188639839086,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -40.81019011883734,
+        "bdbr_p_gt_ap50_pct": -31.66498978461564,
+        "bdbr_p_gt_ap50_95_pct": -33.48046293132491,
+        "bdbr_p_yolo_gt_ap50_pct": -24.27292303726103,
+        "bdbr_p_yolo_gt_ap50_95_pct": -29.136851353506888
       }
     },
     "proxy_only_zhao": {
@@ -3940,140 +3940,140 @@
       "spatial_scope_framewise": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.5000372025573138,
-            "i_frame_bpp": 1.142914855364457,
-            "p_frame_bpp": 0.2857446516215994,
-            "roi_psnr_db": 30.756749999999993,
+            "total_bpp": 0.5734699027052204,
+            "i_frame_bpp": 1.2629710817799984,
+            "p_frame_bpp": 0.343636176346961,
+            "roi_psnr_db": 31.986830097087367,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 27002841,
+            "packet_bytes": 30968329,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 56.663,
-            "gt_ap50_95_pct": 32.909,
-            "yolo_gt_ap50_pct": 50.548,
-            "yolo_gt_ap50_95_pct": 29.256
+            "gt_ap50_pct": 56.827,
+            "gt_ap50_95_pct": 33.133,
+            "yolo_gt_ap50_pct": 50.71,
+            "yolo_gt_ap50_95_pct": 29.448
           },
           "27": {
-            "total_bpp": 0.2625831678075698,
-            "i_frame_bpp": 0.6914047685641687,
-            "p_frame_bpp": 0.11964263422203682,
-            "roi_psnr_db": 28.5008203883495,
+            "total_bpp": 0.2982231806782843,
+            "i_frame_bpp": 0.7657589217991505,
+            "p_frame_bpp": 0.14237793363799556,
+            "roi_psnr_db": 29.277424757281548,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14179928,
+            "packet_bytes": 16104548,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.933,
-            "gt_ap50_95_pct": 31.31,
-            "yolo_gt_ap50_pct": 48.639,
-            "yolo_gt_ap50_95_pct": 27.935
+            "gt_ap50_pct": 54.641,
+            "gt_ap50_95_pct": 31.82,
+            "yolo_gt_ap50_pct": 48.745,
+            "yolo_gt_ap50_95_pct": 28.068
           },
           "32": {
-            "total_bpp": 0.1351432244754532,
-            "i_frame_bpp": 0.39761641419049604,
-            "p_frame_bpp": 0.047652161237105584,
-            "roi_psnr_db": 26.090645631067947,
+            "total_bpp": 0.15116917508319744,
+            "i_frame_bpp": 0.4387787754095874,
+            "p_frame_bpp": 0.05529930830773412,
+            "roi_psnr_db": 26.560604368932005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7297959,
+            "packet_bytes": 8163387,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 48.571,
-            "gt_ap50_95_pct": 28.111,
-            "yolo_gt_ap50_pct": 44.222,
-            "yolo_gt_ap50_95_pct": 25.023
+            "gt_ap50_pct": 49.215,
+            "gt_ap50_95_pct": 28.364,
+            "yolo_gt_ap50_pct": 44.836,
+            "yolo_gt_ap50_95_pct": 25.375
           },
           "37": {
-            "total_bpp": 0.0678390762180958,
-            "i_frame_bpp": 0.2161770422481796,
-            "p_frame_bpp": 0.018393087541401194,
-            "roi_psnr_db": 23.66395388349514,
+            "total_bpp": 0.07395794322189775,
+            "i_frame_bpp": 0.2349494267435907,
+            "p_frame_bpp": 0.020294115381333435,
+            "roi_psnr_db": 23.89635922330096,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3663423,
+            "packet_bytes": 3993852,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 39.477,
-            "gt_ap50_95_pct": 22.101,
-            "yolo_gt_ap50_pct": 36.046,
-            "yolo_gt_ap50_95_pct": 19.735
+            "gt_ap50_pct": 39.79,
+            "gt_ap50_95_pct": 22.451,
+            "yolo_gt_ap50_pct": 36.649,
+            "yolo_gt_ap50_95_pct": 20.157
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -16.19877695549664,
-        "bdbr_tot_gt_ap50_95_pct": -14.437185285132392,
-        "bdbr_tot_yolo_gt_ap50_pct": -14.687906964278286,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -12.219252258579449,
-        "bdbr_p_gt_ap50_pct": -16.58930174623675,
-        "bdbr_p_gt_ap50_95_pct": -14.217428659577003,
-        "bdbr_p_yolo_gt_ap50_pct": -14.572454251306944,
-        "bdbr_p_yolo_gt_ap50_95_pct": -11.11349175240658
+        "bdbr_tot_gt_ap50_pct": -8.75643850198048,
+        "bdbr_tot_gt_ap50_95_pct": -6.79905909335301,
+        "bdbr_tot_yolo_gt_ap50_pct": -11.779972611006539,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -9.0142307692345,
+        "bdbr_p_gt_ap50_pct": -7.218376360884971,
+        "bdbr_p_gt_ap50_95_pct": -4.37897545922149,
+        "bdbr_p_yolo_gt_ap50_pct": -11.493735600368716,
+        "bdbr_p_yolo_gt_ap50_95_pct": -7.471170921080006
       },
       "tscope_temporal_ctu_qp": {
         "per_qp": {
           "22": {
-            "total_bpp": 0.4974640781439624,
-            "i_frame_bpp": 1.0572104592925136,
-            "p_frame_bpp": 0.3108819510944453,
-            "roi_psnr_db": 30.254247572815505,
+            "total_bpp": 0.6012182328307513,
+            "i_frame_bpp": 1.2739178555683024,
+            "p_frame_bpp": 0.3769850252515676,
+            "roi_psnr_db": 32.256594660194175,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 26863888,
+            "packet_bytes": 32466785,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 55.737,
-            "gt_ap50_95_pct": 32.655,
-            "yolo_gt_ap50_pct": 49.812,
-            "yolo_gt_ap50_95_pct": 28.928
+            "gt_ap50_pct": 56.631,
+            "gt_ap50_95_pct": 33.239,
+            "yolo_gt_ap50_pct": 50.617,
+            "yolo_gt_ap50_95_pct": 29.457
           },
           "27": {
-            "total_bpp": 0.260403086838213,
-            "i_frame_bpp": 0.6422486536711165,
-            "p_frame_bpp": 0.13312123122724515,
-            "roi_psnr_db": 28.141587378640757,
+            "total_bpp": 0.31117813332566935,
+            "i_frame_bpp": 0.7712246052269797,
+            "p_frame_bpp": 0.15782930935856593,
+            "roi_psnr_db": 29.423750000000005,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 14062200,
+            "packet_bytes": 16804137,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 53.064,
-            "gt_ap50_95_pct": 30.822,
-            "yolo_gt_ap50_pct": 47.798,
-            "yolo_gt_ap50_95_pct": 27.413
+            "gt_ap50_pct": 54.266,
+            "gt_ap50_95_pct": 31.711,
+            "yolo_gt_ap50_pct": 48.701,
+            "yolo_gt_ap50_95_pct": 28.151
           },
           "32": {
-            "total_bpp": 0.13344620269479104,
-            "i_frame_bpp": 0.3721636429573726,
-            "p_frame_bpp": 0.053873722607263856,
-            "roi_psnr_db": 25.85208252427184,
+            "total_bpp": 0.1563926622705552,
+            "i_frame_bpp": 0.4407974539451229,
+            "p_frame_bpp": 0.061591065045699334,
+            "roi_psnr_db": 26.617648058252403,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 7206317,
+            "packet_bytes": 8445464,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 47.732,
-            "gt_ap50_95_pct": 27.416,
-            "yolo_gt_ap50_pct": 43.423,
-            "yolo_gt_ap50_95_pct": 24.583
+            "gt_ap50_pct": 49.443,
+            "gt_ap50_95_pct": 28.45,
+            "yolo_gt_ap50_pct": 44.826,
+            "yolo_gt_ap50_95_pct": 25.486
           },
           "37": {
-            "total_bpp": 0.06657985576148172,
-            "i_frame_bpp": 0.20474843145574181,
-            "p_frame_bpp": 0.020523663863395023,
-            "roi_psnr_db": 23.533791262135914,
+            "total_bpp": 0.07572203700982251,
+            "i_frame_bpp": 0.23559103660213138,
+            "p_frame_bpp": 0.02243237047905289,
+            "roi_psnr_db": 23.91974514563108,
             "roi_psnr_aggregation": "frame_weighted_mean_clip_roi_psnr_diagnostic_only",
-            "packet_bytes": 3595423,
+            "packet_bytes": 4089116,
             "pixel_count": 432013312,
             "frame_count": 1648,
-            "gt_ap50_pct": 38.781,
-            "gt_ap50_95_pct": 21.968,
-            "yolo_gt_ap50_pct": 35.257,
-            "yolo_gt_ap50_95_pct": 19.347
+            "gt_ap50_pct": 39.859,
+            "gt_ap50_95_pct": 22.526,
+            "yolo_gt_ap50_pct": 36.341,
+            "yolo_gt_ap50_95_pct": 19.956
           }
         },
         "bdbr_unavailable_reasons": {},
-        "bdbr_tot_gt_ap50_pct": -8.344872905925282,
-        "bdbr_tot_gt_ap50_95_pct": -8.785369732095605,
-        "bdbr_tot_yolo_gt_ap50_pct": -6.969707177792605,
-        "bdbr_tot_yolo_gt_ap50_95_pct": -7.18805430905708,
-        "bdbr_p_gt_ap50_pct": 7.612400796821706,
-        "bdbr_p_gt_ap50_95_pct": 7.066884385779071,
-        "bdbr_p_yolo_gt_ap50_pct": 9.80908616118703,
-        "bdbr_p_yolo_gt_ap50_95_pct": 9.583358723193225
+        "bdbr_tot_gt_ap50_pct": -7.627077547897166,
+        "bdbr_tot_gt_ap50_95_pct": -7.0683344261922905,
+        "bdbr_tot_yolo_gt_ap50_pct": -7.100206613480964,
+        "bdbr_tot_yolo_gt_ap50_95_pct": -5.563539678576901,
+        "bdbr_p_gt_ap50_pct": -0.1262625743992274,
+        "bdbr_p_gt_ap50_95_pct": 0.9306622179627411,
+        "bdbr_p_yolo_gt_ap50_pct": 0.6076404194440999,
+        "bdbr_p_yolo_gt_ap50_95_pct": 2.991970999343563
       },
       "oracle_gt_mask_upper_bound": {
         "per_qp": {
@@ -4148,425 +4148,425 @@
   },
   "source_files": [
     {
-      "sha256": "5140cf8e416d0918eb28590db6951ac0bbd966b8a2648103850787b5a2bbad47",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_00_qo99kvjr\\eval_shard_00of21_full_tscope.json"
+      "sha256": "1318d1ad8f9aa26ded2161c522d627a997a36d65c8b29203c85862ba78521f8e",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_00_vlyn3qlj\\eval_shard_00of21_full_tscope.json"
     },
     {
-      "sha256": "dd36f608e6a330bd14139dbd1a64c8f72b58b9c4d4f61bf84d5ff6ea24d87ca3",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_00_qo99kvjr\\eval_shard_00of21_iwa_gop_qp_reuse.json"
+      "sha256": "b73c815492593b773a17885e2c664ebdf32356df40a0b806378b137c85977e90",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_00_vlyn3qlj\\eval_shard_00of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "33a64878972b2483aae53f2b7ae10d217f1b172c260fe95b93f9ccf5815be63f",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_00_qo99kvjr\\eval_shard_00of21_proxy_only_zhao.json"
+      "sha256": "ac202e5c0003a77eb53e9b67b2825c18f4cca8d90ea404b00c1bcc66bcef5071",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_00_vlyn3qlj\\eval_shard_00of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "8eacec5686d3cd46e7948d58d5bbeab59a8f95109419f08b66feeefa3594a155",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_00_qo99kvjr\\eval_shard_00of21_spatial_only_scope.json"
+      "sha256": "859e43b1f9a9b5b4ecbe7c5a76e4ced857cb2f351c955a8c4ca682ed40302013",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_00_vlyn3qlj\\eval_shard_00of21_spatial_only_scope.json"
     },
     {
-      "sha256": "666c20b569fb0f75acbb022c854a73d11862dc6610e86c3050c99f300b59fec7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_00_qo99kvjr\\eval_shard_00of21_wo_ctu_delta_qp.json"
+      "sha256": "b037d40beb98739df6be7ff65664b81c2b60883640fba60553c65b870aa9daaf",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_00_vlyn3qlj\\eval_shard_00of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "be0d54292d8b49a7265631162b9a5fc68dcfae43e20c1e21b5481f9f04b5887a",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_01_ug9rqyfd\\eval_shard_01of21_full_tscope.json"
+      "sha256": "e14bc2759393f22febc6c83ad9527dc75fc6e52fb4984ad23a5d9d04a628222b",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_01_5w0chdmj\\eval_shard_01of21_full_tscope.json"
     },
     {
-      "sha256": "a3a7dc1c1852ce9a96cc923c950e324a01f0b9dfafa84f7575d588191ca76ef1",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_01_ug9rqyfd\\eval_shard_01of21_iwa_gop_qp_reuse.json"
+      "sha256": "6389203eb5767be945b0573ed761de8c170ba8776850064e68b4b5adc2149dfb",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_01_5w0chdmj\\eval_shard_01of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "9173c739a66526cc98484b588772b7667216a02ff76121c708a0abfef6d530f5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_01_ug9rqyfd\\eval_shard_01of21_proxy_only_zhao.json"
+      "sha256": "fd93a6931cd9b55e233b1a171dad88c2d325f004b1b722c1417f019e16b067da",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_01_5w0chdmj\\eval_shard_01of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "8ecd28d4c0bd7a8acef2f6ffa76518c071ee953701726a8c7087a6e8ff20c4f9",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_01_ug9rqyfd\\eval_shard_01of21_spatial_only_scope.json"
+      "sha256": "36d475f012c76eb90e703bf6da2f9557259b1691a61d903d5e3a48cb3cbe6229",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_01_5w0chdmj\\eval_shard_01of21_spatial_only_scope.json"
     },
     {
-      "sha256": "c809e4f488c0e748cd6f50c59ed577b77c6d67d62109d369e1939f364d64dcb4",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_01_ug9rqyfd\\eval_shard_01of21_wo_ctu_delta_qp.json"
+      "sha256": "1d836814ca129d017ef7ef4eaabdf41df680191aaf93b47e0cb21bdc35a9ee21",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_01_5w0chdmj\\eval_shard_01of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "dcb2a0d820d97f75e162420a27117413c955a05a493f048885ecab8615392057",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_02_gpqpi7wy\\eval_shard_02of21_full_tscope.json"
+      "sha256": "399bc090484debd88b16cb1978fdf01b8a006f28375e586ccd991bf40a237dbf",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_02_vwe02ztu\\eval_shard_02of21_full_tscope.json"
     },
     {
-      "sha256": "6ef01156a5075aa9e7fa05a438fab2ac6081838867c7731909d239339522afd2",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_02_gpqpi7wy\\eval_shard_02of21_iwa_gop_qp_reuse.json"
+      "sha256": "4009e6e80f50f033dfe1170fe5207b7aa92aefbb6a5c2af07dcc24813ff2c532",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_02_vwe02ztu\\eval_shard_02of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "892a86e823faaa23c04d73d426051b58e4e990aeca89c554127f80248f8e398b",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_02_gpqpi7wy\\eval_shard_02of21_proxy_only_zhao.json"
+      "sha256": "a9654aa82d4ed1b692fe5484d197d098f0e3be2fa06aa99982041ae7e8881bf4",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_02_vwe02ztu\\eval_shard_02of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "28f8d30887c4fc0843efa9e918e3a64f06bfea32b1fd9295801b2242a3e9a434",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_02_gpqpi7wy\\eval_shard_02of21_spatial_only_scope.json"
+      "sha256": "41207fd50500b1a960c7fad3aae621987a608d28ae71755a2d69057cbd9257e4",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_02_vwe02ztu\\eval_shard_02of21_spatial_only_scope.json"
     },
     {
-      "sha256": "30a792630894de76b89e30d9989edb4ccf61a49bc6144b87a6adfd6fcbd48b45",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_02_gpqpi7wy\\eval_shard_02of21_wo_ctu_delta_qp.json"
+      "sha256": "31b87932bd8ba20c91e45d5b6a306014ce07e75635d249a60d7c841f5251772c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_02_vwe02ztu\\eval_shard_02of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "ad01fa06914aca92ef0d6ac5ea78abce0a9add981a9090c47e14fbf504cf6c0d",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_03_d6j0pyiv\\eval_shard_03of21_full_tscope.json"
+      "sha256": "e4c4ef19cbccea56f6b64960631394bc95cf750fdff4fd6e698fc978a8c3c57a",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_03_3p6qfaxo\\eval_shard_03of21_full_tscope.json"
     },
     {
-      "sha256": "70ad88a4bfdb2e2536cca7b6d5450009bf398a9acb507e9999cc5d604741e70c",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_03_d6j0pyiv\\eval_shard_03of21_iwa_gop_qp_reuse.json"
+      "sha256": "d7b78b51fceedc5c18bb6fe91ad0e6397c0d254c814cdfe4f39329b7eae00d73",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_03_3p6qfaxo\\eval_shard_03of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "b0d1316a2d1be216d92ab45920a75d3664a133459ba0dff9e039f90736bc0875",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_03_d6j0pyiv\\eval_shard_03of21_proxy_only_zhao.json"
+      "sha256": "57de35e70dee81a8ca4284f1c9de52a9aa3b2929fdc5cf9eeb8cbc03b04806dc",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_03_3p6qfaxo\\eval_shard_03of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "0b959db1c5fa54f7e4b03fbed8d32322bd8a379ab633d7c2c1f73bacc77dcc70",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_03_d6j0pyiv\\eval_shard_03of21_spatial_only_scope.json"
+      "sha256": "6b9d1adaf5c83dc528f7911d92e6ffaf9ac4f2c0a593ea6b61b60d2e47947cde",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_03_3p6qfaxo\\eval_shard_03of21_spatial_only_scope.json"
     },
     {
-      "sha256": "64fe760416a3e3191a2d510040038507a51f4ecae79e53b6a56bc77a9b79bf86",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_03_d6j0pyiv\\eval_shard_03of21_wo_ctu_delta_qp.json"
+      "sha256": "b1bf98ff9c95a91aef65aebb987063deddc49a250b7ea355bcd114c5e17ef5ed",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_03_3p6qfaxo\\eval_shard_03of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "c8570c307ceef7a804ed674e2d6a6e14472f0e93c73c7e930493df5a4da0a804",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_04_7ttgws0s\\eval_shard_04of21_full_tscope.json"
+      "sha256": "5af77c15e55874ffa4838eeaa8067351982b594ef61cafba424f28c2763167b5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_04_is6zlz4t\\eval_shard_04of21_full_tscope.json"
     },
     {
-      "sha256": "878b8d1892cd92f71a92f9779d964a5a764c4231b9c2d792c6d1c608cd49437d",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_04_7ttgws0s\\eval_shard_04of21_iwa_gop_qp_reuse.json"
+      "sha256": "20f0b57379c7c08a5db38fb655cad61b870e2e888928919f0386576667ccf958",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_04_is6zlz4t\\eval_shard_04of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "a347b6124ec9a0c9d5402793332fa0e3317b86cee7d3b887291cb6fc33fe6f57",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_04_7ttgws0s\\eval_shard_04of21_proxy_only_zhao.json"
+      "sha256": "36b855ce0a6f12672de7fcd7f59fe537f8c6da7d9ba90f667fa088b83f0f22d1",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_04_is6zlz4t\\eval_shard_04of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "a66c6a6d5a0755a05e32cb4dfaac2cba315f2c996ec01596c3af0ff9108c16a9",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_04_7ttgws0s\\eval_shard_04of21_spatial_only_scope.json"
+      "sha256": "b6f84f5f540959c8766c8177cc21b8c7c75d7b4609b91e776672a0b9e0e13a07",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_04_is6zlz4t\\eval_shard_04of21_spatial_only_scope.json"
     },
     {
-      "sha256": "76f93935e32d9a16a3c4a51469c3a82609007932918aaa98bdfaa0728e4c3a13",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_04_7ttgws0s\\eval_shard_04of21_wo_ctu_delta_qp.json"
+      "sha256": "26ecb5f9d48d12bc9505192c31b15ad8c708fa9ad8b484a215df47f652ba071f",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_04_is6zlz4t\\eval_shard_04of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "2f3fff1faa16988237e7b30415bc113dd3b8965cbebc30ad6d6b553cc402ecac",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_05_uuqmhvnj\\eval_shard_05of21_full_tscope.json"
+      "sha256": "019ee2ce3a3a104d9a1fd7444f4e2d49eb015f1ff58e72e1fd787b60c486343f",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_05_6_tjpsc4\\eval_shard_05of21_full_tscope.json"
     },
     {
-      "sha256": "6630fadaf55cd926ca98c58e5150f55103a3acc19e11053dbd9e74a126aa4430",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_05_uuqmhvnj\\eval_shard_05of21_iwa_gop_qp_reuse.json"
+      "sha256": "1511fc207cdc7b62a32266490ecf8b02bb4120ab8008b5c98a6a1c46e683c7cc",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_05_6_tjpsc4\\eval_shard_05of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "39636b8b7ac668b715dbdf85c7d01e718d89068b15dcd903a5f06435b02a76f7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_05_uuqmhvnj\\eval_shard_05of21_proxy_only_zhao.json"
+      "sha256": "5ec3ab000b7b9782d121c6cb9f725e3d38f445cb59e1801840770daec28fefc3",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_05_6_tjpsc4\\eval_shard_05of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "06c4b2578f1c64cf5f51731bebedf37cbb8bb31c93a06c40e3505d4f35cfd49e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_05_uuqmhvnj\\eval_shard_05of21_spatial_only_scope.json"
+      "sha256": "96145230be5dfe7285a3c34f1b6f45fadaa5f130bd87c5810bd51d705bf5712b",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_05_6_tjpsc4\\eval_shard_05of21_spatial_only_scope.json"
     },
     {
-      "sha256": "e2d317f10a242c531c3619a21952640542d856b003413148fc50e575350813f6",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_05_uuqmhvnj\\eval_shard_05of21_wo_ctu_delta_qp.json"
+      "sha256": "1cd5ec36f56dcb73892efa3de88165d3a917de784d8a28dc653b2e70d409f1ce",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_05_6_tjpsc4\\eval_shard_05of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "235c90c1067ab97b3a1ba8a0f64fa7d3cf4ec35e094acb65b7cf17f4dcfb2f57",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_06_jswxt9lr\\eval_shard_06of21_full_tscope.json"
+      "sha256": "4937bc5e337b411d3d0018c1128a820e5e670eb1c649f69c485f751435e9257c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_06_l2gfi8k4\\eval_shard_06of21_full_tscope.json"
     },
     {
-      "sha256": "895ca0a6818f86f82c12d17a5b3aa8073adcb5834346b1837ae8ae5bd58a8477",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_06_jswxt9lr\\eval_shard_06of21_iwa_gop_qp_reuse.json"
+      "sha256": "a41c5376d7ae98269c23fa9f0aaea86b83a5b401494b0eeebb5de9f5aa87c6cf",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_06_l2gfi8k4\\eval_shard_06of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "8fadaa62d6d5ea55943cab2aeb1f9504373613b215169e523b1aac95f2d16a96",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_06_jswxt9lr\\eval_shard_06of21_proxy_only_zhao.json"
+      "sha256": "fe93f3e2820304ce3f4a9ce92baa7a4880e62bce99ee679d7e1256b911232575",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_06_l2gfi8k4\\eval_shard_06of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "da655085244e56046ae8a4fa86dee458575a9a929c68f1c97b32e9211fc38be0",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_06_jswxt9lr\\eval_shard_06of21_spatial_only_scope.json"
+      "sha256": "20b44691be6009d265ab8a46e5904fd6e3a4d930bedba9e23082afee244bfc57",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_06_l2gfi8k4\\eval_shard_06of21_spatial_only_scope.json"
     },
     {
-      "sha256": "22beaec53119f80500ef4920156369d6ade064f9e870bddd738cd9b4d3dbdc76",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_06_jswxt9lr\\eval_shard_06of21_wo_ctu_delta_qp.json"
+      "sha256": "80ba722c097a3b1bdea5e5a531851cf8b456b19031c59958ff35596c171abc65",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_06_l2gfi8k4\\eval_shard_06of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "b0bdc85421efe8f344208a64ba8ce7218d1508c87a226849a8ff0f2562e5e2d0",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_07_qfwh3ksg\\eval_shard_07of21_full_tscope.json"
+      "sha256": "841d4b50f18032b2fa685ef90b33cbdb6845c3ec3abad0e7dda72c7d3d18b7e4",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_07_63l_kem6\\eval_shard_07of21_full_tscope.json"
     },
     {
-      "sha256": "9347652f07b622e86193a129db1d533cfaebc2e0206f806d8eba53e73977e4b1",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_07_qfwh3ksg\\eval_shard_07of21_iwa_gop_qp_reuse.json"
+      "sha256": "b6733cac22170b07c27f759e451e968b79f7e06c27274b69ec366300106bd1f6",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_07_63l_kem6\\eval_shard_07of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "a65ff44eef261ad9aa3a9f88eea66ff3f8e8cadceaf5d68665862331759ba040",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_07_qfwh3ksg\\eval_shard_07of21_proxy_only_zhao.json"
+      "sha256": "f436aee326117ecafe88437cfe8da55e7c79a80e4770d046f21106217b422af2",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_07_63l_kem6\\eval_shard_07of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "986a9f6ac4c2143fdcc5acc2945e8ec660ec2d10b67564e10db518df14076559",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_07_qfwh3ksg\\eval_shard_07of21_spatial_only_scope.json"
+      "sha256": "54a5d9618c307626d451299f0f4ea9a929a1c554cf0f8045264837aef76fe5d8",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_07_63l_kem6\\eval_shard_07of21_spatial_only_scope.json"
     },
     {
-      "sha256": "fbb978f59c6940efe6bce0d9a4be6d7d5d6157b8c9a1cc81a60b0e78dc12abf8",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_07_qfwh3ksg\\eval_shard_07of21_wo_ctu_delta_qp.json"
+      "sha256": "0674584b6290a3652d63c3a40792f3b5415935133436296772408627d96a64a1",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_07_63l_kem6\\eval_shard_07of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "31016c393131def6dfbb0aa7c1dc3a40c968264e4fd1d81b6d3e1ad708e5daff",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_08_csw38ahm\\eval_shard_08of21_full_tscope.json"
+      "sha256": "2fd8c50bdc6a541a79f2550ab8b11e29d77ca359145f89d800ffca4122e9a2d1",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_08_23j8ysys\\eval_shard_08of21_full_tscope.json"
     },
     {
-      "sha256": "769893d5cf088b6f747e7d1cfaaac0308c6f47857c40351507c93102e6ee09c5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_08_csw38ahm\\eval_shard_08of21_iwa_gop_qp_reuse.json"
+      "sha256": "f05942971090db90fb93a1a3f71b5976a1c7cd34c272501bd34571b48b94fe74",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_08_23j8ysys\\eval_shard_08of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "efc1d4d0cf15d15cebfaec82a7f25aee6ffd3e10339f999d6b7cd4c174dfd052",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_08_csw38ahm\\eval_shard_08of21_proxy_only_zhao.json"
+      "sha256": "7d2e9805b139a0c938edff8376178988c61f0e2adb99627cf6fdf5aa6383c968",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_08_23j8ysys\\eval_shard_08of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "8bdf5c62cf7483801164df5a4ac7b4926aa0b3e647651c8fd4a6fc843986bc3e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_08_csw38ahm\\eval_shard_08of21_spatial_only_scope.json"
+      "sha256": "d3464a24dff44200175d0af6285d42a027a9ef2a7fca2580bd095b2d1dc37db6",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_08_23j8ysys\\eval_shard_08of21_spatial_only_scope.json"
     },
     {
-      "sha256": "dc2286fc807e7ef46aeeee62d954f1c1da69e532daff506472d9ed00fd40499c",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_08_csw38ahm\\eval_shard_08of21_wo_ctu_delta_qp.json"
+      "sha256": "f8983e1b4e283865d5962e6195e0873c429817b0953da95804b0b18d742104e1",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_08_23j8ysys\\eval_shard_08of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "23e69320b0216d2cd7658068a93a00f0fb3f47c7f5ef205babbce7b532a10b33",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_09_ou5b0hcb\\eval_shard_09of21_full_tscope.json"
+      "sha256": "8eacf0510837c2c7b272c7b24c99bdd90b421d96f965375463185310e05319a3",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_09_39se6zyl\\eval_shard_09of21_full_tscope.json"
     },
     {
-      "sha256": "540fb89dd8c16b3e16a2e1857625cc8571844946b21cec51bd1a3e69ce1a5a24",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_09_ou5b0hcb\\eval_shard_09of21_iwa_gop_qp_reuse.json"
+      "sha256": "0f46b07170177ca493ad156bb74a2d24fcafc3e3979ade7a27ee29227ae63a42",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_09_39se6zyl\\eval_shard_09of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "ef84d0d68662b84309a58caaa19c7078184a0c297112601e4e82359362341466",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_09_ou5b0hcb\\eval_shard_09of21_proxy_only_zhao.json"
+      "sha256": "810799d79b485ec2de70ef4a431ef980197d387f171c6f06f09a7afc8bc18d5a",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_09_39se6zyl\\eval_shard_09of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "1c2b2f135ca0469f03082e451affbc07acd462d8e2923139935b1714b3b0bac5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_09_ou5b0hcb\\eval_shard_09of21_spatial_only_scope.json"
+      "sha256": "7909ff3715dd5060990cb94b7821682a99debfb2edb7c983967d8f6a47ebaf0f",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_09_39se6zyl\\eval_shard_09of21_spatial_only_scope.json"
     },
     {
-      "sha256": "8c521624305239c428df2f1c2ef0f496588fd1d17017c958d75f1aa36f0796f2",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_09_ou5b0hcb\\eval_shard_09of21_wo_ctu_delta_qp.json"
+      "sha256": "6c7d0ad85424c54cca6fc49a8553c03bc04c51f3cf3384029a5d80c713ea9064",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_09_39se6zyl\\eval_shard_09of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "1ffc700ddda109bfe68266b64bb210bfd63979a8a7c4f0bd4f127ca82b906e9a",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_10_48z59p5s\\eval_shard_10of21_full_tscope.json"
+      "sha256": "b88a012cef070ee58a8bbbb11960b45d06cb6e762cab19575efdc53fc5f9505c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_10_f48qhmr5\\eval_shard_10of21_full_tscope.json"
     },
     {
-      "sha256": "c079c29f00ce5a208644d75ca14d22280aa92f19886b6be53f1e0a336861f953",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_10_48z59p5s\\eval_shard_10of21_iwa_gop_qp_reuse.json"
+      "sha256": "7108e38b79fbcb98626d254d370e96a741dc988dc4616b0cd0e7e0f7689f4e78",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_10_f48qhmr5\\eval_shard_10of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "4e2cd1f4536b8f94617b2586293fbc7c6bb38ca157c00b0ef9884e68ea46dfd5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_10_48z59p5s\\eval_shard_10of21_proxy_only_zhao.json"
+      "sha256": "75c4005ee54617751b5654be6b4f543357074b3b863c58d7abd3912556f7deed",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_10_f48qhmr5\\eval_shard_10of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "5d4c54183943cd9b65110de8ebb64af5df6b3b46799fdcd7c3486db14c63fc7f",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_10_48z59p5s\\eval_shard_10of21_spatial_only_scope.json"
+      "sha256": "9906afee061cfefa9c22470e0d6f9c72d9b652ffab44567ef60f159fc71bea31",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_10_f48qhmr5\\eval_shard_10of21_spatial_only_scope.json"
     },
     {
-      "sha256": "24d1430f737033b5edebfdd81ae73db57bda436d14bbe3063d10b807374cae72",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_10_48z59p5s\\eval_shard_10of21_wo_ctu_delta_qp.json"
+      "sha256": "054c353908f577e9f0a95918a47e1a5adb1d4810ab1b0dcc5d6a1d4999393bbb",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_10_f48qhmr5\\eval_shard_10of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "a871e36a76d5889abcf6c403433f83bf198f711bcdc5918ef350837c1d1a9856",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_11_gztdafmv\\eval_shard_11of21_full_tscope.json"
+      "sha256": "eb8b13abff1e7f5d9d7663b6d9a882d7826800802eb94b255622e70700e6f664",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_11_fyykmktv\\eval_shard_11of21_full_tscope.json"
     },
     {
-      "sha256": "5c9cb2708cb1d7455060752633c6e0216e665115fa71ce023aff0e29da48b013",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_11_gztdafmv\\eval_shard_11of21_iwa_gop_qp_reuse.json"
+      "sha256": "17f002c07f4599ce5bd5f8f462324ba13f13de77207762099437c10a9a7130aa",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_11_fyykmktv\\eval_shard_11of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "8b2fb8a4ffbd4c2432ea2cb82497c846795ddcc190118a16e940f81b6c11f693",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_11_gztdafmv\\eval_shard_11of21_proxy_only_zhao.json"
+      "sha256": "fffaf3c6c3d0c3c9b66d33eb67ac7e765126520082ce6816c37a2929676d5ecc",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_11_fyykmktv\\eval_shard_11of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "9293e9fe453a382f41233204231805ff3ad35a9d0884c4c928bfa6e87babe229",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_11_gztdafmv\\eval_shard_11of21_spatial_only_scope.json"
+      "sha256": "28d9c917c08981d2869ab16cf480a363302ed3ef06c30bdd7a25a117bcfea0c0",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_11_fyykmktv\\eval_shard_11of21_spatial_only_scope.json"
     },
     {
-      "sha256": "bb45f1e43953ad1aec1fe5c274b1e2766cddeb6f46426bf4511b5ded872e0871",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_11_gztdafmv\\eval_shard_11of21_wo_ctu_delta_qp.json"
+      "sha256": "d903263dd73a8fed703689deb0b0b5eea564515da9e092df34ea369619ac64f7",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_11_fyykmktv\\eval_shard_11of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "f862a3eafbf8d1e8b1d0c862431f4bef6cebb95f8617179e9c887f8f74d88578",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_12_pifsg5xp\\eval_shard_12of21_full_tscope.json"
+      "sha256": "e15475dfac6fb1e86442b45a200088d1a000199400449b86a3f30045dd1215cb",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_12_2b7osw3m\\eval_shard_12of21_full_tscope.json"
     },
     {
-      "sha256": "e0fbde13afde345bfa0a5a91f92c614002b7e5d5e006bc13030a03b9e153064e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_12_pifsg5xp\\eval_shard_12of21_iwa_gop_qp_reuse.json"
+      "sha256": "da0588cf5f2654dfb10a48e7c5bee621cd0898834351f33afc7014608b281d6e",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_12_2b7osw3m\\eval_shard_12of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "a5e6d602212446a74b30ad939de32a517bbe25f166047a9bac5f8025057bc915",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_12_pifsg5xp\\eval_shard_12of21_proxy_only_zhao.json"
+      "sha256": "89e148ca3dac19156fbae6a7be166aaaea26297d63d374af47279240dd07e865",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_12_2b7osw3m\\eval_shard_12of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "a981b01a3bc5e85bd6a312f2f95a3cf26b382794cfcbe68c1a8b372e3da405c6",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_12_pifsg5xp\\eval_shard_12of21_spatial_only_scope.json"
+      "sha256": "9855e747fc11fa00eca447cb8bc7538c25af60828820b56ddd11375c479b1d3c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_12_2b7osw3m\\eval_shard_12of21_spatial_only_scope.json"
     },
     {
-      "sha256": "941d7b7da834bc03555087db203041c060dae8ba26279f28ce6c410ff82b98b7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_12_pifsg5xp\\eval_shard_12of21_wo_ctu_delta_qp.json"
+      "sha256": "b2312c311e286af2be68db88e9b906648cc99b7894f3a6b4cc03689fed221924",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_12_2b7osw3m\\eval_shard_12of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "b17464d33657dd215fec5a7bf0e7cc66b9e085660d4f73661031f59abf6c2298",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_13_1bs08jch\\eval_shard_13of21_full_tscope.json"
+      "sha256": "5ba43b4cfd9d8173161ea57a20bea7cba78d53b9feba1e85391dd893b74489d6",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_13_jwst9o7l\\eval_shard_13of21_full_tscope.json"
     },
     {
-      "sha256": "fd63e4cdb66d5e84780239cff06846e9c3753980c101a058cddaacd4045d7f6b",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_13_1bs08jch\\eval_shard_13of21_iwa_gop_qp_reuse.json"
+      "sha256": "b52d36ec97539b58175dc4ad538f2a47951d636165c1abf57d3ba90923113fbf",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_13_jwst9o7l\\eval_shard_13of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "04419f67ebfea72ff8d0c3eb4ee8022edf1ecf81e873f03b3c6ed315f19daab0",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_13_1bs08jch\\eval_shard_13of21_proxy_only_zhao.json"
+      "sha256": "6644cbe217375148011bc5d4109311b8aaeae450a9647dbdb96154ceb15b397c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_13_jwst9o7l\\eval_shard_13of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "a57f59fa85321590cc9ce620b63cc8bbf491b4a8a091f81670e5a3711ce36044",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_13_1bs08jch\\eval_shard_13of21_spatial_only_scope.json"
+      "sha256": "51b077a3b5e358d3a681e727ec11ee299e05fcc862c731c3d3ae408d557d51c1",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_13_jwst9o7l\\eval_shard_13of21_spatial_only_scope.json"
     },
     {
-      "sha256": "3124d2ef2849838212e12b2b14b6054bcb365cff12bfd2d92af8d9cb30a4c77e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_13_1bs08jch\\eval_shard_13of21_wo_ctu_delta_qp.json"
+      "sha256": "64fd936680a388b8c35e6dc4b9d80352088957de52969effb2672d8e33c8b72a",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_13_jwst9o7l\\eval_shard_13of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "71f1d88bb868ec177d29d41a6d249923b2a7ccdc2b01532a1090b4b6dc25c7de",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_14_qppkhmco\\eval_shard_14of21_full_tscope.json"
+      "sha256": "216821915130eb7f51baad453c668857c80fb89a5cd2bfefe8498be1290abd78",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_14_k10s6__7\\eval_shard_14of21_full_tscope.json"
     },
     {
-      "sha256": "06997404d9424a239ea0493a0a8ad12249b8fa8e51073474bcdb6d93134c0922",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_14_qppkhmco\\eval_shard_14of21_iwa_gop_qp_reuse.json"
+      "sha256": "1887575551c145d0e3f278a663c948d4c4c2227eb193602e3f8f2f3b258cf926",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_14_k10s6__7\\eval_shard_14of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "10f5ddcafc952aedbba4b85ca81ce5a1d92ca0037a08a9dc2380c6dfe14cfcb9",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_14_qppkhmco\\eval_shard_14of21_proxy_only_zhao.json"
+      "sha256": "43c59bfdf39001f7f2b0add38455dcea155c0205331a91b7a7fa01492d5d589a",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_14_k10s6__7\\eval_shard_14of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "2fb39697beca207542b439ecbacaef3d8bde059cddf5dc03a75d491984c922a2",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_14_qppkhmco\\eval_shard_14of21_spatial_only_scope.json"
+      "sha256": "0d8cd4621332220166686e9b571481fab30b770df34109e3c46fa4d3b70dd3b0",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_14_k10s6__7\\eval_shard_14of21_spatial_only_scope.json"
     },
     {
-      "sha256": "7d8432c345812cf86fe4a74dec611cc277cc47bfd8475903860a0f9023701c48",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_14_qppkhmco\\eval_shard_14of21_wo_ctu_delta_qp.json"
+      "sha256": "15a53fbf8791b4080f120a0b2729684faabff312bdb3eb2b34c557d29bf71e6e",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_14_k10s6__7\\eval_shard_14of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "924eb8d8b26d64ea6adc2bcd25e2cb4c81a5bb35726ad7deb8f11f59b2b016e5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_15_vymxfd97\\eval_shard_15of21_full_tscope.json"
+      "sha256": "77610a8b912910ee8a734ce877dcae6bf68f2d7dab604aabefae581ebee0dac7",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_15_nhe9q5d5\\eval_shard_15of21_full_tscope.json"
     },
     {
-      "sha256": "b2108b6bc7bcf25b861d9e185d99d7b113f5f3f633b7e4dbeecc99d08f8a76ef",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_15_vymxfd97\\eval_shard_15of21_iwa_gop_qp_reuse.json"
+      "sha256": "aab5ecdd463f4bcc32ec677a73e5b346388f59de63d30ac317b64a06dd573a0f",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_15_nhe9q5d5\\eval_shard_15of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "8ee95ab13c98ce613bfdd7336aee315023f29ef3baf98d01a34c5016fd579b6a",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_15_vymxfd97\\eval_shard_15of21_proxy_only_zhao.json"
+      "sha256": "d0078ca073077b79b4290c66d46c97342f9a46213b91fa61eb966ae93ce1203d",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_15_nhe9q5d5\\eval_shard_15of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "56c5cbb9e28f35cfad691ebd33364161c4d5e9cee7e37b6c7873b693c954347d",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_15_vymxfd97\\eval_shard_15of21_spatial_only_scope.json"
+      "sha256": "13970c327512c467af4b24fb6936076837c481d508736e3a3c721a45598b223d",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_15_nhe9q5d5\\eval_shard_15of21_spatial_only_scope.json"
     },
     {
-      "sha256": "6d9e2d4b5e5c9d293c05156b0d72918f726df59ddd06fb41a82c7f368403ea02",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_15_vymxfd97\\eval_shard_15of21_wo_ctu_delta_qp.json"
+      "sha256": "177978efe0c874b726ad54d06cfb7bfa2456ff9fcb64528f6b4981f4dbafac2c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_15_nhe9q5d5\\eval_shard_15of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "e10a6a05599805e839490846bc01532f42ccbacc866f4193547790c63d88cd27",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_16_osqla0dw\\eval_shard_16of21_full_tscope.json"
+      "sha256": "46528459cfec4810900447d506d062476fd71b79be02e62c3a5e310fd6f04045",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_16_e208rh41\\eval_shard_16of21_full_tscope.json"
     },
     {
-      "sha256": "66a6395eb2f9fa1f53325938a68d11ccbc94fcb0bc89ce23d245cba51d0b7fd4",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_16_osqla0dw\\eval_shard_16of21_iwa_gop_qp_reuse.json"
+      "sha256": "4e06cf002679238eb31e9a28124a4a23305da4b537c6dfa1742a631b68edd485",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_16_e208rh41\\eval_shard_16of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "2350bfbf0728e65025c120db2048c6b0cac8e2facfb172aabde9b70bb10bf3ee",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_16_osqla0dw\\eval_shard_16of21_proxy_only_zhao.json"
+      "sha256": "5b9af77812e265b4c954a75950c2a60ed9ad4f9b76ea5feba9d067206dde6b0e",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_16_e208rh41\\eval_shard_16of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "4186e011e2479759b3b3997e4da4ec06ff711875631dc1b46968ff04c1c05187",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_16_osqla0dw\\eval_shard_16of21_spatial_only_scope.json"
+      "sha256": "1f3bec5aef4047fc22b62de1993c0a6de35c5655060ed5a5f2409652e0c24cc5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_16_e208rh41\\eval_shard_16of21_spatial_only_scope.json"
     },
     {
-      "sha256": "92ef7e0cd267b992c21d73f9c21192c74198a03576090ab4945c1051fd2bbf5e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_16_osqla0dw\\eval_shard_16of21_wo_ctu_delta_qp.json"
+      "sha256": "6b3e4cb506c2c7ff999e64ff4e7b8ae7e33695bf661291ce78b7c7b84650cf03",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_16_e208rh41\\eval_shard_16of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "3079ab52cad41a0cdb85eff15a7d9df695eb35138f0bac795668241b62350716",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_17_iy3g8bqi\\eval_shard_17of21_full_tscope.json"
+      "sha256": "a5718e7d5357cc5183e653d70eaa83e275ec8763b9c7e6bc9b05f29d49b23b64",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_17_pnkv04gn\\eval_shard_17of21_full_tscope.json"
     },
     {
-      "sha256": "a534bb1f50a7ce9df87ba78f77eeba66ebc7bae5fe0c98cf9d64b11204c8552a",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_17_iy3g8bqi\\eval_shard_17of21_iwa_gop_qp_reuse.json"
+      "sha256": "2648d73b750df7287c9580f700790c910cb2df7f445e6ad006a6f89cf22674c5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_17_pnkv04gn\\eval_shard_17of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "b5a8da6381e4c8e866791a6353982506a17821969f51283c3ec6917c8511caa7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_17_iy3g8bqi\\eval_shard_17of21_proxy_only_zhao.json"
+      "sha256": "48368f9cf6cc41512e5ab426717afbf6852ae4186d528552744f26c1413bbd61",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_17_pnkv04gn\\eval_shard_17of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "cdd16cfaea95db782a6b11ab148b32cfdb5f5e094897b860178358f926c1a14d",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_17_iy3g8bqi\\eval_shard_17of21_spatial_only_scope.json"
+      "sha256": "e16a7928fa7ceb479f89288ddad32ee59a8e4234e53d8f1aa71243c957462f13",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_17_pnkv04gn\\eval_shard_17of21_spatial_only_scope.json"
     },
     {
-      "sha256": "3d454c5599799fea8d6fb6d0e66cc97c960c7660e5f29fe07631d043c3a38735",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_17_iy3g8bqi\\eval_shard_17of21_wo_ctu_delta_qp.json"
+      "sha256": "159ec0a4e3ede33fcdf9a7965e38a474b4af1870e0f5b16a4dd04a3d5cddc3e7",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_17_pnkv04gn\\eval_shard_17of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "4b19871ee0181beddd37b37b5e3cf7e7c76b6ed3f9ada43c824b74858f4558c7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_18_yh8levzs\\eval_shard_18of21_full_tscope.json"
+      "sha256": "91a16ce5c4e689d9a5292007d8f1ddbf4e6feae75b1d829eab2ac65e11f7a1a5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_18_e5ump7g3\\eval_shard_18of21_full_tscope.json"
     },
     {
-      "sha256": "229c7daded4f54dd7d21e70beaf24cdd4dde31438a58d3b8e7584dff86a46b47",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_18_yh8levzs\\eval_shard_18of21_iwa_gop_qp_reuse.json"
+      "sha256": "e90c41ba5db33cbdea4a194b4ba597cb8ff954b7eb7dbd1044a04c3a9e229d99",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_18_e5ump7g3\\eval_shard_18of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "2390c81ba67187289fb8c1861c27627218129eb3835fe7149473cc2fe51391a7",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_18_yh8levzs\\eval_shard_18of21_proxy_only_zhao.json"
+      "sha256": "727bc0111733c0cb79402260f84e523d25f2ff69a3e74d5f95c8498f811cee30",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_18_e5ump7g3\\eval_shard_18of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "c206dfe62db45eb72d4b939f34e00ffef6f8b6387032810d2d8242ab193638ab",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_18_yh8levzs\\eval_shard_18of21_spatial_only_scope.json"
+      "sha256": "aafd2159b70d405b6312e8657bc18a1ccc3056273b14f646517fca625cc5c86c",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_18_e5ump7g3\\eval_shard_18of21_spatial_only_scope.json"
     },
     {
-      "sha256": "4ef515ac8e51a7ec1833fbee9b8f49e8ed2db78a664ba19129de14349baf93bd",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_18_yh8levzs\\eval_shard_18of21_wo_ctu_delta_qp.json"
+      "sha256": "42e7fd6dfd50c48366ba10cdfadd9de9abd5b079ed9a12df6c6e0fab5927fad5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_18_e5ump7g3\\eval_shard_18of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "25ab8e3b885ebd8d8ddc6c2f58fd9d7f44923a035d47c85ae7894277e0e91643",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_19_olqjvaqa\\eval_shard_19of21_full_tscope.json"
+      "sha256": "1c8a88b59c87fcea972239db68f8421decfabe2694842fb071bca44f9781956d",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_19_h8e0q319\\eval_shard_19of21_full_tscope.json"
     },
     {
-      "sha256": "cda45d9f01c8ee82865fe09a9fcd6d8ba89cf5c8521d8cb601a9d4a80289f18e",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_19_olqjvaqa\\eval_shard_19of21_iwa_gop_qp_reuse.json"
+      "sha256": "ea7ae61be1fccab1305ac0a13c9aa77fa4c859845bc8618de71add86c18d9432",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_19_h8e0q319\\eval_shard_19of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "5e7b619d5d5d498ee8c2352d38c85a670de19d1ba49f3c8de46ed685cbad0f44",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_19_olqjvaqa\\eval_shard_19of21_proxy_only_zhao.json"
+      "sha256": "fc8131e76d6d369129c70954281308c6a0effd3f5af14a033c1bedf47135f228",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_19_h8e0q319\\eval_shard_19of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "934a0c38332834cb42161e5e45c76f1806484cb525f8ab6cff0c8f299bddfce4",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_19_olqjvaqa\\eval_shard_19of21_spatial_only_scope.json"
+      "sha256": "9e9b33e821f02579ad1762ccd3bf3b134b5ded2d7ddd54a66651517bb93351e8",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_19_h8e0q319\\eval_shard_19of21_spatial_only_scope.json"
     },
     {
-      "sha256": "b04dadc6b3d90ad8a20a83c05e20dcc5dbe4d9d807eaaed4786a2a49d3c99a28",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_19_olqjvaqa\\eval_shard_19of21_wo_ctu_delta_qp.json"
+      "sha256": "f9bf2ca03dcb7fa39d9bea18d184a2540faf4b0259123d4aacf27a1911b623f5",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_19_h8e0q319\\eval_shard_19of21_wo_ctu_delta_qp.json"
     },
     {
-      "sha256": "1f2be91fd31fb570d8a69c8f4a9cf6001558bb00eaae62401b27e33f4e3b6e02",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_20_6s40qcd9\\eval_shard_20of21_full_tscope.json"
+      "sha256": "ecc46b09663132cd13d5efcb15e2ff4c36557de8fa279a9f53b5a2428cc63495",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_20_a6sty097\\eval_shard_20of21_full_tscope.json"
     },
     {
-      "sha256": "1591c61a91905b54a48b4c5c829e3512a4a2d62867ed7db9c718b59194f992f0",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_20_6s40qcd9\\eval_shard_20of21_iwa_gop_qp_reuse.json"
+      "sha256": "02452aa405e6a93f3f941992b2f60e4e4b9fb83c573cdd7960970c1185410ee7",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_20_a6sty097\\eval_shard_20of21_iwa_gop_qp_reuse.json"
     },
     {
-      "sha256": "e1b313616c1b7b3d7694f2bbe81c30d371295efc3ca003e933e4808b2087fe92",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_20_6s40qcd9\\eval_shard_20of21_proxy_only_zhao.json"
+      "sha256": "a1b0274d6765291f5726fc493d334239ade5ade4e9bf03adc63397dc416edc2d",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_20_a6sty097\\eval_shard_20of21_proxy_only_zhao.json"
     },
     {
-      "sha256": "a0045acb6a838435a8961b1c55516ec2e76a0d4b3821edd2456feeadd4488496",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_20_6s40qcd9\\eval_shard_20of21_spatial_only_scope.json"
+      "sha256": "dcc3b535d5e4dccfba774597259305fee54f761abc3f139a8766f0eb3a96a7e8",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_20_a6sty097\\eval_shard_20of21_spatial_only_scope.json"
     },
     {
-      "sha256": "0e044ef7a74a87170cfd8ebac09325cb24f936642af69cec0b44f6af508decd5",
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_uhcv44re\\shard_20_6s40qcd9\\eval_shard_20of21_wo_ctu_delta_qp.json"
+      "sha256": "57a444d765cbe11caeaf32089327938eb5859808bcec7734599461b1df31da94",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_11ww5rzd\\shard_20_a6sty097\\eval_shard_20of21_wo_ctu_delta_qp.json"
     }
   ],
-  "source_manifest_sha256": "7bdb7d7178fdefa2ad22096774109072af699af1f44f36e9f9d1b0cc440e6d40"
+  "source_manifest_sha256": "1c240c09ba4ae6970e4d347d3774d902e589e28ef1615562a97980a420fa8866"
 }

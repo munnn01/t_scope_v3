@@ -1,23 +1,23 @@
 {
-  "benchmark": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\merged_benchmarks.json",
+  "benchmark": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\merged_benchmarks.json",
   "sequence": "MOT17-11-FRCNN",
   "clip_start_frame": 1,
   "frame_number": 3,
   "source_frames": [
     {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000001.jpg",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000001.jpg",
       "sha256": "45c999f9f2bff3d308cf8cd877ff63b95394f53e7319c1b9c444acff77d73b3c"
     },
     {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000002.jpg",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000002.jpg",
       "sha256": "14557fbf651ddacdc80632e4264dfc4501cae0b9881d26cdaa2bf53432a78388"
     },
     {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000003.jpg",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000003.jpg",
       "sha256": "530321e0dc7ffcfd3bf4930e0d0f8edf9375786d8a5964508e278b27d2aa6dc7"
     },
     {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000004.jpg",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\data\\real_mot17_vis\\MOT17-11-FRCNN\\img1\\000004.jpg",
       "sha256": "0f73b9c2c0f6a5dff2ae28e39825719713fe9c05b1937f0d9fbc47c8d11ce6a6"
     }
   ],
@@ -40,13 +40,13 @@
   },
   "checkpoints": {
     "full_tscope": {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\release_ckpts\\tscope_soup_full_tscope.pt",
-      "sha256": "b73380e9fd0eed89b3acde8a39206a1f7c4e18c701a7ca7f890b39688a97f80d",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\release_ckpts\\tscope_soup_full_tscope.pt",
+      "sha256": "7a6f87259fe83e2c4ef3800287a29445d27ccae1efd6853adf7cceb7a2cfc207",
       "validation": {
         "status": "validated",
         "split": "MOT17-09",
         "release_ready": true,
-        "loss_total": 3.1416758828692966,
+        "loss_total": 4.271653983328077,
         "data_fingerprints": {
           "gt_sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d",
           "frames": [
@@ -2148,7 +2148,7 @@
             }
           ]
         },
-        "source_soup_sha256": "35495b0dda44c15b68cdc5970e3e0ddecffcea3ed43614a90618179dd147fb3e",
+        "source_soup_sha256": "2ac12f330c1ffa4211821b721213ffbfc795c0507d5475bc216c3682bc00177c",
         "protocol": {
           "full_clips": 131,
           "val_subsample": 2,
@@ -2162,24 +2162,24 @@
           "held_out_test_used": false
         },
         "execution_provenance": {
-          "measured_at_utc": "2026-11-14T09:22:13.276268+00:00",
-          "device": "cuda",
+          "measured_at_utc": "2026-11-15T03:58:38.878624+00:00",
+          "device": "cpu",
           "dtype": "float32",
           "feature_chunk_size": 1,
           "feature_preprocessing": "normalized_256px_images_direct_backbone_no_detector_transform",
           "dependencies": {
-            "python": "3.13.16",
-            "torch": "2.14.1+cu130",
-            "torchvision": "0.29.1+cu130"
+            "python": "3.14.3",
+            "torch": "2.13.0+cpu",
+            "torchvision": "0.28.0+cpu"
           },
           "source_sha256": {
-            "scripts/validate_soups.py": "02734a5f03bfdc4b8c65032ec4ef4c12279a6e4877db6dc1fb690bb430577ce4",
-            "scripts/experiment_protocol.py": "66abd6128d753f8b0cb365adb9632b4bc1d8b15fe6a70e6e7ba8c19adf6ebd23",
-            "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
-            "models/temporal_scope.py": "67d5ddcfe60057ed5e951421ac581731744713d6b29d10a54a3adc78b58e82e8",
-            "losses/vcm_temporal_loss.py": "8d6a51297ee32f1905de53eb30ca9ad8357e3476cbe32e8e0785dc6dedbd77db",
-            "vcm_datasets/vcm_video_datasets.py": "1e254bb19c2cc0a7a4b98fa3bc4ae599ae88416e180db9d855119ce8b1f618eb",
-            "video_codecs/hybrid_x265_ste.py": "0c5ab20d66ad46a43ad11890d6d30108f703d784e76b79e0d5e35fd6db88dcc8"
+            "scripts/validate_soups.py": "0f56fb2b885bd91a7058b413776966618ba7f955b401b0c2094f8897fa0ae4cb",
+            "scripts/experiment_protocol.py": "c496dd854268bcec1c5d55aec0457d6db9d75ddd49126b71f558ca282a22b866",
+            "models/frozen_detector_fpn.py": "0476e244792debd46bacb3c5eac040c0ce3d19aab1473c0e57f0ab3b6c6c13fe",
+            "models/temporal_scope.py": "92446a0457992387540d59f69f56dc3208ca43cd1443380f8c1c5ffc27f74771",
+            "losses/vcm_temporal_loss.py": "64566efd0d7f14bcf14db6176a74fa771ec81ee15968ccf56220844e1e1b6bbe",
+            "vcm_datasets/vcm_video_datasets.py": "5035cf3afbe6a7943bd662d63d9ce18147364dff8561ca1deca1ef9ad6b8876a",
+            "video_codecs/hybrid_x265_ste.py": "9ad6d528322eb9b8b8f8c2fb7f1fa0b1a600840db03192217efe330aa742b04e"
           },
           "training_protocol_evidence": "Original shard-01 worker has batch_size=8 and no val_subsample override; pre-repair HEAD b30baa4144e4f4b797062e9b35542a7046996519 defaults to val_subsample=2. Original remote training revision was unpinned and is not asserted.",
           "detector": {
@@ -2194,7 +2194,7 @@
             "use_real_x265_ste": true,
             "reuse_iframe_qp": false
           },
-          "ffmpeg_version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+          "ffmpeg_version": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
           "selected_clip_indices": [
             0,
             2,
@@ -2543,11 +2543,11 @@
           "batch_severity_loss_count": 18
         },
         "constituent_best_losses": [
-          2.7997816981691304,
-          2.788148861942869,
-          2.7558758945176094,
-          2.980627092448148,
-          2.8727217840425894
+          4.028481259490505,
+          4.101783860813487,
+          4.133086713877591,
+          4.069608626943646,
+          4.247978441642992
         ],
         "selection": "uniform_soup_no_test_selection"
       },
@@ -2555,48 +2555,48 @@
       "constituents": [
         {
           "shard_id": 0,
-          "checkpoint_sha256": "0c967642cd169d1117a2bce0c203fea289938d38a3239ba1ada3d6348edd0ff9",
-          "log_sha256": "a780f782b45a4004f9f9bb8cd1faf59ccd1193fae2279a89ac9969c2ebc7af42",
-          "best_epoch": 4,
-          "best_val_loss": 2.7997816981691304,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_00_x8f1o28k\\tscope_full_tscope_shard00of21.pt"
+          "checkpoint_sha256": "d1a34ebc9a29dea298ef550a0cddf9d0c984e2acb47dd1af4f731af0c4eac220",
+          "log_sha256": "b2905683220ddbcf3271c6a013812b96b2cda525055f67db0fc4c97e2f2aad02",
+          "best_epoch": 10,
+          "best_val_loss": 4.028481259490505,
+          "epochs_run": 20,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_00_3bbqjjgy\\tscope_full_tscope_shard00of21.pt"
         },
         {
           "shard_id": 5,
-          "checkpoint_sha256": "57a07c48be40507e1828c5a9c509bb31b752941445c48f0252958b64a713d6d4",
-          "log_sha256": "37b2a834de3f2d01482b13535fc3a243d55c8f45d1902907b6c59a04925493ce",
-          "best_epoch": 26,
-          "best_val_loss": 2.788148861942869,
-          "epochs_run": 36,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_05_69xg3fly\\tscope_full_tscope_shard05of21.pt"
+          "checkpoint_sha256": "c19b32e762abfdf58231b987142e081d9fe392974b17ede87081bb48e40999b1",
+          "log_sha256": "a2b3217b3a60338994ccaa180579fbb72e0db690d8c593369284f2d04df5b715",
+          "best_epoch": 10,
+          "best_val_loss": 4.101783860813487,
+          "epochs_run": 20,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_05_t_yiicvu\\tscope_full_tscope_shard05of21.pt"
         },
         {
           "shard_id": 10,
-          "checkpoint_sha256": "defd54813727a594973955274be63c76dd583da1294d4328b582ed4243545824",
-          "log_sha256": "e24cdc909fe5445f91999371e0639f88824ad1e384e349a1d65a28474f51166c",
-          "best_epoch": 16,
-          "best_val_loss": 2.7558758945176094,
-          "epochs_run": 26,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_10_iw7zxzf7\\tscope_full_tscope_shard10of21.pt"
+          "checkpoint_sha256": "afa7c9db83e8bf743d8146a6cfcb5270afe196ea7e4b6524efd62824c131ac08",
+          "log_sha256": "1232a172fa22cbbd128920d8d315cf65a1d23c3770333aed3a72a7aa3396a617",
+          "best_epoch": 10,
+          "best_val_loss": 4.133086713877591,
+          "epochs_run": 20,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_10_50zt3gxt\\tscope_full_tscope_shard10of21.pt"
         },
         {
           "shard_id": 15,
-          "checkpoint_sha256": "5c0fc6e1c8cdf8015178cf0b1cf2c1532ef8def8b6a5d5bd7e275b1e3c843c84",
-          "log_sha256": "82007346f164e5620a4f2076c8d5bc9ff386909daa0de70b75d0a6505220d218",
-          "best_epoch": 4,
-          "best_val_loss": 2.980627092448148,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_15_polbwa2m\\tscope_full_tscope_shard15of21.pt"
+          "checkpoint_sha256": "ca103d316f431664174dec228e83d25a116ac44dcc5a59199e2886b654978a3e",
+          "log_sha256": "e2b31c261d8d85e0fff2bb7734bf4a034ab67c8e4bcc45209c2348765980fc9a",
+          "best_epoch": 10,
+          "best_val_loss": 4.069608626943646,
+          "epochs_run": 20,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_15_95809qcm\\tscope_full_tscope_shard15of21.pt"
         },
         {
           "shard_id": 20,
-          "checkpoint_sha256": "8f4f04e71416cf44cb0b2bb9edcce6bdec58d95cef7b2358acf9d0c33765c40e",
-          "log_sha256": "32ff2dee41e69377ae6caf06744eb7177c1eb098a59fa629dcbe1045eb188c6d",
-          "best_epoch": 16,
-          "best_val_loss": 2.8727217840425894,
-          "epochs_run": 26,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_20_ai3o7ip5\\tscope_full_tscope_shard20of21.pt"
+          "checkpoint_sha256": "cb13236aceb7a44c5a0febae8b70a37767e5e8397c431dad246b324182958592",
+          "log_sha256": "01059b44942dc3bec09a6e782e469d14b7fe2000d03c7a89a1cf80f2dc0e1a54",
+          "best_epoch": 12,
+          "best_val_loss": 4.247978441642992,
+          "epochs_run": 22,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_20__zzdixtx\\tscope_full_tscope_shard20of21.pt"
         }
       ],
       "preserved_settings": {
@@ -2608,13 +2608,13 @@
       }
     },
     "spatial_only_scope": {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\release_ckpts\\tscope_soup_spatial_only_scope.pt",
-      "sha256": "25b65864375d47fc62f68db3773e19b874227b1232f28a40d677751e58eb8d60",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\release_ckpts\\tscope_soup_spatial_only_scope.pt",
+      "sha256": "b6cd878730764fd0183eae448b16a146631ded27ea09825a39dde5aac3429c7c",
       "validation": {
         "status": "validated",
         "split": "MOT17-09",
         "release_ready": true,
-        "loss_total": 2.114931537045373,
+        "loss_total": 2.8836510711246066,
         "data_fingerprints": {
           "gt_sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d",
           "frames": [
@@ -4716,7 +4716,7 @@
             }
           ]
         },
-        "source_soup_sha256": "b4f7228b7026c3b1ed814f1fc271e3ac5918467f57675a598dfc4a5caf8e76ae",
+        "source_soup_sha256": "d409c3edc11d62b995efa960e0e55ab228ba4a40c368ca725bd05fa446ceec22",
         "protocol": {
           "full_clips": 131,
           "val_subsample": 2,
@@ -4730,24 +4730,24 @@
           "held_out_test_used": false
         },
         "execution_provenance": {
-          "measured_at_utc": "2026-11-14T09:22:13.276268+00:00",
-          "device": "cuda",
+          "measured_at_utc": "2026-11-15T03:58:38.878624+00:00",
+          "device": "cpu",
           "dtype": "float32",
           "feature_chunk_size": 1,
           "feature_preprocessing": "normalized_256px_images_direct_backbone_no_detector_transform",
           "dependencies": {
-            "python": "3.13.16",
-            "torch": "2.14.1+cu130",
-            "torchvision": "0.29.1+cu130"
+            "python": "3.14.3",
+            "torch": "2.13.0+cpu",
+            "torchvision": "0.28.0+cpu"
           },
           "source_sha256": {
-            "scripts/validate_soups.py": "02734a5f03bfdc4b8c65032ec4ef4c12279a6e4877db6dc1fb690bb430577ce4",
-            "scripts/experiment_protocol.py": "66abd6128d753f8b0cb365adb9632b4bc1d8b15fe6a70e6e7ba8c19adf6ebd23",
-            "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
-            "models/temporal_scope.py": "67d5ddcfe60057ed5e951421ac581731744713d6b29d10a54a3adc78b58e82e8",
-            "losses/vcm_temporal_loss.py": "8d6a51297ee32f1905de53eb30ca9ad8357e3476cbe32e8e0785dc6dedbd77db",
-            "vcm_datasets/vcm_video_datasets.py": "1e254bb19c2cc0a7a4b98fa3bc4ae599ae88416e180db9d855119ce8b1f618eb",
-            "video_codecs/hybrid_x265_ste.py": "0c5ab20d66ad46a43ad11890d6d30108f703d784e76b79e0d5e35fd6db88dcc8"
+            "scripts/validate_soups.py": "0f56fb2b885bd91a7058b413776966618ba7f955b401b0c2094f8897fa0ae4cb",
+            "scripts/experiment_protocol.py": "c496dd854268bcec1c5d55aec0457d6db9d75ddd49126b71f558ca282a22b866",
+            "models/frozen_detector_fpn.py": "0476e244792debd46bacb3c5eac040c0ce3d19aab1473c0e57f0ab3b6c6c13fe",
+            "models/temporal_scope.py": "92446a0457992387540d59f69f56dc3208ca43cd1443380f8c1c5ffc27f74771",
+            "losses/vcm_temporal_loss.py": "64566efd0d7f14bcf14db6176a74fa771ec81ee15968ccf56220844e1e1b6bbe",
+            "vcm_datasets/vcm_video_datasets.py": "5035cf3afbe6a7943bd662d63d9ce18147364dff8561ca1deca1ef9ad6b8876a",
+            "video_codecs/hybrid_x265_ste.py": "9ad6d528322eb9b8b8f8c2fb7f1fa0b1a600840db03192217efe330aa742b04e"
           },
           "training_protocol_evidence": "Original shard-01 worker has batch_size=8 and no val_subsample override; pre-repair HEAD b30baa4144e4f4b797062e9b35542a7046996519 defaults to val_subsample=2. Original remote training revision was unpinned and is not asserted.",
           "detector": {
@@ -5110,10 +5110,10 @@
           "batch_severity_loss_count": 18
         },
         "constituent_best_losses": [
-          1.975747444412925,
-          2.0076338522361987,
-          1.9345736503601074,
-          1.9373361016764785
+          2.6477204958597818,
+          2.7275150147351352,
+          2.945662679094257,
+          2.848766879601912
         ],
         "selection": "uniform_soup_no_test_selection"
       },
@@ -5121,39 +5121,39 @@
       "constituents": [
         {
           "shard_id": 1,
-          "checkpoint_sha256": "39789b786ca3d2dbf0cc04e78cf52c865aead570fa22a2d898b56b094c5f6b6d",
-          "log_sha256": "d409fbf406b455a32c7eb83c38c54d9c1cf865fad70aa60d2c8ae7a1eb5677d8",
-          "best_epoch": 4,
-          "best_val_loss": 1.975747444412925,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_01_0fc8jxgx\\tscope_spatial_only_scope_shard01of21.pt"
+          "checkpoint_sha256": "85bbee0085fc77c408bc488c12d43dc180179aad321138be3b429b8b39a4ab0c",
+          "log_sha256": "8e451c266640e4c3c7e71827eeccf7075f8bd1e5f187cd07865130599c3da5dc",
+          "best_epoch": 8,
+          "best_val_loss": 2.6477204958597818,
+          "epochs_run": 18,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_01_s4fvsbnk\\tscope_spatial_only_scope_shard01of21.pt"
         },
         {
           "shard_id": 6,
-          "checkpoint_sha256": "0693373ec57540437faa5e380318c17cdf064bc58a260682188c2bcbbcace748",
-          "log_sha256": "b8a43754397034efb7cb779a41b1d61a40a336434d94edbba4d26f603efe1cc4",
-          "best_epoch": 4,
-          "best_val_loss": 2.0076338522361987,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_06_e74f3xwg\\tscope_spatial_only_scope_shard06of21.pt"
+          "checkpoint_sha256": "135a42ef4e656cb43e3ee72d444acab29402eda16b2c7a304b3a208ff5664cb8",
+          "log_sha256": "72070cb7bb45d197b7e92a633aa4a3e36f01df2ba4c3e0ede412c6933fab89f6",
+          "best_epoch": 8,
+          "best_val_loss": 2.7275150147351352,
+          "epochs_run": 18,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_06_812k_m8y\\tscope_spatial_only_scope_shard06of21.pt"
         },
         {
           "shard_id": 11,
-          "checkpoint_sha256": "6b0f313f283be17948b586a5f39c2107d93c6f546555e3ec514177cc359b0f7c",
-          "log_sha256": "3dec6094ac61b0814df2e5a74452ec613582f46866ffa69e5cf0863d68b09ad9",
-          "best_epoch": 4,
-          "best_val_loss": 1.9345736503601074,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_11_cq4gbeox\\tscope_spatial_only_scope_shard11of21.pt"
+          "checkpoint_sha256": "3f3c64cf77d9f903cad2f7f1f9880fe1b8f388a9eb0c20f4a1ed790d06ec3177",
+          "log_sha256": "0467b99311657ee47b02a7ffe6a7535b216bfd3ff1f535bf5c7d49e6631cfa61",
+          "best_epoch": 12,
+          "best_val_loss": 2.945662679094257,
+          "epochs_run": 22,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_11_fftb52qg\\tscope_spatial_only_scope_shard11of21.pt"
         },
         {
           "shard_id": 16,
-          "checkpoint_sha256": "b902eaa75baa767d391b26c109be8f3873628e597f502f455b07b2df39fde81c",
-          "log_sha256": "daa39507f5897219a70e7e80906e43e0529bf43f52a7fcafee27e954d51f6a5f",
-          "best_epoch": 14,
-          "best_val_loss": 1.9373361016764785,
-          "epochs_run": 24,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_16_js0jtne7\\tscope_spatial_only_scope_shard16of21.pt"
+          "checkpoint_sha256": "f15f42580819cad51a16c933acee2fff1f4e8065ee6d36adf08f05d30f81239d",
+          "log_sha256": "7e2f33cb601e5d2ba13b6c70b54d0e45974191f95af67eafced14adc96e5ebd8",
+          "best_epoch": 6,
+          "best_val_loss": 2.848766879601912,
+          "epochs_run": 16,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_16_8v7cjktl\\tscope_spatial_only_scope_shard16of21.pt"
         }
       ],
       "preserved_settings": {
@@ -5165,13 +5165,13 @@
       }
     },
     "wo_ctu_delta_qp": {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\release_ckpts\\tscope_soup_wo_ctu_delta_qp.pt",
-      "sha256": "a3680ac3d8b8056e6f69a37839b464f40e5cb66cebbdd1f6e87ae43940c486fa",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\release_ckpts\\tscope_soup_wo_ctu_delta_qp.pt",
+      "sha256": "3ad9fb5a1c34bd8130a5934dd78a381723b02254deaa777bb806827c69fcdeef",
       "validation": {
         "status": "validated",
         "split": "MOT17-09",
         "release_ready": true,
-        "loss_total": 3.1360378795199924,
+        "loss_total": 4.19645893573761,
         "data_fingerprints": {
           "gt_sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d",
           "frames": [
@@ -7273,7 +7273,7 @@
             }
           ]
         },
-        "source_soup_sha256": "909238ad92a09259d5f0a2f92079e826cccbad894d2885bfcfcc45a66abaaa9f",
+        "source_soup_sha256": "5b5a9200f93bde216d341faa565c7e74cd5405ffc32c725778a8a4c18e267851",
         "protocol": {
           "full_clips": 131,
           "val_subsample": 2,
@@ -7287,24 +7287,24 @@
           "held_out_test_used": false
         },
         "execution_provenance": {
-          "measured_at_utc": "2026-11-14T09:22:13.276268+00:00",
-          "device": "cuda",
+          "measured_at_utc": "2026-11-15T03:58:38.878624+00:00",
+          "device": "cpu",
           "dtype": "float32",
           "feature_chunk_size": 1,
           "feature_preprocessing": "normalized_256px_images_direct_backbone_no_detector_transform",
           "dependencies": {
-            "python": "3.13.16",
-            "torch": "2.14.1+cu130",
-            "torchvision": "0.29.1+cu130"
+            "python": "3.14.3",
+            "torch": "2.13.0+cpu",
+            "torchvision": "0.28.0+cpu"
           },
           "source_sha256": {
-            "scripts/validate_soups.py": "02734a5f03bfdc4b8c65032ec4ef4c12279a6e4877db6dc1fb690bb430577ce4",
-            "scripts/experiment_protocol.py": "66abd6128d753f8b0cb365adb9632b4bc1d8b15fe6a70e6e7ba8c19adf6ebd23",
-            "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
-            "models/temporal_scope.py": "67d5ddcfe60057ed5e951421ac581731744713d6b29d10a54a3adc78b58e82e8",
-            "losses/vcm_temporal_loss.py": "8d6a51297ee32f1905de53eb30ca9ad8357e3476cbe32e8e0785dc6dedbd77db",
-            "vcm_datasets/vcm_video_datasets.py": "1e254bb19c2cc0a7a4b98fa3bc4ae599ae88416e180db9d855119ce8b1f618eb",
-            "video_codecs/hybrid_x265_ste.py": "0c5ab20d66ad46a43ad11890d6d30108f703d784e76b79e0d5e35fd6db88dcc8"
+            "scripts/validate_soups.py": "0f56fb2b885bd91a7058b413776966618ba7f955b401b0c2094f8897fa0ae4cb",
+            "scripts/experiment_protocol.py": "c496dd854268bcec1c5d55aec0457d6db9d75ddd49126b71f558ca282a22b866",
+            "models/frozen_detector_fpn.py": "0476e244792debd46bacb3c5eac040c0ce3d19aab1473c0e57f0ab3b6c6c13fe",
+            "models/temporal_scope.py": "92446a0457992387540d59f69f56dc3208ca43cd1443380f8c1c5ffc27f74771",
+            "losses/vcm_temporal_loss.py": "64566efd0d7f14bcf14db6176a74fa771ec81ee15968ccf56220844e1e1b6bbe",
+            "vcm_datasets/vcm_video_datasets.py": "5035cf3afbe6a7943bd662d63d9ce18147364dff8561ca1deca1ef9ad6b8876a",
+            "video_codecs/hybrid_x265_ste.py": "9ad6d528322eb9b8b8f8c2fb7f1fa0b1a600840db03192217efe330aa742b04e"
           },
           "training_protocol_evidence": "Original shard-01 worker has batch_size=8 and no val_subsample override; pre-repair HEAD b30baa4144e4f4b797062e9b35542a7046996519 defaults to val_subsample=2. Original remote training revision was unpinned and is not asserted.",
           "detector": {
@@ -7319,7 +7319,7 @@
             "use_real_x265_ste": true,
             "reuse_iframe_qp": false
           },
-          "ffmpeg_version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+          "ffmpeg_version": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
           "selected_clip_indices": [
             0,
             2,
@@ -7668,10 +7668,10 @@
           "batch_severity_loss_count": 18
         },
         "constituent_best_losses": [
-          2.8874109586079917,
-          2.8966951695355503,
-          2.8332911657564566,
-          2.9067582181005767
+          4.033178549824339,
+          3.8042905691898232,
+          3.975181398969708,
+          3.9867444760871655
         ],
         "selection": "uniform_soup_no_test_selection"
       },
@@ -7679,39 +7679,39 @@
       "constituents": [
         {
           "shard_id": 2,
-          "checkpoint_sha256": "c1813066c653fb9ea891a1f23cab755d4699dd11d7766227e04e76bad396fd66",
-          "log_sha256": "75032738253fefbb8c364f469278b90e438178843749123ca9887139880b8990",
+          "checkpoint_sha256": "8f95419a45d92cd3ce2781cde9eb4a69d808a33f9333be378ade6a0282390091",
+          "log_sha256": "429f4265ebf47f0e8d0ec54d7aaa58186c588fda20dfb7cfe9869888577864cd",
           "best_epoch": 8,
-          "best_val_loss": 2.8874109586079917,
+          "best_val_loss": 4.033178549824339,
           "epochs_run": 18,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_02_sfcp7lqo\\tscope_wo_ctu_delta_qp_shard02of21.pt"
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_02_7h3k5cxd\\tscope_wo_ctu_delta_qp_shard02of21.pt"
         },
         {
           "shard_id": 7,
-          "checkpoint_sha256": "dfc88fb9ea6cc7b066c5d0c11611f722b4163ed5ffc0d2e780b56f382fda10a5",
-          "log_sha256": "1df5f234d805993c6865d882302aa92ca64557a7c7776b25ef5ffd768302e96b",
-          "best_epoch": 6,
-          "best_val_loss": 2.8966951695355503,
-          "epochs_run": 16,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_07_r485p47g\\tscope_wo_ctu_delta_qp_shard07of21.pt"
+          "checkpoint_sha256": "df1bc036d93dabb1a7db7c63fab2e46555b71f5aaee391c4c99fd2fe5323883d",
+          "log_sha256": "e5e76198d22e8e083836daa97ea0fb91facc2a430f051c9e75237aa9ea709bbe",
+          "best_epoch": 12,
+          "best_val_loss": 3.8042905691898232,
+          "epochs_run": 22,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_07_8r1srkb9\\tscope_wo_ctu_delta_qp_shard07of21.pt"
         },
         {
           "shard_id": 12,
-          "checkpoint_sha256": "93375dc35ee640128f79b2cfc0980cbc68959f26f00d27f0ad24fd00839d0f2d",
-          "log_sha256": "b03e0b611baabdc4137aaf972a0a238f336530d5414f139e9fb0e03aa5d4e1ed",
-          "best_epoch": 4,
-          "best_val_loss": 2.8332911657564566,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_12_78sr8qd5\\tscope_wo_ctu_delta_qp_shard12of21.pt"
+          "checkpoint_sha256": "951834e3b8acb06e73e304b60d12d1fd8e17f2bb1bf4127acde4b34334573716",
+          "log_sha256": "a755b7430b2373fb4b86013fea17f67df89d3d2975f33d6f02b37b5c9b62fc6a",
+          "best_epoch": 12,
+          "best_val_loss": 3.975181398969708,
+          "epochs_run": 22,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_12_qa7hzw59\\tscope_wo_ctu_delta_qp_shard12of21.pt"
         },
         {
           "shard_id": 17,
-          "checkpoint_sha256": "7de3308630eae3fa6807d2ba5cc5c8227d472ebdfda1d8a181625c085d293a48",
-          "log_sha256": "fdab882be137dfff88beb94c0eeb291671cb40a35bf8d77520df0761860f6baf",
-          "best_epoch": 4,
-          "best_val_loss": 2.9067582181005767,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_17_6g5be6ya\\tscope_wo_ctu_delta_qp_shard17of21.pt"
+          "checkpoint_sha256": "3d01bb78f563c80ab7f53b702e154e57d9657237348c83789084b85c30a5da9b",
+          "log_sha256": "53095016834a5b738cc43dcd6b6535d63aa4fd5fbd15bf7b8d9a7464190c448f",
+          "best_epoch": 6,
+          "best_val_loss": 3.9867444760871655,
+          "epochs_run": 16,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_17_f86fbilf\\tscope_wo_ctu_delta_qp_shard17of21.pt"
         }
       ],
       "preserved_settings": {
@@ -7723,13 +7723,13 @@
       }
     },
     "iwa_gop_qp_reuse": {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\release_ckpts\\tscope_soup_iwa_gop_qp_reuse.pt",
-      "sha256": "8c6b3ee18dbcc42890236353900199431ba814b77c55553e3d1c3f54c76368c9",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\release_ckpts\\tscope_soup_iwa_gop_qp_reuse.pt",
+      "sha256": "63ebeebc84eb7847caaa8422237c6b2b2003d60e3737afe4f947a65aaf70a5bc",
       "validation": {
         "status": "validated",
         "split": "MOT17-09",
         "release_ready": true,
-        "loss_total": 3.1176731851365833,
+        "loss_total": 4.2817038430107965,
         "data_fingerprints": {
           "gt_sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d",
           "frames": [
@@ -9831,7 +9831,7 @@
             }
           ]
         },
-        "source_soup_sha256": "b7abff3258cc6246156f593a0746bbe47652db36d3d76e58b51f8b321ebce25c",
+        "source_soup_sha256": "a2a117ea1fa1efe80f6964e6b862d7b4767af17e88df0cc99570319bb25c3c72",
         "protocol": {
           "full_clips": 131,
           "val_subsample": 2,
@@ -9845,24 +9845,24 @@
           "held_out_test_used": false
         },
         "execution_provenance": {
-          "measured_at_utc": "2026-11-14T09:22:13.276268+00:00",
-          "device": "cuda",
+          "measured_at_utc": "2026-11-15T03:58:38.878624+00:00",
+          "device": "cpu",
           "dtype": "float32",
           "feature_chunk_size": 1,
           "feature_preprocessing": "normalized_256px_images_direct_backbone_no_detector_transform",
           "dependencies": {
-            "python": "3.13.16",
-            "torch": "2.14.1+cu130",
-            "torchvision": "0.29.1+cu130"
+            "python": "3.14.3",
+            "torch": "2.13.0+cpu",
+            "torchvision": "0.28.0+cpu"
           },
           "source_sha256": {
-            "scripts/validate_soups.py": "02734a5f03bfdc4b8c65032ec4ef4c12279a6e4877db6dc1fb690bb430577ce4",
-            "scripts/experiment_protocol.py": "66abd6128d753f8b0cb365adb9632b4bc1d8b15fe6a70e6e7ba8c19adf6ebd23",
-            "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
-            "models/temporal_scope.py": "67d5ddcfe60057ed5e951421ac581731744713d6b29d10a54a3adc78b58e82e8",
-            "losses/vcm_temporal_loss.py": "8d6a51297ee32f1905de53eb30ca9ad8357e3476cbe32e8e0785dc6dedbd77db",
-            "vcm_datasets/vcm_video_datasets.py": "1e254bb19c2cc0a7a4b98fa3bc4ae599ae88416e180db9d855119ce8b1f618eb",
-            "video_codecs/hybrid_x265_ste.py": "0c5ab20d66ad46a43ad11890d6d30108f703d784e76b79e0d5e35fd6db88dcc8"
+            "scripts/validate_soups.py": "0f56fb2b885bd91a7058b413776966618ba7f955b401b0c2094f8897fa0ae4cb",
+            "scripts/experiment_protocol.py": "c496dd854268bcec1c5d55aec0457d6db9d75ddd49126b71f558ca282a22b866",
+            "models/frozen_detector_fpn.py": "0476e244792debd46bacb3c5eac040c0ce3d19aab1473c0e57f0ab3b6c6c13fe",
+            "models/temporal_scope.py": "92446a0457992387540d59f69f56dc3208ca43cd1443380f8c1c5ffc27f74771",
+            "losses/vcm_temporal_loss.py": "64566efd0d7f14bcf14db6176a74fa771ec81ee15968ccf56220844e1e1b6bbe",
+            "vcm_datasets/vcm_video_datasets.py": "5035cf3afbe6a7943bd662d63d9ce18147364dff8561ca1deca1ef9ad6b8876a",
+            "video_codecs/hybrid_x265_ste.py": "9ad6d528322eb9b8b8f8c2fb7f1fa0b1a600840db03192217efe330aa742b04e"
           },
           "training_protocol_evidence": "Original shard-01 worker has batch_size=8 and no val_subsample override; pre-repair HEAD b30baa4144e4f4b797062e9b35542a7046996519 defaults to val_subsample=2. Original remote training revision was unpinned and is not asserted.",
           "detector": {
@@ -9877,7 +9877,7 @@
             "use_real_x265_ste": true,
             "reuse_iframe_qp": true
           },
-          "ffmpeg_version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+          "ffmpeg_version": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
           "selected_clip_indices": [
             0,
             2,
@@ -10226,10 +10226,10 @@
           "batch_severity_loss_count": 18
         },
         "constituent_best_losses": [
-          2.837321588487336,
-          2.806524544051199,
-          2.8995810241410225,
-          2.9920074000503076
+          4.047536380363233,
+          3.9849368369940557,
+          4.06312894821167,
+          4.033175804398277
         ],
         "selection": "uniform_soup_no_test_selection"
       },
@@ -10237,39 +10237,39 @@
       "constituents": [
         {
           "shard_id": 3,
-          "checkpoint_sha256": "27b5ab53d3d90a7c2dcd23a4be1edb0f7286fd43f5d3c01c4b4dc5de04f2bb26",
-          "log_sha256": "0f2885aa97588a84500ed2fd6a1cc8f22bd5e979e7b7b7b16cb1b2d92b3b2687",
-          "best_epoch": 8,
-          "best_val_loss": 2.837321588487336,
-          "epochs_run": 18,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_03_ml243q6u\\tscope_iwa_gop_qp_reuse_shard03of21.pt"
+          "checkpoint_sha256": "46a39cf17c3c0b7a8581bde4af7227061bf5b40162aa9549085681e25b0ee47b",
+          "log_sha256": "d543f35aaa24a32e2871e0a38556d056ca2c1ddfc1d97ff0624835683be3c323",
+          "best_epoch": 6,
+          "best_val_loss": 4.047536380363233,
+          "epochs_run": 16,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_03_2n_iqut9\\tscope_iwa_gop_qp_reuse_shard03of21.pt"
         },
         {
           "shard_id": 8,
-          "checkpoint_sha256": "9c90f965ef1a83c95cda890c7893c8486f8a3ac06aa43d1e8fee28fe36b613ad",
-          "log_sha256": "71862feafc40f27451ea43af2c3363af0dc65bed9bdb830767e83675aa625269",
-          "best_epoch": 4,
-          "best_val_loss": 2.806524544051199,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_08_sqv_qksa\\tscope_iwa_gop_qp_reuse_shard08of21.pt"
+          "checkpoint_sha256": "0396677b3f7eb9fbe6da5f8d105878ea36db63c879a0f54cf11397688fd7eac8",
+          "log_sha256": "7efc0e9d9623a1234aa17fcdb820cc85918ae84d5c5d8eb811c78090966e2aed",
+          "best_epoch": 8,
+          "best_val_loss": 3.9849368369940557,
+          "epochs_run": 18,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_08_6qxshh3o\\tscope_iwa_gop_qp_reuse_shard08of21.pt"
         },
         {
           "shard_id": 13,
-          "checkpoint_sha256": "6cb8440a9846d4bf2518b7bb13a1859d4fc9d3da3a036a027cb867ee33cef0a1",
-          "log_sha256": "ba1b4d4ced89d140118406591402b50b8bedd8ece196a791fa4f0bb4c5dbece3",
-          "best_epoch": 8,
-          "best_val_loss": 2.8995810241410225,
-          "epochs_run": 18,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_13_dn8_ky52\\tscope_iwa_gop_qp_reuse_shard13of21.pt"
+          "checkpoint_sha256": "3439f8c9fbbf860664600c03d268adf7f7bb9dcbbd5ba8068c2db0f691bdf526",
+          "log_sha256": "1b14c06b8d5a30ac003ebc668898f69339c33bf6544d043a7a76e7353ac8e818",
+          "best_epoch": 10,
+          "best_val_loss": 4.06312894821167,
+          "epochs_run": 20,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_13_dh615dcy\\tscope_iwa_gop_qp_reuse_shard13of21.pt"
         },
         {
           "shard_id": 18,
-          "checkpoint_sha256": "ee6933afa3479c39c4c9a28ddec5fdd44a9493482ec1955441e04c2e5654d6b6",
-          "log_sha256": "7714505c5a72509e1ce2d5964c76c83203f255210b818ec38aa09c38f8d28bf2",
-          "best_epoch": 4,
-          "best_val_loss": 2.9920074000503076,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_18_82_qaq7l\\tscope_iwa_gop_qp_reuse_shard18of21.pt"
+          "checkpoint_sha256": "1897e1e3042f130b8554758127919fd57498299317aa1f3bad563b4f4694d17e",
+          "log_sha256": "6e20c12eb675c150809ce3032f711e328a60572cd52db0bbc295f8c33bb4a368",
+          "best_epoch": 6,
+          "best_val_loss": 4.033175804398277,
+          "epochs_run": 16,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_18_zw6e9d4z\\tscope_iwa_gop_qp_reuse_shard18of21.pt"
         }
       ],
       "preserved_settings": {
@@ -10281,13 +10281,13 @@
       }
     },
     "proxy_only_zhao": {
-      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\release_ckpts\\tscope_soup_proxy_only_zhao.pt",
-      "sha256": "54504ada6ffad91910738215d4ff017001e8d062e3353423133267873473a3f4",
+      "path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\release_ckpts\\tscope_soup_proxy_only_zhao.pt",
+      "sha256": "b53ce22e88f8de1cbb1494d0fd147e2009aff5603fefd9aedb68bfff0b8b86f5",
       "validation": {
         "status": "validated",
         "split": "MOT17-09",
         "release_ready": true,
-        "loss_total": 1.9592649406856961,
+        "loss_total": 2.653609792391459,
         "data_fingerprints": {
           "gt_sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d",
           "frames": [
@@ -12389,7 +12389,7 @@
             }
           ]
         },
-        "source_soup_sha256": "c9837f4fca265aa9eb8c5432d794f607236c964edac4f0046309770a8f863c98",
+        "source_soup_sha256": "9b29a1612aea2167d5782e80d1582961aeca17ece3eef07bac29b3a1d626a3e7",
         "protocol": {
           "full_clips": 131,
           "val_subsample": 2,
@@ -12403,24 +12403,24 @@
           "held_out_test_used": false
         },
         "execution_provenance": {
-          "measured_at_utc": "2026-11-14T09:22:13.276268+00:00",
-          "device": "cuda",
+          "measured_at_utc": "2026-11-15T03:58:38.878624+00:00",
+          "device": "cpu",
           "dtype": "float32",
           "feature_chunk_size": 1,
           "feature_preprocessing": "normalized_256px_images_direct_backbone_no_detector_transform",
           "dependencies": {
-            "python": "3.13.16",
-            "torch": "2.14.1+cu130",
-            "torchvision": "0.29.1+cu130"
+            "python": "3.14.3",
+            "torch": "2.13.0+cpu",
+            "torchvision": "0.28.0+cpu"
           },
           "source_sha256": {
-            "scripts/validate_soups.py": "02734a5f03bfdc4b8c65032ec4ef4c12279a6e4877db6dc1fb690bb430577ce4",
-            "scripts/experiment_protocol.py": "66abd6128d753f8b0cb365adb9632b4bc1d8b15fe6a70e6e7ba8c19adf6ebd23",
-            "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
-            "models/temporal_scope.py": "67d5ddcfe60057ed5e951421ac581731744713d6b29d10a54a3adc78b58e82e8",
-            "losses/vcm_temporal_loss.py": "8d6a51297ee32f1905de53eb30ca9ad8357e3476cbe32e8e0785dc6dedbd77db",
-            "vcm_datasets/vcm_video_datasets.py": "1e254bb19c2cc0a7a4b98fa3bc4ae599ae88416e180db9d855119ce8b1f618eb",
-            "video_codecs/hybrid_x265_ste.py": "0c5ab20d66ad46a43ad11890d6d30108f703d784e76b79e0d5e35fd6db88dcc8"
+            "scripts/validate_soups.py": "0f56fb2b885bd91a7058b413776966618ba7f955b401b0c2094f8897fa0ae4cb",
+            "scripts/experiment_protocol.py": "c496dd854268bcec1c5d55aec0457d6db9d75ddd49126b71f558ca282a22b866",
+            "models/frozen_detector_fpn.py": "0476e244792debd46bacb3c5eac040c0ce3d19aab1473c0e57f0ab3b6c6c13fe",
+            "models/temporal_scope.py": "92446a0457992387540d59f69f56dc3208ca43cd1443380f8c1c5ffc27f74771",
+            "losses/vcm_temporal_loss.py": "64566efd0d7f14bcf14db6176a74fa771ec81ee15968ccf56220844e1e1b6bbe",
+            "vcm_datasets/vcm_video_datasets.py": "5035cf3afbe6a7943bd662d63d9ce18147364dff8561ca1deca1ef9ad6b8876a",
+            "video_codecs/hybrid_x265_ste.py": "9ad6d528322eb9b8b8f8c2fb7f1fa0b1a600840db03192217efe330aa742b04e"
           },
           "training_protocol_evidence": "Original shard-01 worker has batch_size=8 and no val_subsample override; pre-repair HEAD b30baa4144e4f4b797062e9b35542a7046996519 defaults to val_subsample=2. Original remote training revision was unpinned and is not asserted.",
           "detector": {
@@ -12783,10 +12783,10 @@
           "batch_severity_loss_count": 18
         },
         "constituent_best_losses": [
-          1.7533585934927969,
-          1.833745842630213,
-          1.7960859952550945,
-          1.7810172745675752
+          2.4913236065344377,
+          2.5691746509436406,
+          2.5625457763671875,
+          2.7271582213315098
         ],
         "selection": "uniform_soup_no_test_selection"
       },
@@ -12794,39 +12794,39 @@
       "constituents": [
         {
           "shard_id": 4,
-          "checkpoint_sha256": "dbe36137cb8aaad57b650044d509e9ae17ae440f610f70d4bbb3b353f397cb4a",
-          "log_sha256": "456025a1f1fca8d7a0d8b76d3d9e5e950003a855abf0beebc6c2c25b0508ae35",
+          "checkpoint_sha256": "77b85b860c89c2d2004ee6954f68e3d1c74793d76fdb7273caa7b37f191f48cf",
+          "log_sha256": "f1fbd793e0fcd554636298dfd16626610778608ddb7196e5bba292c65565043c",
           "best_epoch": 8,
-          "best_val_loss": 1.7533585934927969,
+          "best_val_loss": 2.4913236065344377,
           "epochs_run": 18,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_04_fkgm8474\\tscope_proxy_only_zhao_shard04of21.pt"
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_04_mio8ixd5\\tscope_proxy_only_zhao_shard04of21.pt"
         },
         {
           "shard_id": 9,
-          "checkpoint_sha256": "d12ec4e9a0ee70b9588f55b43581112bb557e2accfaa7097f6aae07fe5cbdecc",
-          "log_sha256": "8e632725b8ead3d612b490355dbccd14011da5b97db033b504b1a5a28b16e4a0",
-          "best_epoch": 4,
-          "best_val_loss": 1.833745842630213,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_09_n6w_v9e1\\tscope_proxy_only_zhao_shard09of21.pt"
+          "checkpoint_sha256": "6f87694dd6f1e04264b2004558b12149e52182bcea956e565d0c8b0e59ef31c7",
+          "log_sha256": "aaee21c0aeeecd4dfbafa579f5f75e9e04bc9c923e25ffd01f01d89702790a35",
+          "best_epoch": 8,
+          "best_val_loss": 2.5691746509436406,
+          "epochs_run": 18,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_09_57v7th_y\\tscope_proxy_only_zhao_shard09of21.pt"
         },
         {
           "shard_id": 14,
-          "checkpoint_sha256": "7019bc6f6f15d925f2635fc7d0cdfbb72ebc7e47e7b0543270423d58bfd12cb6",
-          "log_sha256": "520a679d7cd00f4db3a9c3899b5e9a73342a6dba2fe03d0859178499c5701d28",
-          "best_epoch": 4,
-          "best_val_loss": 1.7960859952550945,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_14__ug1ehx_\\tscope_proxy_only_zhao_shard14of21.pt"
+          "checkpoint_sha256": "261bfe8a0070b9b0525f4776d57a89f85f8f0b5c653b423f89dd250663e1d55b",
+          "log_sha256": "f89c1e71185c706d1b3e34195c4449e8c6ae953e62867a0d61f756597c119f2b",
+          "best_epoch": 8,
+          "best_val_loss": 2.5625457763671875,
+          "epochs_run": 18,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_14_yvab6eti\\tscope_proxy_only_zhao_shard14of21.pt"
         },
         {
           "shard_id": 19,
-          "checkpoint_sha256": "061c908a5da57c039760adf2502dd286bd717c3c2f8b2bb546312b0ed30ba80d",
-          "log_sha256": "83f1610f84aba66520415aef105878ec107578f477e074e71680a7ab6273f4b4",
-          "best_epoch": 4,
-          "best_val_loss": 1.7810172745675752,
-          "epochs_run": 14,
-          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\vcm_preedit_x265\\outputs_kaggle_pool\\collection_4w3uq77g\\shard_19_tupvvpil\\tscope_proxy_only_zhao_shard19of21.pt"
+          "checkpoint_sha256": "aead136401c7234e0299fb973dc72134aa0d268b19c487365180b6b23e9c66f5",
+          "log_sha256": "64b28b30bb3f2fe9db0cd4529caabd204c3a47cd10f75e54d16cea54142d89e5",
+          "best_epoch": 6,
+          "best_val_loss": 2.7271582213315098,
+          "epochs_run": 16,
+          "source_path": "C:\\Users\\Wagur1\\Desktop\\Paper\\tscope-v2\\outputs_kaggle_pool\\collection_m8r2d68c\\shard_19_nh8lb6c4\\tscope_proxy_only_zhao_shard19of21.pt"
         }
       ],
       "preserved_settings": {
