@@ -46,3 +46,9 @@ empty ref/author/slug and exact title `[Private Notebook]`. The launcher now ski
 only that exact service placeholder while still traversing all pages and rejecting
 other malformed entries. The final focused launcher suite has24 passing tests
 and25 passing subtests; an existing target on a later page still prevents upload.
+
+The first accepted GPU canary exposed Kaggle's current Python3.13 image, which
+cannot install torchvision0.20.1. Workers now provision isolated Python3.11.14 with
+uv0.9.9 and execute both job creation and training with that interpreter. The
+focused launcher suite has25 passing tests and30 passing subtests, including
+failures at every provisioning stage and matched train/canary configurations.

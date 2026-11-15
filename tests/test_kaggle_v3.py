@@ -8,6 +8,7 @@ import io
 import json
 import logging
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -245,6 +246,7 @@ class KaggleV3Tests(unittest.TestCase):
 
     def test_worker_executes_pinned_checkout_and_strict_runner_argv(self):
         launcher = self.launcher()
+        created_jobs = []
         for canary_only, mode in ((False, "train"), (True, "canary")):
             with self.subTest(mode=mode), tempfile.TemporaryDirectory() as directory:
                 manifest = self.manifest(launcher, canary_only=canary_only)
@@ -254,16 +256,27 @@ class KaggleV3Tests(unittest.TestCase):
                 namespace = {"__name__": "worker_import"}
                 exec(compiled, namespace)
                 calls = []
+                managed_execution = False
                 def run(argv, **kwargs):
+                    nonlocal managed_execution
                     calls.append((argv, kwargs))
+                    if len(argv) > 2 and argv[1] == "-c":
+                        self.assertNotEqual(argv[0], sys.executable)
+                        managed_execution = True
+                        try:
+                            with patch.object(sys, "argv", ["-c", *argv[3:]]):
+                                exec(compile(argv[2], "managed_job_creation.py", "exec"), {"__name__": "__main__"})
+                        finally:
+                            managed_execution = False
                     return SimpleNamespace(returncode=0)
                 def output(argv, **kwargs):
                     calls.append((argv, kwargs))
                     return REVISION+"\n" if argv[-1] == "HEAD" else ""
                 made_jobs = []
                 def make_job(variant, seed, **kwargs):
+                    self.assertTrue(managed_execution, "Project job creation must use managed Python")
                     made_jobs.append((variant, seed, kwargs))
-                    return {"schema_version": 3, "job_id": "spatial_seed2026"}
+                    return {"schema_version": 3, "job_id": "spatial_seed2026", **kwargs}
                 modules = {
                     "scripts.run_v3": SimpleNamespace(make_job=make_job),
                     "scripts.prepare_kaggle_datasets": SimpleNamespace(
@@ -276,6 +289,17 @@ class KaggleV3Tests(unittest.TestCase):
                 self.assertEqual(command[command.index("--mode")+1], mode)
                 self.assertEqual(command[command.index("--data-root")+1], directory)
                 self.assertIn(["git", "checkout", "--detach", REVISION], [x[0] for x in calls])
+                self.assertIn([sys.executable, "-m", "pip", "install", "--quiet", "uv==0.9.9"], [x[0] for x in calls])
+                self.assertIn([sys.executable, "-m", "uv", "python", "install", "3.11.14"], [x[0] for x in calls])
+                venv_command = next(argv for argv, _ in calls if argv[1:4] == ["-m", "uv", "venv"])
+                self.assertEqual(venv_command[4:6], ["--python", "3.11.14"])
+                managed_python = str(Path(venv_command[-1]) / "bin" / "python")
+                self.assertEqual(command[0], managed_python)
+                dependency_command = next(argv for argv, _ in calls if argv[1:5] == ["-m", "uv", "pip", "install"])
+                self.assertEqual(dependency_command[dependency_command.index("--python")+1], managed_python)
+                job_creation = next((argv, options) for argv, options in calls if argv[1:2] == ["-c"])
+                self.assertEqual(job_creation[0][0], managed_python)
+                self.assertIn(str(job_creation[1]["cwd"]), job_creation[1]["env"]["PYTHONPATH"])
                 self.assertEqual(made_jobs[0][0:2], ("spatial", 2026))
                 self.assertEqual(made_jobs[0][2]["epochs"], 36)
                 self.assertEqual(made_jobs[0][2]["max_hours"], 7.8)
@@ -284,6 +308,37 @@ class KaggleV3Tests(unittest.TestCase):
                 clone = next(command for command, _ in calls if command[:2] == ["git", "clone"])
                 self.assertFalse(Path(clone[-1]).is_relative_to(Path(directory)))
                 self.assertNotIn(SECRET, source)
+                created_jobs.append(json.loads((Path(directory) / "spatial_seed2026.json").read_text()))
+        self.assertEqual(created_jobs[0], created_jobs[1])
+
+    def test_worker_runtime_provision_failure_never_reaches_training(self):
+        launcher = self.launcher()
+        manifest = self.manifest(launcher)
+        for failed_stage in ("uv_install", "python_install", "venv", "requirements", "job_creation"):
+            with self.subTest(failed_stage=failed_stage), tempfile.TemporaryDirectory() as directory:
+                namespace = {"__name__": "worker_import"}
+                exec(compile(launcher.build_worker_script(manifest["jobs"][0], manifest),
+                             "worker.py", "exec"), namespace)
+                calls = []
+                def run(argv, **kwargs):
+                    calls.append(argv)
+                    matches = {
+                        "uv_install": argv[1:5] == ["-m", "pip", "install", "--quiet"] and "uv==0.9.9" in argv,
+                        "python_install": argv[1:5] == ["-m", "uv", "python", "install"],
+                        "venv": argv[1:4] == ["-m", "uv", "venv"],
+                        "requirements": argv[1:5] == ["-m", "uv", "pip", "install"],
+                        "job_creation": argv[1:2] == ["-c"],
+                    }
+                    if matches[failed_stage]:
+                        raise subprocess.CalledProcessError(1, argv)
+                    return SimpleNamespace(returncode=0)
+                with patch("subprocess.run", side_effect=run), \
+                     patch("subprocess.check_output", side_effect=lambda argv, **kw: REVISION if argv[-1] == "HEAD" else ""), \
+                     patch("shutil.which", return_value="ffmpeg"):
+                    with self.assertRaises(subprocess.CalledProcessError) as caught:
+                        namespace["main"](work_root=Path(directory))
+                self.assertEqual(caught.exception.cmd, calls[-1])
+                self.assertFalse(any("--mode" in command for command in calls))
 
     def test_worker_revision_mismatch_fails_before_training(self):
         launcher = self.launcher()
@@ -492,13 +547,19 @@ class KaggleV3Tests(unittest.TestCase):
                 namespace = {"__name__": "worker_import"}
                 exec(compile(source, "worker.py", "exec"), namespace)
                 calls = []
+                def run(argv, **kwargs):
+                    calls.append(argv)
+                    if argv[1:2] == ["-c"]:
+                        with patch.object(sys, "argv", ["-c", *argv[3:]]):
+                            exec(compile(argv[2], "managed_job_creation.py", "exec"), {"__name__": "__main__"})
+                    return SimpleNamespace(returncode=0)
                 modules = {
                     "scripts.run_v3": SimpleNamespace(make_job=lambda *a, **kw: {}),
                     "scripts.prepare_kaggle_datasets": SimpleNamespace(
                         find_mounted_kaggle_dataset=lambda: Path(directory) if data_exists else None),
                 }
                 with patch.dict(sys.modules, modules), \
-                     patch("subprocess.run", side_effect=lambda argv, **kw: calls.append(argv)), \
+                     patch("subprocess.run", side_effect=run), \
                      patch("subprocess.check_output", side_effect=lambda argv, **kw: REVISION if argv[-1] == "HEAD" else ""), \
                      patch("shutil.which", return_value="codec" if codec_exists else None):
                     with self.assertRaises(RuntimeError):

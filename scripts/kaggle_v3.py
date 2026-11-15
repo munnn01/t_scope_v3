@@ -266,6 +266,23 @@ import tempfile
 
 CONFIG = json.loads(''' + repr(json.dumps(payload, allow_nan=False)) + ''')
 
+JOB_CREATION = """import json
+from pathlib import Path
+import sys
+from scripts.prepare_kaggle_datasets import find_mounted_kaggle_dataset
+from scripts.run_v3 import make_job
+
+config = json.loads(sys.argv[1])
+work_root = Path(sys.argv[2])
+data_root = find_mounted_kaggle_dataset()
+if data_root is None or not Path(data_root).is_dir():
+    raise RuntimeError("Mounted real MOT17 training dataset is required")
+overrides = dict(config["job_overrides"], source_revision=config["revision"], run_id=config["run_id"])
+job = make_job(config["variant"], config["seed"], **overrides)
+(work_root / (config["job_id"] + ".json")).write_text(json.dumps(job, indent=2, allow_nan=False), encoding="utf-8")
+(work_root / (config["job_id"] + ".data-root.json")).write_text(json.dumps(str(data_root)), encoding="utf-8")
+"""
+
 def main(work_root=Path("/kaggle/working")):
     work_root = Path(work_root).resolve()
     work_root.mkdir(parents=True, exist_ok=True)
@@ -278,7 +295,13 @@ def main(work_root=Path("/kaggle/working")):
         raise RuntimeError("Pinned worker source revision mismatch")
     if subprocess.check_output(["git", "status", "--porcelain"], cwd=repo, text=True).strip():
         raise RuntimeError("Pinned worker checkout has local modifications")
-    subprocess.run([sys.executable, "-m", "pip", "install", "--quiet", "-r", str(repo / "requirements.txt")], check=True)
+    subprocess.run([sys.executable, "-m", "pip", "install", "--quiet", "uv==0.9.9"], check=True)
+    subprocess.run([sys.executable, "-m", "uv", "python", "install", "3.11.14"], check=True)
+    runtime = Path(tempfile.gettempdir()) / ("tscope-v3-env-" + CONFIG["revision"][:12])
+    subprocess.run([sys.executable, "-m", "uv", "venv", "--python", "3.11.14", str(runtime)], check=True)
+    managed_python = str(runtime / "bin" / "python")
+    subprocess.run([sys.executable, "-m", "uv", "pip", "install", "--python", managed_python,
+                    "-r", str(repo / "requirements.txt")], check=True)
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         raise RuntimeError("Real x265 requires ffmpeg and ffprobe")
     subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "color=size=32x32:rate=1",
@@ -287,17 +310,13 @@ def main(work_root=Path("/kaggle/working")):
     env["PYTHONPATH"] = str(repo) + os.pathsep + env.get("PYTHONPATH", "")
     env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    sys.path.insert(0, str(repo))
-    from scripts.prepare_kaggle_datasets import find_mounted_kaggle_dataset
-    from scripts.run_v3 import make_job
-    data_root = find_mounted_kaggle_dataset()
-    if data_root is None or not Path(data_root).is_dir():
+    subprocess.run([managed_python, "-c", JOB_CREATION, json.dumps(CONFIG), str(work_root)],
+                   cwd=repo, env=env, check=True)
+    data_root = Path(json.loads((work_root / (CONFIG["job_id"] + ".data-root.json")).read_text(encoding="utf-8")))
+    if not data_root.is_dir():
         raise RuntimeError("Mounted real MOT17 training dataset is required")
-    overrides = dict(CONFIG["job_overrides"], source_revision=CONFIG["revision"], run_id=CONFIG["run_id"])
-    job = make_job(CONFIG["variant"], CONFIG["seed"], **overrides)
     job_file = work_root / (CONFIG["job_id"] + ".json")
-    job_file.write_text(json.dumps(job, indent=2, allow_nan=False), encoding="utf-8")
-    command = [sys.executable, str(repo / "scripts" / "run_v3.py"), "--mode", CONFIG["mode"],
+    command = [managed_python, str(repo / "scripts" / "run_v3.py"), "--mode", CONFIG["mode"],
                "--job-file", str(job_file), "--data-root", str(data_root), "--output-dir", str(work_root)]
     subprocess.run(command, cwd=repo, env=env, check=True)
 

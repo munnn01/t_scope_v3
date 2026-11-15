@@ -85,7 +85,9 @@ $revision = git rev-parse HEAD
 ```
 
 Đẩy commit đó lên GitHub trước dispatch. Worker checkout đúng SHA và kiểm tra
-nguồn sạch. Chạy canary với ΔQP động trước; xác nhận optimizer updates và checkpoint:
+nguồn sạch. Worker tạo môi trường Python 3.11.14 riêng bằng uv 0.9.9, kể cả khi
+Python mặc định của Kaggle là 3.13; cặp torch/torchvision vẫn giữ nguyên.
+Chạy canary với ΔQP động trước; xác nhận optimizer updates và checkpoint:
 
 ```powershell
 python scripts/kaggle_v3.py --action push --pool-file D:/private/pool.json --manifest outputs_v3/canary_manifest.json --run-id v3-canary --revision $revision --canary-only --only-jobs temporal_qp_seed2026
