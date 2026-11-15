@@ -368,6 +368,12 @@ def _owned_kernel_absent(api, record, credential):
             raise ValueError("Owned-kernel listing did not return a complete page")
         for kernel in response.kernels:
             item_reference = getattr(kernel, "ref", None)
+            # Kaggle redacts some inaccessible notebooks to this exact sentinel,
+            # even on an owner-filtered page. It carries no usable identity.
+            if (type(getattr(kernel, "id", None)) is int and kernel.id == 0 and
+                    item_reference == "" and getattr(kernel, "title", None) == "[Private Notebook]" and
+                    getattr(kernel, "author", None) == "" and getattr(kernel, "slug", None) == ""):
+                continue
             parts = item_reference.split("/") if isinstance(item_reference, str) else []
             if len(parts) != 2 or not parts[1] or parts[0].casefold() != username.casefold():
                 raise ValueError("Owned-kernel listing returned an unverifiable reference")

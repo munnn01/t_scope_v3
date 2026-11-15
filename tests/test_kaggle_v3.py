@@ -372,6 +372,40 @@ class KaggleV3Tests(unittest.TestCase):
         self.assertEqual(manifest["jobs"][0]["status"], "existing_kernel")
         self.assertEqual(api.uploads, [])
 
+    def test_exact_private_notebook_placeholder_does_not_end_owned_pagination(self):
+        launcher = self.launcher()
+        placeholder = SimpleNamespace(id=0, ref="", title="[Private Notebook]", author="", slug="")
+        for target_exists in (False, True):
+            with self.subTest(target_exists=target_exists):
+                manifest = self.manifest(launcher)
+                target = manifest["jobs"][0]["kernel_id"]
+                last_ref = target if target_exists else "ready/unrelated-two"
+                api = ForbiddenStatusApi({
+                    None: SimpleNamespace(kernels=[placeholder, SimpleNamespace(ref="ready/unrelated-one")],
+                                          next_page_token="page2"),
+                    "page2": SimpleNamespace(kernels=[SimpleNamespace(ref=last_ref)], next_page_token=""),
+                })
+                launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+                self.assertEqual(api.list_calls, [None, "page2"])
+                self.assertEqual(manifest["jobs"][0]["status"], "existing_kernel" if target_exists else "submitted")
+                self.assertEqual(len(api.uploads), 0 if target_exists else 1)
+
+    def test_empty_reference_outside_exact_private_placeholder_stays_blocked(self):
+        launcher = self.launcher()
+        for fields in (
+            {"id": 17, "ref": "", "title": "[Private Notebook]", "author": "", "slug": ""},
+            {"id": 0, "ref": "", "title": "Another notebook", "author": "", "slug": ""},
+            {"id": 0, "ref": "", "title": "[Private Notebook]", "author": "ready", "slug": ""},
+            {"id": 0, "ref": "", "title": "[Private Notebook]", "author": "", "slug": "known-slug"},
+        ):
+            with self.subTest(fields=fields):
+                api = ForbiddenStatusApi({None: SimpleNamespace(
+                    kernels=[SimpleNamespace(**fields)], next_page_token="")})
+                manifest = self.manifest(launcher)
+                launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+                self.assertEqual(manifest["jobs"][0]["status"], "push_error")
+                self.assertEqual(api.uploads, [])
+
     def test_sdk_403_failed_or_ambiguous_owned_listing_blocks_upload(self):
         launcher = self.launcher()
         for pages in (

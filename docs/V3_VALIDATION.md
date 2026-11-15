@@ -40,3 +40,9 @@ as ValueError. The launcher now independently enumerates every page of verified
 owned kernels before treating that ambiguous response as absence. Existing
 kernels, HTTP401, unknown ownership and incomplete listings still block upload.
 Four additional regression tests cover this production behavior.
+
+Kaggle's owned-kernel listing also returned redacted sentinel records with id0,
+empty ref/author/slug and exact title `[Private Notebook]`. The launcher now skips
+only that exact service placeholder while still traversing all pages and rejecting
+other malformed entries. The final focused launcher suite has24 passing tests
+and25 passing subtests; an existing target on a later page still prevents upload.
