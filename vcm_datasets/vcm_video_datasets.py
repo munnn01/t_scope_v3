@@ -306,7 +306,9 @@ class RealVCMVideoDataset(Dataset):
             sequence = meta["seq_name"].split("-FRCNN")[0]
             if sequence not in ("MOT17-11", "MOT17-13"):
                 raise ValueError("Final frame manifest contains a non-held-out sequence")
-            frames.extend(f"{sequence}/{int(re.sub(r'\D', '', path.stem) or '1'):06d}" for path in meta["frame_paths"])
+            for path in meta["frame_paths"]:
+                frame_number = int(re.sub(r"\D", "", path.stem) or "1")
+                frames.append(f"{sequence}/{frame_number:06d}")
         if len(frames) != len(set(frames)):
             raise ValueError("Final frame manifest contains overlapping or duplicate frames")
         return frames
@@ -470,6 +472,14 @@ class RealVCMVideoDataset(Dataset):
         video, m_attn, m_det, gt_boxes, ignore_boxes = self._crop_or_resize_clip(
             video, m_attn, m_det, raw_boxes_per_frame, raw_ignore_per_frame, idx
         )
+        if meta["type"] == "mot_frames":
+            sequence = meta["seq_name"].split("-FRCNN")[0]
+            frame_ids = []
+            for path in meta["frame_paths"]:
+                number = int(re.sub(r"\D", "", path.stem) or "1")
+                frame_ids.append(f"{sequence}/{number:06d}")
+        else:
+            frame_ids = [f"{meta['seq_name']}/{meta['start_frame'] + offset:06d}" for offset in range(self.clip_len)]
         return {
             "video": video,
             "m_attn": m_attn,
@@ -478,5 +488,5 @@ class RealVCMVideoDataset(Dataset):
             "ignore_boxes": ignore_boxes,
             "clip_id": torch.tensor(idx, dtype=torch.long),
             "seq_name": meta["seq_name"],
-            "frame_ids": [f"{meta['seq_name'].split('-FRCNN')[0]}/{int(re.sub(r'\D', '', path.stem) or '1'):06d}" for path in meta["frame_paths"]] if meta["type"] == "mot_frames" else [f"{meta['seq_name']}/{meta['start_frame'] + offset:06d}" for offset in range(self.clip_len)],
+            "frame_ids": frame_ids,
         }

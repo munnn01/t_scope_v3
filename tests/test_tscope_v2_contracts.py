@@ -161,7 +161,7 @@ class VideoProxyV2Tests(unittest.TestCase):
         out_pan = proxy(pan_clip, sev)
 
         gen = torch.Generator().manual_seed(7)
-        uncorr = torch.rand_like(f0, generator=gen)
+        uncorr = torch.rand(f0.shape, dtype=f0.dtype, device=f0.device, generator=gen)
         uncorr_clip = torch.stack([f0, uncorr], dim=1)
         out_uncorr = proxy(uncorr_clip, sev)
 

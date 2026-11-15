@@ -1,0 +1,6 @@
+# Verified core pair; install the CUDA or CPU wheels appropriate to the host.
+torch==2.5.1
+torchvision==0.20.1
+numpy==2.4.6
+scipy==1.17.1
+Pillow==11.1.0

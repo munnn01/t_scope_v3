@@ -17,3 +17,7 @@ data/
 *.hevc
 *.rgb
 .DS_Store
+.runtime/
+outputs_v3/
+.pytest_cache/
+*.egg-info/

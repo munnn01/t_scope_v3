@@ -1,0 +1,4 @@
+-r requirements.txt
+# Optional: only needed for the unseen-detector evaluation, never v3 training.
+ultralytics>=8.3,<9
+matplotlib>=3.9,<4
