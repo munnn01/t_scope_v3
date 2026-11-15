@@ -166,22 +166,7 @@ if RUN_MODE in ("eval_poc", "both"):
     subprocess.run(cmd_eval, cwd=str(repo_dir), env=env, check=True)
 
 if RUN_MODE == "eval_soup":
-    backup_map = {{
-        1: [0, 2, 4],
-        3: [5, 6, 7],
-        12: [8, 9, 10],
-        13: [11, 16],
-        14: [17, 18],
-        15: [19, 20],
-        4: [4, 0],
-        5: [5, 1],
-        6: [6, 2],
-        7: [7, 3],
-        10: [10, 8],
-        11: [11, 9],
-        16: [16, 20],
-    }}
-    assigned_shards = backup_map.get(SHARD_ID, [SHARD_ID])
+    assigned_shards = [SHARD_ID]
     cmd_eval = [
         sys.executable,
         str(repo_dir / "scripts" / "kaggle_shard_runner.py"),
