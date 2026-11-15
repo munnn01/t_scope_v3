@@ -321,9 +321,65 @@ def _selection(manifest, only_jobs):
     return [record for record in manifest["jobs"] if selected is None or record["job_id"] in selected]
 
 
+def _http_status_codes(error):
+    """Read status codes through SDK wrappers without formatting exception text."""
+    pending, seen, codes = [error], set(), set()
+    while pending:
+        current = pending.pop()
+        if current is None or id(current) in seen:
+            continue
+        seen.add(id(current))
+        for code in (getattr(current, "status", None), getattr(current, "status_code", None),
+                     getattr(getattr(current, "response", None), "status_code", None)):
+            if type(code) is int:
+                codes.add(code)
+        pending.extend((current.__cause__, current.__context__))
+    return codes
+
+
 def _missing_kernel(error):
-    return (getattr(error, "status", None) == 404 or getattr(error, "status_code", None) == 404 or
-            getattr(getattr(error, "response", None), "status_code", None) == 404)
+    return _http_status_codes(error) == {404}
+
+
+def _owned_kernel_absent(api, record, credential):
+    """Confirm absence after ambiguous 403 using every verified owned-kernel page.
+
+    The SDK converts some nonexistent-kernel 403s to ValueError. This fallback
+    never infers absence from the status failure itself: it independently lists
+    this authenticated owner's kernels and fails closed on incomplete results.
+    """
+    username = record["username"]
+    configuration = getattr(api, "config_values", {})
+    reference = record["kernel_id"].split("/")
+    if (not isinstance(configuration, dict) or
+            not isinstance(configuration.get("username"), str) or
+            configuration["username"].casefold() != username.casefold() or
+            not isinstance(credential, str) or not credential.startswith("KGAT_") or
+            configuration.get("token") != credential or
+            len(reference) != 2 or not reference[1] or
+            reference[0].casefold() != username.casefold()):
+        raise ValueError("Kernel ownership and authenticated account must match")
+    page_token, seen_tokens = None, set()
+    while True:
+        response = api.kernels_list_with_response(
+            mine=True, user=username, page_size=100, page_token=page_token)
+        if (response is None or not isinstance(getattr(response, "kernels", None), (list, tuple)) or
+                not hasattr(response, "next_page_token")):
+            raise ValueError("Owned-kernel listing did not return a complete page")
+        for kernel in response.kernels:
+            item_reference = getattr(kernel, "ref", None)
+            parts = item_reference.split("/") if isinstance(item_reference, str) else []
+            if len(parts) != 2 or not parts[1] or parts[0].casefold() != username.casefold():
+                raise ValueError("Owned-kernel listing returned an unverifiable reference")
+            if parts[1] == reference[1]:
+                return False
+        next_token = response.next_page_token
+        if next_token is None or next_token == "":
+            return True
+        if not isinstance(next_token, str) or next_token in seen_tokens:
+            raise ValueError("Owned-kernel listing pagination is invalid or repeated")
+        seen_tokens.add(next_token)
+        page_token = next_token
 
 
 def _status_string(response):
@@ -354,7 +410,11 @@ def push_manifest(manifest, accounts, *, api_factory=None, only_jobs=None, persi
                     api.kernels_status(record["kernel_id"])
                 except Exception as error:
                     if not _missing_kernel(error):
-                        raise
+                        if _http_status_codes(error) != {403}:
+                            raise
+                        if not _owned_kernel_absent(api, record, credentials[record["username"]]):
+                            record["status"] = "existing_kernel"
+                            continue
                 else:
                     record["status"] = "existing_kernel"
                     continue

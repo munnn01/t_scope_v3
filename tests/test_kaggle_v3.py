@@ -58,6 +58,32 @@ class FakeApi:
         return SimpleNamespace(url="https://www.kaggle.com/code/ready/kernel", error="")
 
 
+class ForbiddenStatusApi(FakeApi):
+    """Model SDK ValueError wrapping HTTPError and paginated owned notebooks."""
+    def __init__(self, pages, code=403):
+        super().__init__()
+        self.pages, self.code = pages, code
+        self.config_values = {"username": "ready", "token": "KGAT_test_access_token"}
+        self.list_calls = []
+
+    def kernels_status(self, ref):
+        error = RuntimeError(SECRET)
+        error.response = SimpleNamespace(status_code=self.code)
+        try:
+            raise error
+        except RuntimeError:
+            raise ValueError("SDK obscures the status response")
+
+    def kernels_list_with_response(self, *, mine, user, page_size, page_token):
+        if (mine, user, page_size) != (True, "ready", 100):
+            raise AssertionError("Listing must be scoped to verified owned kernels")
+        self.list_calls.append(page_token)
+        page = self.pages[page_token]
+        if isinstance(page, Exception):
+            raise page
+        return page
+
+
 class KaggleV3Tests(unittest.TestCase):
     def launcher(self):
         self.assertIsNotNone(importlib.util.find_spec("scripts.kaggle_v3"),
@@ -321,6 +347,68 @@ class KaggleV3Tests(unittest.TestCase):
         launcher.push_manifest(manifest, [("ready", SECRET)], api_factory=lambda user, token: api)
         self.assertEqual(manifest["jobs"][0]["status"], "submitted")
         self.assertEqual(len(api.uploads), 1)
+
+    def test_sdk_403_allows_new_kernel_only_after_all_owned_pages_are_absent(self):
+        launcher = self.launcher()
+        api = ForbiddenStatusApi({
+            None: SimpleNamespace(kernels=[SimpleNamespace(ref="ready/unrelated-one")], next_page_token="page2"),
+            "page2": SimpleNamespace(kernels=[SimpleNamespace(ref="ready/unrelated-two")], next_page_token=""),
+        })
+        manifest = self.manifest(launcher)
+        launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+        self.assertEqual(manifest["jobs"][0]["status"], "submitted")
+        self.assertEqual(api.list_calls, [None, "page2"])
+        self.assertEqual(len(api.uploads), 1)
+
+    def test_sdk_403_target_on_second_owned_page_is_never_overwritten(self):
+        launcher = self.launcher()
+        manifest = self.manifest(launcher)
+        target = manifest["jobs"][0]["kernel_id"]
+        api = ForbiddenStatusApi({
+            None: SimpleNamespace(kernels=[SimpleNamespace(ref="ready/unrelated")], next_page_token="page2"),
+            "page2": SimpleNamespace(kernels=[SimpleNamespace(ref=target)], next_page_token=""),
+        })
+        launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+        self.assertEqual(manifest["jobs"][0]["status"], "existing_kernel")
+        self.assertEqual(api.uploads, [])
+
+    def test_sdk_403_failed_or_ambiguous_owned_listing_blocks_upload(self):
+        launcher = self.launcher()
+        for pages in (
+            {None: RuntimeError(SECRET)},
+            {None: None},
+            {None: SimpleNamespace(kernels=None, next_page_token="")},
+            {None: SimpleNamespace(kernels=[], next_page_token="loop"),
+             "loop": SimpleNamespace(kernels=[], next_page_token="loop")},
+        ):
+            with self.subTest(pages=list(pages)):
+                api = ForbiddenStatusApi(pages)
+                manifest = self.manifest(launcher)
+                launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+                self.assertEqual(manifest["jobs"][0]["status"], "push_error")
+                self.assertEqual(api.uploads, [])
+                self.assertNotIn(SECRET, json.dumps(manifest))
+
+    def test_sdk_403_requires_verified_owner_and_401_never_uses_listing(self):
+        launcher = self.launcher()
+        for mode in ("wrong_owner", "wrong_token", "unknown_owner", "unauthorized", "generic_value_error"):
+            with self.subTest(mode=mode):
+                api = ForbiddenStatusApi({None: SimpleNamespace(kernels=[], next_page_token="")})
+                manifest = self.manifest(launcher)
+                if mode == "wrong_owner":
+                    manifest["jobs"][0]["kernel_id"] = "someoneelse/new-slug"
+                elif mode == "wrong_token":
+                    api.config_values["token"] = "KGAT_another_access_token"
+                elif mode == "unknown_owner":
+                    api.config_values = {}
+                elif mode == "unauthorized":
+                    api.code = 401
+                else:
+                    api.kernels_status = lambda ref: (_ for _ in ()).throw(ValueError("No HTTP status"))
+                launcher.push_manifest(manifest, [("ready", "KGAT_test_access_token")], api_factory=lambda *args: api)
+                self.assertEqual(manifest["jobs"][0]["status"], "push_error")
+                self.assertEqual(api.uploads, [])
+                self.assertEqual(api.list_calls, [])
 
     def test_cli_plan_caps_ready_accounts_without_uploading(self):
         launcher = self.launcher()
