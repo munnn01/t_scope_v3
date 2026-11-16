@@ -1,5 +1,10 @@
 # V3 execution report — 2026-11-16 (Asia/Bangkok)
 
+**Subsequent failure:** this document records the initial launch snapshot, not
+successful training. Later inspection found17 numerical-gradient failures.
+See [AMP failure and recovery](V3_AMP_RECOVERY.md); the original two-update canary
+was too short to establish sustained training stability.
+
 Repository: https://github.com/munnn01/t_scope_v3.
 Training revision: `04d5aa3de9114fcf64691caddbad7a40ac3347c8`.
 Later documentation commits do not change the source pinned in the workers.

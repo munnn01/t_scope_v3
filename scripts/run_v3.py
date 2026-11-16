@@ -40,6 +40,8 @@ DEFAULTS = {
     "batch_size": 2, "grad_accum_steps": 2, "img_size": 512, "clip_len": 4,
     "lr": 0.00015, "num_workers": 2, "max_hours": 7.8, "val_subsample": 2,
 }
+CANARY_MIN_UPDATES = 128
+MAX_CONSECUTIVE_AMP_OVERFLOWS = 16
 
 
 def current_revision():
@@ -163,6 +165,38 @@ def restore_checkpoint(path, job, model, optimizer, scaler):
     return state
 
 
+def optimizer_step(model, optimizer, scaler, max_norm=1.0):
+    """Back off recoverable AMP overflow without updating weights or counters.
+
+    GradScaler owns the inf/NaN decision after unscale. Finite fp32 gradients
+    use a float64 norm so a sum-of-squares overflow cannot zero a valid update.
+    """
+    scaler.unscale_(optimizer)
+    gradients = [p.grad for p in model.parameters() if p.grad is not None]
+    if not gradients:
+        raise RuntimeError("Training produced no model gradients")
+    norm = torch.linalg.vector_norm(torch.stack([
+        torch.linalg.vector_norm(gradient.detach(), dtype=torch.float64)
+        for gradient in gradients
+    ]))
+    scale_before = scaler.get_scale()
+    finite = bool(torch.isfinite(norm))
+    if not finite and not scaler.is_enabled():
+        optimizer.zero_grad(set_to_none=True)
+        raise RuntimeError("Nonfinite unscaled model gradient without AMP recovery")
+    if finite:
+        coefficient = (max_norm / (norm + 1e-6)).clamp(max=1.0)
+        for gradient in gradients:
+            gradient.mul_(coefficient.to(device=gradient.device, dtype=gradient.dtype))
+    # On overflow, unscale_ has already marked this optimizer for a skipped
+    # step. Let GradScaler consume that state and lower its scale normally.
+    scaler.step(optimizer)
+    scaler.update()
+    optimizer.zero_grad(set_to_none=True)
+    return {"updated": finite, "grad_norm": float(norm) if finite else None,
+            "scale_before": scale_before, "scale_after": scaler.get_scale()}
+
+
 def make_criterion(job):
     settings = job["settings"]
     temporal = not settings["disable_temporal"]
@@ -284,6 +318,7 @@ def train(job, data_root, output_dir, resume=None, canary=False):
         provenance["ffmpeg"] = subprocess.check_output(["ffmpeg", "-version"], text=True).splitlines()[0]
     history, best_state, best_loss, best_epoch = [], None, float("inf"), 0
     start_epoch, skip_batches, updates = 1, 0, 0
+    amp_skipped_updates, consecutive_amp_overflows = 0, 0
     if resume:
         state = restore_checkpoint(resume, job, model, optimizer, scaler)
         if state["provenance"]["training_data"] != provenance["training_data"] or state["provenance"]["validation_data"] != provenance["validation_data"]:
@@ -295,6 +330,8 @@ def train(job, data_root, output_dir, resume=None, canary=False):
         history, best_state, best_epoch = state["history"], state["best_state"], state["best_epoch"]
         best_loss = float("inf") if state["best_loss"] is None else state["best_loss"]
         start_epoch, skip_batches, updates = state["epoch"], state["next_batch"], state["optimizer_updates"]
+        amp_skipped_updates = state.get("amp_skipped_updates", 0)
+        consecutive_amp_overflows = state.get("consecutive_amp_overflows", 0)
     started = time.monotonic()
     status, next_epoch, next_batch, phase = "running", start_epoch, skip_batches, "train"
     optimizer.zero_grad(set_to_none=True)
@@ -307,6 +344,8 @@ def train(job, data_root, output_dir, resume=None, canary=False):
             "best_loss": best_loss if math.isfinite(best_loss) else None,
             "best_epoch": best_epoch, "epoch": next_epoch, "next_batch": next_batch,
             "optimizer_updates": updates, "history": history, "provenance": provenance,
+            "amp_skipped_updates": amp_skipped_updates,
+            "consecutive_amp_overflows": consecutive_amp_overflows,
             "phase": phase,
             "elapsed_session_seconds": time.monotonic() - started,
             "final_ready": False,
@@ -345,17 +384,25 @@ def train(job, data_root, output_dir, resume=None, canary=False):
             next_batch = index + 1
             boundary = next_batch % job["grad_accum_steps"] == 0 or next_batch == len(loader)
             if boundary:
-                scaler.unscale_(optimizer)
-                norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-                if not torch.isfinite(norm):
-                    raise RuntimeError("Nonfinite model gradient; refusing an invalid optimizer step")
-                scaler.step(optimizer)
-                scaler.update()
-                optimizer.zero_grad(set_to_none=True)
-                updates += 1
+                step = optimizer_step(model, optimizer, scaler)
+                if step["updated"]:
+                    updates += 1
+                    consecutive_amp_overflows = 0
+                else:
+                    amp_skipped_updates += 1
+                    consecutive_amp_overflows += 1
+                    print("V3_AMP_OVERFLOW " + json.dumps({"job_id": job["job_id"],
+                        "epoch": epoch, "batch": next_batch, "skipped_updates": amp_skipped_updates,
+                        **step}, allow_nan=False), flush=True)
+                    snapshot()
+                    if consecutive_amp_overflows >= MAX_CONSECUTIVE_AMP_OVERFLOWS:
+                        status = "numerical_failure"
+                        snapshot()
+                        raise RuntimeError("Persistent AMP gradient overflow after 16 scale backoffs")
                 elapsed = time.monotonic() - started
-                print(f"V3_STEP job={job['job_id']} epoch={epoch} batch={next_batch}/{len(loader)} update={updates} loss={loss.item():.5f} elapsed={elapsed:.1f}s", flush=True)
-                if canary and updates >= 2:
+                if step["updated"]:
+                    print(f"V3_STEP job={job['job_id']} epoch={epoch} batch={next_batch}/{len(loader)} update={updates} loss={loss.item():.5f} elapsed={elapsed:.1f}s", flush=True)
+                if canary and updates >= CANARY_MIN_UPDATES:
                     status = "canary_passed"
                     phase = "canary"
                     snapshot()
@@ -363,6 +410,7 @@ def train(job, data_root, output_dir, resume=None, canary=False):
                     if restored["optimizer_updates"] != updates:
                         raise RuntimeError("Canary checkpoint update count did not round-trip")
                     report = {"job_id": job["job_id"], "status": status, "optimizer_updates": updates,
+                              "amp_skipped_updates": amp_skipped_updates,
                               "seconds": elapsed, "peak_gpu_bytes": torch.cuda.max_memory_allocated(),
                               "checkpoint_sha256": sha256_file(checkpoint_path),
                               "checkpoint_restored": True, "provenance": provenance}
@@ -374,7 +422,7 @@ def train(job, data_root, output_dir, resume=None, canary=False):
                     snapshot()
                     print("V3_INCOMPLETE checkpoint=" + str(checkpoint_path), flush=True)
                     return {"status": status, "checkpoint": str(checkpoint_path)}
-                if updates <= 2 or updates % 20 == 0:
+                if step["updated"] and (updates <= 2 or updates % 20 == 0):
                     snapshot()
         phase = "validation"
         snapshot()

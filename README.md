@@ -8,6 +8,10 @@ hình và trọng số trong `docs/V2_BENCHMARK_REPORT.md`, `outputs_kaggle_pool
 `release_ckpts/` thuộc **v2**, không phải kết quả v3. Tài liệu cũ ở
 [V2_README.md](docs/V2_README.md).
 
+Đợt train đầu gặp lỗi xử lý overflow AMP sau khi đã vào RUNNING. Bản sửa cho
+GradScaler giảm scale và bỏ qua update lỗi; kiểm chứng lại bằng canary128 update.
+Xem [chẩn đoán và khôi phục](docs/V3_AMP_RECOVERY.md).
+
 ## Kế thừa và ma trận thí nghiệm
 
 SCOPE (Dani, Galteri, Bertini) cung cấp conditioning, FiLM U-Net, attention trộn

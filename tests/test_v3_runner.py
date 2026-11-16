@@ -11,6 +11,49 @@ from scripts import run_v3
 
 
 class V3RunnerTests(unittest.TestCase):
+    def test_amp_overflow_skips_update_backs_off_scale_and_recovers(self):
+        model = torch.nn.Linear(1, 1, bias=False)
+        with torch.no_grad():
+            model.weight.fill_(1.0)
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+        scaler = torch.amp.GradScaler("cpu", init_scale=65536.0)
+        loss = (model(torch.ones(1, 1)) * 1e35).sum()
+        self.assertTrue(torch.isfinite(loss))
+        scaler.scale(loss).backward()
+        result = run_v3.optimizer_step(model, optimizer, scaler)
+        self.assertFalse(result["updated"])
+        self.assertEqual(model.weight.item(), 1.0)
+        self.assertEqual(scaler.get_scale(), 32768.0)
+        self.assertTrue(all(p.grad is None for p in model.parameters()))
+        scaler.scale(model(torch.ones(1, 1)).square().sum()).backward()
+        result = run_v3.optimizer_step(model, optimizer, scaler)
+        self.assertTrue(result["updated"])
+        self.assertLess(model.weight.item(), 1.0)
+        self.assertTrue(torch.isfinite(model.weight).all())
+
+    def test_unscaled_nonfinite_gradient_is_still_fatal(self):
+        model = torch.nn.Linear(1, 1, bias=False)
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+        scaler = torch.amp.GradScaler("cpu", enabled=False)
+        model(torch.ones(1, 1)).sum().backward()
+        original = model.weight.detach().clone()
+        model.weight.grad.fill_(float("nan"))
+        with self.assertRaisesRegex(RuntimeError, "Nonfinite"):
+            run_v3.optimizer_step(model, optimizer, scaler)
+        self.assertTrue(torch.equal(original, model.weight))
+
+    def test_large_finite_gradient_is_clipped_without_norm_overflow(self):
+        model = torch.nn.Linear(1, 1, bias=False)
+        with torch.no_grad():
+            model.weight.fill_(1.0)
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+        scaler = torch.amp.GradScaler("cpu", enabled=False)
+        (model(torch.ones(1, 1)) * 1e30).sum().backward()
+        result = run_v3.optimizer_step(model, optimizer, scaler)
+        self.assertTrue(result["updated"])
+        self.assertTrue(torch.isfinite(model.weight).all())
+        self.assertAlmostEqual(model.weight.item(), 0.9, places=5)
+
     def test_spatial_qg_has_no_temporal_regularization(self):
         criterion = run_v3.make_criterion(run_v3.make_job("spatial_qp", 2026))
         video = torch.rand(1, 4, 3, 32, 32)
