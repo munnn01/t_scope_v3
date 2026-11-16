@@ -1,0 +1,321 @@
+{
+  "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+  "verified_at_utc": "2026-11-16T04:59:17.481385+00:00",
+  "successful_variants": 6,
+  "required_successful_updates_per_variant": 128,
+  "scope": "GPU numerical recovery and checkpoint restoration; not convergence or AP/BDBR",
+  "reports": [
+    {
+      "job_id": "spatial_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 3,
+      "seconds": 808.018686728,
+      "peak_gpu_bytes": 2732447744,
+      "checkpoint_sha256": "e0d169a16f0f8fff197f1e822ff6ec5e8bc7690ff247bee0a652243018c31444",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T04:39:16.827456+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 8192.0
+    },
+    {
+      "job_id": "spatial_qp_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 2,
+      "seconds": 730.4830125970001,
+      "peak_gpu_bytes": 2732447744,
+      "checkpoint_sha256": "67090e309da52d4e8b0078733babc86fc47a8064c707bd735a9457851bb1c99a",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T04:39:19.902066+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 16384.0
+    },
+    {
+      "job_id": "temporal_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 3,
+      "seconds": 821.955630561,
+      "peak_gpu_bytes": 2966775808,
+      "checkpoint_sha256": "e9488f76ac239e5c081cd09f602cf5daa27d88e0fb0e6a23c7fb971b2be67c80",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T04:40:28.609723+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 8192.0
+    },
+    {
+      "job_id": "temporal_qp_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 4,
+      "seconds": 785.4674646820001,
+      "peak_gpu_bytes": 2966775808,
+      "checkpoint_sha256": "8f8001c0e89d2303a227f559a1dc9bba03ef50dfd7cccc71f2cc085c48b43e51",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T00:31:30.337955+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 4096.0
+    },
+    {
+      "job_id": "temporal_qp_proxy_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 3,
+      "seconds": 778.7671438770001,
+      "peak_gpu_bytes": 2966775808,
+      "checkpoint_sha256": "b5de4b680e72e3c3e11a300308876358b860996c4035746dc01c876e1f681ede",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T04:40:48.475728+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 8192.0
+    },
+    {
+      "job_id": "scope_paper_adapted_seed2026",
+      "status": "canary_passed",
+      "optimizer_updates": 128,
+      "amp_skipped_updates": 2,
+      "seconds": 744.157611643,
+      "peak_gpu_bytes": 3146693120,
+      "checkpoint_sha256": "636425fde5181cc56c8fa7d57fdcdb4105f710fe40aabd000a161536da61b5dd",
+      "checkpoint_restored": true,
+      "provenance": {
+        "python": "3.11.14",
+        "torch": "2.5.1+cu124",
+        "torchvision": "0.20.1+cu124",
+        "numpy": "2.4.6",
+        "source_sha256": {
+          "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+          "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+          "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+          "scripts/run_v3.py": "f78707b0f79532b5185641b4ecf1e99f78e35a16cc5689d644c601cba38127fc",
+          "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+          "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+          "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+          "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+        },
+        "cuda": "12.4",
+        "gpu": "Tesla T4",
+        "measured_at_utc": "2026-11-16T04:40:05.915031+00:00",
+        "training_data": {
+          "physical_frames": 3140,
+          "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+          "gt_sha256": {
+            "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+            "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+            "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+            "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+          }
+        },
+        "validation_data": {
+          "physical_frames": 524,
+          "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+          "gt_sha256": {
+            "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+          }
+        },
+        "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+      },
+      "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+      "local_download_hash_verified": true,
+      "local_model_optimizer_scaler_restored": true,
+      "local_model_optimizer_tensors_finite": true,
+      "final_loss_scale": 16384.0
+    }
+  ]
+}

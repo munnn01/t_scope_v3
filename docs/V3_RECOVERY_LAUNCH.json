@@ -1,0 +1,191 @@
+{
+  "run_id": "v3-1116-amp-retry",
+  "source_revision": "92d778c356331f5fb3d8f9e66f7388b33821a1ad",
+  "snapshot_created_at_utc": "2026-11-16T05:05:54.789283+00:00",
+  "status_counts": {
+    "running": 18
+  },
+  "scope": "observed launch and optimizer progress, not completed training or final AP/BDBR",
+  "jobs": [
+    {
+      "job_id": "spatial_seed2026",
+      "variant": "spatial",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 20,
+      "last_step": "V3_STEP job=spatial_seed2026 epoch=1 batch=40/783 update=20 loss=4.91344 elapsed=113.1s",
+      "observed_at_utc": "2026-11-16T05:04:11.110435+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "spatial_seed2027",
+      "variant": "spatial",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 26,
+      "last_step": "V3_STEP job=spatial_seed2027 epoch=1 batch=54/783 update=26 loss=4.71692 elapsed=155.5s",
+      "observed_at_utc": "2026-11-16T05:04:10.485110+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "spatial_seed2028",
+      "variant": "spatial",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 11,
+      "last_step": "V3_STEP job=spatial_seed2028 epoch=1 batch=22/783 update=11 loss=5.70860 elapsed=65.3s",
+      "observed_at_utc": "2026-11-16T05:04:09.695511+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "spatial_qp_seed2026",
+      "variant": "spatial_qp",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 33,
+      "last_step": "V3_STEP job=spatial_qp_seed2026 epoch=1 batch=68/783 update=33 loss=4.64923 elapsed=203.7s",
+      "observed_at_utc": "2026-11-16T05:04:10.566899+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "spatial_qp_seed2027",
+      "variant": "spatial_qp",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 17,
+      "last_step": "V3_STEP job=spatial_qp_seed2027 epoch=1 batch=34/783 update=17 loss=5.54372 elapsed=97.7s",
+      "observed_at_utc": "2026-11-16T05:04:10.038313+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "spatial_qp_seed2028",
+      "variant": "spatial_qp",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 15,
+      "last_step": "V3_STEP job=spatial_qp_seed2028 epoch=1 batch=30/783 update=15 loss=5.63966 elapsed=88.8s",
+      "observed_at_utc": "2026-11-16T05:04:12.687943+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_seed2026",
+      "variant": "temporal",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 20,
+      "last_step": "V3_STEP job=temporal_seed2026 epoch=1 batch=40/783 update=20 loss=4.96117 elapsed=118.3s",
+      "observed_at_utc": "2026-11-16T05:04:50.214338+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_seed2027",
+      "variant": "temporal",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 14,
+      "last_step": "V3_STEP job=temporal_seed2027 epoch=1 batch=28/783 update=14 loss=5.05769 elapsed=84.1s",
+      "observed_at_utc": "2026-11-16T05:04:52.974306+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_seed2028",
+      "variant": "temporal",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 23,
+      "last_step": "V3_STEP job=temporal_seed2028 epoch=1 batch=48/783 update=23 loss=4.92647 elapsed=140.5s",
+      "observed_at_utc": "2026-11-16T05:04:54.582863+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_seed2026",
+      "variant": "temporal_qp",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 25,
+      "last_step": "V3_STEP job=temporal_qp_seed2026 epoch=1 batch=50/783 update=25 loss=4.98586 elapsed=159.6s",
+      "observed_at_utc": "2026-11-16T05:04:54.675793+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_seed2027",
+      "variant": "temporal_qp",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 11,
+      "last_step": "V3_STEP job=temporal_qp_seed2027 epoch=1 batch=22/783 update=11 loss=5.41041 elapsed=65.7s",
+      "observed_at_utc": "2026-11-16T05:04:52.122658+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_seed2028",
+      "variant": "temporal_qp",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 6,
+      "last_step": "V3_STEP job=temporal_qp_seed2028 epoch=1 batch=12/783 update=6 loss=5.06676 elapsed=36.3s",
+      "observed_at_utc": "2026-11-16T05:04:52.233444+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_proxy_seed2026",
+      "variant": "temporal_qp_proxy",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 38,
+      "last_step": "V3_STEP job=temporal_qp_proxy_seed2026 epoch=1 batch=76/783 update=38 loss=2.81033 elapsed=168.9s",
+      "observed_at_utc": "2026-11-16T05:05:32.856781+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_proxy_seed2027",
+      "variant": "temporal_qp_proxy",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 41,
+      "last_step": "V3_STEP job=temporal_qp_proxy_seed2027 epoch=1 batch=84/783 update=41 loss=3.08511 elapsed=165.2s",
+      "observed_at_utc": "2026-11-16T05:05:36.101862+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "temporal_qp_proxy_seed2028",
+      "variant": "temporal_qp_proxy",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 47,
+      "last_step": "V3_STEP job=temporal_qp_proxy_seed2028 epoch=1 batch=98/783 update=47 loss=3.39106 elapsed=186.8s",
+      "observed_at_utc": "2026-11-16T05:05:33.734499+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "scope_paper_adapted_seed2026",
+      "variant": "scope_paper_adapted",
+      "seed": 2026,
+      "status": "running",
+      "observed_successful_updates": 13,
+      "last_step": "V3_STEP job=scope_paper_adapted_seed2026 epoch=1 batch=28/783 update=13 loss=3.77551 elapsed=48.4s",
+      "observed_at_utc": "2026-11-16T05:05:35.587739+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "scope_paper_adapted_seed2027",
+      "variant": "scope_paper_adapted",
+      "seed": 2027,
+      "status": "running",
+      "observed_successful_updates": 19,
+      "last_step": "V3_STEP job=scope_paper_adapted_seed2027 epoch=1 batch=38/783 update=19 loss=3.54081 elapsed=73.8s",
+      "observed_at_utc": "2026-11-16T05:05:35.588069+00:00",
+      "terminal_errors_observed": []
+    },
+    {
+      "job_id": "scope_paper_adapted_seed2028",
+      "variant": "scope_paper_adapted",
+      "seed": 2028,
+      "status": "running",
+      "observed_successful_updates": 16,
+      "last_step": "V3_STEP job=scope_paper_adapted_seed2028 epoch=1 batch=32/783 update=16 loss=3.06223 elapsed=55.6s",
+      "observed_at_utc": "2026-11-16T05:05:32.899742+00:00",
+      "terminal_errors_observed": []
+    }
+  ]
+}

@@ -9,7 +9,8 @@ hình và trọng số trong `docs/V2_BENCHMARK_REPORT.md`, `outputs_kaggle_pool
 [V2_README.md](docs/V2_README.md).
 
 Đợt train đầu gặp lỗi xử lý overflow AMP sau khi đã vào RUNNING. Bản sửa cho
-GradScaler giảm scale và bỏ qua update lỗi; kiểm chứng lại bằng canary128 update.
+GradScaler giảm scale và bỏ qua update lỗi; cả sáu nhánh đã vượt canary 128 update,
+checkpoint tải về đã được kiểm tra độc lập. Lượt chạy lại dùng mã `92d778c`.
 Xem [chẩn đoán và khôi phục](docs/V3_AMP_RECOVERY.md).
 
 ## Kế thừa và ma trận thí nghiệm

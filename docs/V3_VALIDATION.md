@@ -55,12 +55,12 @@ failures at every provisioning stage and matched train/canary configurations.
 
 ## Final code verification
 
-The final training revision is `04d5aa3de9114fcf64691caddbad7a40ac3347c8`.
+The initial training revision was `04d5aa3de9114fcf64691caddbad7a40ac3347c8`.
 GitHub Actions on Linux, including real FFmpeg/x265, passed **149 tests**, with
 **1 skipped** and **299 passing subtests**:
 https://github.com/munnn01/t_scope_v3/actions/runs/43733966333.
 
-## Successful GPU canary
+## Initial two-update GPU canary
 
 The production canary completed on Tesla T4 using Python3.11.14,
 torch2.5.1+cu124, torchvision0.20.1+cu124 and FFmpeg6.1.1. It performed two
@@ -83,3 +83,23 @@ ROI encoding/decoding is separately covered by the real-codec CI integration tes
 This validates execution, not final detection accuracy or convergence. All
 production jobs must use the same pinned source revision and complete validation
 before held-out evaluation.
+
+## AMP recovery verification
+
+The initial two-update canary did not establish sustained numerical stability:
+all 18 subsequently launched jobs failed at a guard that raised before AMP could
+skip an overflowed update and lower its loss scale. The repaired training revision
+is `92d778c356331f5fb3d8f9e66f7388b33821a1ad`.
+
+The local suite was rerun after the repair: **151 passed, 2 skipped, 299 subtests
+passed**. Linux CI, including real FFmpeg/x265, passed **152 tests, 1 skipped,
+299 subtests**: [recovery CI](https://github.com/munnn01/t_scope_v3/actions/runs/43780555476).
+Three added regression tests exercise actual GradScaler overflow, scale backoff
+and recovery, fatal gradients without AMP, and clipping large finite gradients.
+
+All six variant canaries subsequently completed 128 successful optimizer updates
+on Tesla T4. They each exercised recoverable overflow and continued with reduced
+loss scales. Checkpoints restored successfully. See the
+[recovery report](V3_AMP_RECOVERY.md) and its machine-readable evidence for the
+verified GPU runs. These checks establish numerical recovery and execution;
+completed training and paired AP/BDBR evaluation remain separate requirements.

@@ -1,9 +1,11 @@
 # V3 execution report — 2026-11-16 (Asia/Bangkok)
 
-**Subsequent failure:** this document records the initial launch snapshot, not
-successful training. Later inspection found17 numerical-gradient failures.
+**Initial launch failed:** the first part of this document preserves its launch
+snapshot. A complete subsequent log audit found all 18 jobs failed
+with the same numerical-gradient exception.
 See [AMP failure and recovery](V3_AMP_RECOVERY.md); the original two-update canary
-was too short to establish sustained training stability.
+was too short to establish sustained training stability. The recovery launch is
+recorded separately below.
 
 Repository: https://github.com/munnn01/t_scope_v3.
 Training revision: `04d5aa3de9114fcf64691caddbad7a40ac3347c8`.
@@ -49,3 +51,27 @@ Resume/evaluation must use the job's exact source revision and configuration.
 
 These are observed launch states, not completed training or a final v3 benchmark.
 Collect checkpoints and complete the paired held-out evaluation before reporting AP/BDBR.
+
+## Recovery launch
+
+The repaired source is `92d778c356331f5fb3d8f9e66f7388b33821a1ad`.
+All six variant canaries passed 128 successful optimizer updates each, including
+observed AMP overflow/backoff and continued training. Downloaded checkpoints
+were hash-checked and model/optimizer/scaler restored independently. See
+[GPU recovery evidence](V3_AMP_SOAK_MATRIX.json) and the
+[failure analysis](V3_AMP_RECOVERY.md). Recovery Linux CI passed 152 tests,
+1 skipped and 299 subtests.
+
+Run `v3-1116-amp-retry` restarts the same six variants and three original seeds
+from initialization. All 18 new jobs were submitted successfully, and the
+post-dispatch API check observed 18 RUNNING. Live logs independently confirmed
+successful optimizer updates for every one of the 18 new jobs. The old failed kernels and their
+checkpoints remain historical records; they are not resumed into this comparison.
+The new local manifest is `outputs_v3/recovery_train_manifest.json`.
+
+[Launch and observed optimizer progress](V3_RECOVERY_LAUNCH.json) records a
+timestamped snapshot for each job. The local `outputs_v3/RECOVERY_STATUS.md`
+contains the new private notebook links. Later documentation commits do not
+change the exact training revision pinned in these workers. Session budgets and
+completion/evaluation requirements remain the same: these launch observations
+are not completed training or a final benchmark.
