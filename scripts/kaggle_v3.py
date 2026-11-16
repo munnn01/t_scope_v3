@@ -245,15 +245,39 @@ def load_manifest(path):
     return manifest
 
 
+def _validate_resume_spec(record, manifest):
+    spec = record.get("resume")
+    if spec is None:
+        return
+    common = {"checkpoint_sha256", "job_sha256", "epoch", "next_batch", "optimizer_updates"}
+    if (not isinstance(spec, dict) or manifest["mode"] != "train" or
+            set(spec) not in (common | {"source_kernel"}, common | {"source_dataset"})):
+        raise ValueError("Resume requires an exact production-training input specification")
+    source = spec.get("source_kernel", spec.get("source_dataset"))
+    if (not isinstance(source, str) or
+            not re.fullmatch(r"[A-Za-z0-9_-]+/[A-Za-z0-9_-]+/[1-9][0-9]*", source) or
+            source.split("/")[0].casefold() != str(record["username"]).casefold()):
+        raise ValueError("Resume source must be version-pinned and owned by the execution account")
+    for key in ("checkpoint_sha256", "job_sha256"):
+        if not isinstance(spec[key], str) or not re.fullmatch(r"[0-9a-f]{64}", spec[key]):
+            raise ValueError("Resume requires SHA256 identities for checkpoint and job")
+    for key in ("epoch", "next_batch", "optimizer_updates"):
+        if type(spec[key]) is not int or spec[key] < (1 if key == "epoch" else 0):
+            raise ValueError("Invalid expected resume position")
+
+
 def build_worker_script(record, manifest) -> str:
     """Generate an importable standalone worker without copying local credentials."""
     _validate_revision(manifest["revision"])
     _validate_repo(manifest["repo_url"])
+    _validate_resume_spec(record, manifest)
     payload = {"revision": manifest["revision"], "repo_url": manifest["repo_url"],
                "run_id": manifest["run_id"],
                "mode": manifest["mode"], "variant": record["variant"],
                "seed": record["seed"], "job_id": record["job_id"],
                "job_overrides": manifest["job_overrides"]}
+    if record.get("resume") is not None:
+        payload["resume"] = deepcopy(record["resume"])
     _assert_secret_free(payload)
     return '''"""Revision-pinned T-SCOPE v3 worker; credentials remain on the launcher."""
 import json
@@ -277,13 +301,37 @@ work_root = Path(sys.argv[2])
 data_root = find_mounted_kaggle_dataset()
 if data_root is None or not Path(data_root).is_dir():
     raise RuntimeError("Mounted real MOT17 training dataset is required")
-overrides = dict(config["job_overrides"], source_revision=config["revision"], run_id=config["run_id"])
-job = make_job(config["variant"], config["seed"], **overrides)
-(work_root / (config["job_id"] + ".json")).write_text(json.dumps(job, indent=2, allow_nan=False), encoding="utf-8")
+if config.get("resume"):
+    import shutil
+    import torch
+    from scripts.run_v3 import sha256_file, validate_resume
+    spec = config["resume"]
+    inputs = Path(sys.argv[3])
+    checkpoints = list(inputs.rglob(config["job_id"] + ".last.pt"))
+    jobs = list(inputs.rglob(config["job_id"] + ".json"))
+    if len(checkpoints) != 1 or len(jobs) != 1 or checkpoints[0].parent != jobs[0].parent:
+        raise ValueError("Resume input is missing or ambiguous")
+    checkpoint, job_file = checkpoints[0], jobs[0]
+    if sha256_file(checkpoint) != spec["checkpoint_sha256"] or sha256_file(job_file) != spec["job_sha256"]:
+        raise ValueError("Resume checkpoint or job hash mismatch")
+    job = json.loads(job_file.read_text(encoding="utf-8"))
+    if any(job.get(key) != config[key] for key in ("job_id", "variant", "seed")) or job.get("source_revision") != config["revision"]:
+        raise ValueError("Resume job identity differs from the dispatch")
+    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    validate_resume(state, job)
+    if state["status"] != "time_budget_exhausted" or any(state[key] != spec[key] for key in ("epoch", "next_batch", "optimizer_updates")):
+        raise ValueError("Checkpoint is not the expected incomplete resume position")
+    shutil.copyfile(job_file, work_root / job_file.name)
+    (work_root / (config["job_id"] + ".resume-path.json")).write_text(json.dumps(str(checkpoint)), encoding="utf-8")
+    print("V3_RESUME_INPUT_VERIFIED " + json.dumps({"job_id": job["job_id"], **spec}), flush=True)
+else:
+    overrides = dict(config["job_overrides"], source_revision=config["revision"], run_id=config["run_id"])
+    job = make_job(config["variant"], config["seed"], **overrides)
+    (work_root / (config["job_id"] + ".json")).write_text(json.dumps(job, indent=2, allow_nan=False), encoding="utf-8")
 (work_root / (config["job_id"] + ".data-root.json")).write_text(json.dumps(str(data_root)), encoding="utf-8")
 """
 
-def main(work_root=Path("/kaggle/working")):
+def main(work_root=Path("/kaggle/working"), input_root=Path("/kaggle/input")):
     work_root = Path(work_root).resolve()
     work_root.mkdir(parents=True, exist_ok=True)
     repo = Path(tempfile.gettempdir()) / ("tscope-v3-" + CONFIG["revision"])
@@ -310,7 +358,7 @@ def main(work_root=Path("/kaggle/working")):
     env["PYTHONPATH"] = str(repo) + os.pathsep + env.get("PYTHONPATH", "")
     env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    subprocess.run([managed_python, "-c", JOB_CREATION, json.dumps(CONFIG), str(work_root)],
+    subprocess.run([managed_python, "-c", JOB_CREATION, json.dumps(CONFIG), str(work_root), str(input_root)],
                    cwd=repo, env=env, check=True)
     data_root = Path(json.loads((work_root / (CONFIG["job_id"] + ".data-root.json")).read_text(encoding="utf-8")))
     if not data_root.is_dir():
@@ -318,6 +366,9 @@ def main(work_root=Path("/kaggle/working")):
     job_file = work_root / (CONFIG["job_id"] + ".json")
     command = [managed_python, str(repo / "scripts" / "run_v3.py"), "--mode", CONFIG["mode"],
                "--job-file", str(job_file), "--data-root", str(data_root), "--output-dir", str(work_root)]
+    if CONFIG.get("resume"):
+        resume_path = json.loads((work_root / (CONFIG["job_id"] + ".resume-path.json")).read_text(encoding="utf-8"))
+        command += ["--resume", resume_path]
     subprocess.run(command, cwd=repo, env=env, check=True)
 
 if __name__ == "__main__":
@@ -421,6 +472,7 @@ def push_manifest(manifest, accounts, *, api_factory=None, only_jobs=None, persi
         if record["username"] is None or record["status"] in ("submitted", "running", "queued", "complete", "downloaded"):
             continue
         try:
+            _validate_resume_spec(record, manifest)
             if record["username"] not in credentials:
                 record["status"] = "account_missing"
                 continue
@@ -431,6 +483,8 @@ def push_manifest(manifest, accounts, *, api_factory=None, only_jobs=None, persi
                 if remaining < manifest["min_gpu_hours"]:
                     record["status"] = "quota_low"
                     continue
+                if record.get("resume", {}).get("source_kernel") and _status_string(api.kernels_status(record["resume"]["source_kernel"])) != "complete":
+                    raise ValueError("Resume source kernel has not completed")
                 try:
                     api.kernels_status(record["kernel_id"])
                 except Exception as error:
@@ -450,8 +504,8 @@ def push_manifest(manifest, accounts, *, api_factory=None, only_jobs=None, persi
                     metadata = {"id": record["kernel_id"], "title": record["kernel_id"].split("/")[1],
                                 "code_file": "worker.py", "language": "python", "kernel_type": "script",
                                 "is_private": "true", "enable_gpu": "true", "enable_tpu": "false",
-                                "enable_internet": "true", "dataset_sources": [manifest["dataset_slug"]],
-                                "competition_sources": [], "kernel_sources": [], "model_sources": []}
+                                "enable_internet": "true", "dataset_sources": [manifest["dataset_slug"]] + ([record["resume"]["source_dataset"]] if record.get("resume", {}).get("source_dataset") else []),
+                                "competition_sources": [], "kernel_sources": [record["resume"]["source_kernel"]] if record.get("resume", {}).get("source_kernel") else [], "model_sources": []}
                     (path / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
                     response = api.kernels_push(str(path))
                     if getattr(response, "error", ""):
