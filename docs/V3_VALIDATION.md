@@ -1,4 +1,4 @@
-# Local v3 validation — 2026-11-15
+# V3 validation
 
 Environment: Windows, Python3.11.14, torch2.5.1, torchvision0.20.1, NumPy2.4.6,
 SciPy1.17.1, Pillow11.1.0. CUDA was unavailable locally.
@@ -52,3 +52,34 @@ cannot install torchvision0.20.1. Workers now provision isolated Python3.11.14 w
 uv0.9.9 and execute both job creation and training with that interpreter. The
 focused launcher suite has25 passing tests and30 passing subtests, including
 failures at every provisioning stage and matched train/canary configurations.
+
+## Final code verification
+
+The final training revision is `04d5aa3de9114fcf64691caddbad7a40ac3347c8`.
+GitHub Actions on Linux, including real FFmpeg/x265, passed **149 tests**, with
+**1 skipped** and **299 passing subtests**:
+https://github.com/munnn01/t_scope_v3/actions/runs/43733966333.
+
+## Successful GPU canary
+
+The production canary completed on Tesla T4 using Python3.11.14,
+torch2.5.1+cu124, torchvision0.20.1+cu124 and FFmpeg6.1.1. It performed two
+optimizer updates with the real pretrained detector and the real x265 training path.
+The measured training loop took14.20997 seconds; peak allocated GPU memory was
+2,966,776,320 bytes. This timing excludes environment setup, weight download and
+data hashing, and is not a full throughput benchmark.
+
+The checkpoint was safely loaded and model/optimizer/scaler restored before the
+worker reported success. The downloaded file was independently hash-checked and
+loaded locally; every model tensor was finite. SHA256:
+`4d646743c80cc057b8b5888a7be691f747f735063d43347535166f57971656ba`.
+Machine-readable evidence: [V3_GPU_CANARY.json](V3_GPU_CANARY.json).
+
+The canary passed the model's predicted QG offsets into the codec, but did not
+record whether nonzero frame-varying ROI was activated in those first two updates.
+That activation is not claimed by the GPU timing report. Nonzero frame-varying
+ROI encoding/decoding is separately covered by the real-codec CI integration test.
+
+This validates execution, not final detection accuracy or convergence. All
+production jobs must use the same pinned source revision and complete validation
+before held-out evaluation.

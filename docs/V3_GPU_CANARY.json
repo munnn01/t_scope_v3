@@ -1,0 +1,49 @@
+{
+  "job_id": "temporal_qp_seed2026",
+  "status": "canary_passed",
+  "optimizer_updates": 2,
+  "seconds": 14.209974662999912,
+  "peak_gpu_bytes": 2966776320,
+  "checkpoint_sha256": "4d646743c80cc057b8b5888a7be691f747f735063d43347535166f57971656ba",
+  "checkpoint_restored": true,
+  "source_revision": "04d5aa3de9114fcf64691caddbad7a40ac3347c8",
+  "local_download_hash_verified": true,
+  "provenance": {
+    "python": "3.11.14",
+    "torch": "2.5.1+cu124",
+    "torchvision": "0.20.1+cu124",
+    "numpy": "2.4.6",
+    "source_sha256": {
+      "models/temporal_scope.py": "97f024f46d3156348d0e5bccd2af87762f8143702e4375cf92e6cd3597ae8c73",
+      "models/scope_reference.py": "2ec30146d7812b5086a363e1ef9dcebfb17115028c0cc6b23bc3fc52b860829c",
+      "models/frozen_detector_fpn.py": "887cbc75ce9c589449a634f73b296e1f899ce23ac166388ec50dd8231246211d",
+      "scripts/run_v3.py": "bb131e3872877e88ec165bc83361c11bc1837b8f3823d46279f51fae9a25e8ff",
+      "scripts/v3_protocol.py": "2f4ff8a6705f0913bcfd3bbcb73b89a31682ca2e7e8fd9355e4291fd61d26db0",
+      "losses/vcm_temporal_loss.py": "8fe12fa9623455a2719fa038ef542648755152205852f720b6e1a1f7106efc80",
+      "vcm_datasets/vcm_video_datasets.py": "0a0835360aa6e9f48025fc49152bc9533421f1930eaefad957cae0baa10006fa",
+      "video_codecs/hybrid_x265_ste.py": "a254685d9648250f5dde67405b1b63f265ad101d0945649f784af7759a4a78a8"
+    },
+    "cuda": "12.4",
+    "gpu": "Tesla T4",
+    "measured_at_utc": "2026-11-15T18:34:32.546895+00:00",
+    "training_data": {
+      "physical_frames": 3140,
+      "images_sha256": "75adbce93f85c28294018699384eeca3a4c827c4460544c86b18b88b6eea12b1",
+      "gt_sha256": {
+        "MOT17-02": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+        "MOT17-04": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+        "MOT17-05": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5",
+        "MOT17-10": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+      }
+    },
+    "validation_data": {
+      "physical_frames": 524,
+      "images_sha256": "7beb2967a034259c6ab31790d317b53e55dcdaee074f67337dbe7314c7cd0e7c",
+      "gt_sha256": {
+        "MOT17-09": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+      }
+    },
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "scope": "GPU canary only; not an accuracy benchmark or converged v3 model"
+}

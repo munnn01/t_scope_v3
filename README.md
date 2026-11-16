@@ -128,3 +128,7 @@ seed và mean/std; final-ready chỉ bật khi đủ job, dữ liệu ghép cặ
 
 Mã chính: `v3_protocol.py`, `run_v3.py`, `kaggle_v3.py`, `rd_metrics.py`,
 `merge_v3.py` trong `scripts/`; reference ở `models/scope_reference.py`.
+
+Canary GPU thật và CI đã được kiểm chứng; xem [bằng chứng](docs/V3_VALIDATION.md).
+Khi resume/eval, dùng checkout đúng `source_revision` trong job JSON. Commit cập
+nhật tài liệu sau khi dispatch không thay đổi mã nguồn mà worker đã ghim.
