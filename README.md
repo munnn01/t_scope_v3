@@ -3,9 +3,13 @@
 Tiền biên tập video có bù chuyển động và phân bổ lượng tử hóa QG cho `libx265`.
 V3 kiểm chứng **temporal processing × semantic ΔQP** với thí nghiệm ghép cặp.
 
-**Trạng thái:** mã và protocol v3; chưa có benchmark v3 hoàn chỉnh. Các số liệu,
-hình và trọng số trong `docs/V2_BENCHMARK_REPORT.md`, `outputs_kaggle_pool/` và
-`release_ckpts/` thuộc **v2**, không phải kết quả v3. Tài liệu cũ ở
+**Trạng thái (17/11/2026):** hoàn tất 18/18 job train và evaluation, gồm 6 nhánh ×
+3 seed độc lập. Xem [bảng BD-rate, từng seed và đánh giá](docs/V3_BDRATE_RESULTS.md).
+`spatial_qp` có trung bình bitrate tổng tốt nhất: −14,88% theo Faster R-CNN AP50–95
+và −11,78% theo YOLOv8s AP50–95 so với x265. Gói temporal hiện chưa chứng minh
+cải thiện so với spatial trong protocol này; báo cáo giữ cả kết quả P-frame và
+độ nhạy nội suy. Các số liệu, hình và trọng số trong `docs/V2_BENCHMARK_REPORT.md`,
+`outputs_kaggle_pool/` và `release_ckpts/` thuộc **v2**. Tài liệu cũ ở
 [V2_README.md](docs/V2_README.md).
 
 Đợt train đầu gặp lỗi xử lý overflow AMP sau khi đã vào RUNNING. Bản sửa cho
